@@ -12,18 +12,18 @@ struct ChineseLanternView: View {
 
     
     var body: some View {
-        if chineseLantern.isAnimationEnd || chineseLantern.isTapped {
-            withAnimation {
-                EmptyView()
-            }
-        } else {
+//        if chineseLantern.isAnimationEnd || chineseLantern.isTapped {
+//            withAnimation {
+//                EmptyView()
+//            }
+//        } else {
             ZStack {
                 Image(chineseLantern.lanternImage)
                 Text(chineseLantern.character)
                     .font(.system(size: 96))
                     .padding(.bottom, 40)
             }
-        }
+//        }
     }
 }
 

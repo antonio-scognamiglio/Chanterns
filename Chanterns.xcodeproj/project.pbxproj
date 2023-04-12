@@ -62,7 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */,
-				71F54D1629DEB53000F2DD9D /* ContentView.swift */,
 				71F54D2A29E0264D00F2DD9D /* Models */,
 				71F54D2B29E0265D00F2DD9D /* ViewModels */,
 				71F54D2C29E0267300F2DD9D /* Views */,
@@ -101,6 +100,7 @@
 		71F54D2C29E0267300F2DD9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				71F54D1629DEB53000F2DD9D /* ContentView.swift */,
 				71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */,
 			);
 			path = Views;
