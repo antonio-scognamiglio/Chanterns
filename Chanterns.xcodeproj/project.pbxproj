@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */; };
+		71F54D1729DEB53000F2DD9D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D1629DEB53000F2DD9D /* ContentView.swift */; };
+		71F54D1929DEB53200F2DD9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F54D1829DEB53200F2DD9D /* Assets.xcassets */; };
+		71F54D1C29DEB53200F2DD9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F54D1B29DEB53200F2DD9D /* Preview Assets.xcassets */; };
+		71F54D2329E0209B00F2DD9D /* ChineseLantern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */; };
+		71F54D2529E023E400F2DD9D /* ChineseLanternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */; };
+		71F54D2729E0257200F2DD9D /* ChineseLanternViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2629E0257200F2DD9D /* ChineseLanternViewModel.swift */; };
+		71F54D2929E0264500F2DD9D /* ChengYu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2829E0264500F2DD9D /* ChengYu.swift */; };
+		71F54D2F29E05C3600F2DD9D /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2E29E05C3600F2DD9D /* Array-Extension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		71F54D1129DEB53000F2DD9D /* Chanterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chanterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanternsApp.swift; sourceTree = "<group>"; };
+		71F54D1629DEB53000F2DD9D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		71F54D1829DEB53200F2DD9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		71F54D1B29DEB53200F2DD9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLantern.swift; sourceTree = "<group>"; };
+		71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLanternView.swift; sourceTree = "<group>"; };
+		71F54D2629E0257200F2DD9D /* ChineseLanternViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLanternViewModel.swift; sourceTree = "<group>"; };
+		71F54D2829E0264500F2DD9D /* ChengYu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYu.swift; sourceTree = "<group>"; };
+		71F54D2E29E05C3600F2DD9D /* Array-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-Extension.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		71F54D0E29DEB53000F2DD9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		71F54D0829DEB53000F2DD9D = {
+			isa = PBXGroup;
+			children = (
+				71F54D1329DEB53000F2DD9D /* Chanterns */,
+				71F54D1229DEB53000F2DD9D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		71F54D1229DEB53000F2DD9D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71F54D1129DEB53000F2DD9D /* Chanterns.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71F54D1329DEB53000F2DD9D /* Chanterns */ = {
+			isa = PBXGroup;
+			children = (
+				71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */,
+				71F54D1629DEB53000F2DD9D /* ContentView.swift */,
+				71F54D2A29E0264D00F2DD9D /* Models */,
+				71F54D2B29E0265D00F2DD9D /* ViewModels */,
+				71F54D2C29E0267300F2DD9D /* Views */,
+				71F54D2D29E05C2600F2DD9D /* Utils */,
+				71F54D1829DEB53200F2DD9D /* Assets.xcassets */,
+				71F54D1A29DEB53200F2DD9D /* Preview Content */,
+			);
+			path = Chanterns;
+			sourceTree = "<group>";
+		};
+		71F54D1A29DEB53200F2DD9D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				71F54D1B29DEB53200F2DD9D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		71F54D2A29E0264D00F2DD9D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */,
+				71F54D2829E0264500F2DD9D /* ChengYu.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		71F54D2B29E0265D00F2DD9D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				71F54D2629E0257200F2DD9D /* ChineseLanternViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		71F54D2C29E0267300F2DD9D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		71F54D2D29E05C2600F2DD9D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				71F54D2E29E05C3600F2DD9D /* Array-Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		71F54D1029DEB53000F2DD9D /* Chanterns */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71F54D1F29DEB53200F2DD9D /* Build configuration list for PBXNativeTarget "Chanterns" */;
+			buildPhases = (
+				71F54D0D29DEB53000F2DD9D /* Sources */,
+				71F54D0E29DEB53000F2DD9D /* Frameworks */,
+				71F54D0F29DEB53000F2DD9D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Chanterns;
+			productName = Chanterns;
+			productReference = 71F54D1129DEB53000F2DD9D /* Chanterns.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		71F54D0929DEB53000F2DD9D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					71F54D1029DEB53000F2DD9D = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = 71F54D0C29DEB53000F2DD9D /* Build configuration list for PBXProject "Chanterns" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 71F54D0829DEB53000F2DD9D;
+			productRefGroup = 71F54D1229DEB53000F2DD9D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				71F54D1029DEB53000F2DD9D /* Chanterns */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		71F54D0F29DEB53000F2DD9D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71F54D1C29DEB53200F2DD9D /* Preview Assets.xcassets in Resources */,
+				71F54D1929DEB53200F2DD9D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		71F54D0D29DEB53000F2DD9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71F54D1729DEB53000F2DD9D /* ContentView.swift in Sources */,
+				71F54D2529E023E400F2DD9D /* ChineseLanternView.swift in Sources */,
+				71F54D2F29E05C3600F2DD9D /* Array-Extension.swift in Sources */,
+				71F54D2729E0257200F2DD9D /* ChineseLanternViewModel.swift in Sources */,
+				71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */,
+				71F54D2329E0209B00F2DD9D /* ChineseLantern.swift in Sources */,
+				71F54D2929E0264500F2DD9D /* ChengYu.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		71F54D1D29DEB53200F2DD9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		71F54D1E29DEB53200F2DD9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		71F54D2029DEB53200F2DD9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Chanterns/Preview Content\"";
+				DEVELOPMENT_TEAM = WK692DVRUX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.scognamiglio.antonio.Chanterns;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		71F54D2129DEB53200F2DD9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Chanterns/Preview Content\"";
+				DEVELOPMENT_TEAM = WK692DVRUX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.scognamiglio.antonio.Chanterns;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		71F54D0C29DEB53000F2DD9D /* Build configuration list for PBXProject "Chanterns" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71F54D1D29DEB53200F2DD9D /* Debug */,
+				71F54D1E29DEB53200F2DD9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71F54D1F29DEB53200F2DD9D /* Build configuration list for PBXNativeTarget "Chanterns" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71F54D2029DEB53200F2DD9D /* Debug */,
+				71F54D2129DEB53200F2DD9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 71F54D0929DEB53000F2DD9D /* Project object */;
+}
