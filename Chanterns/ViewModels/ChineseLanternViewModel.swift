@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class GameViewModel: ObservableObject {
     @Published var chineseLanternColumns: ChineseLanternColumns = ChineseLanternColumns()
@@ -35,5 +36,28 @@ class GameViewModel: ObservableObject {
         chineseLanternColumns.columnD = generateLanternsChunk(numberOfLanterns: lanternsPerColumn, yPosition: yPosition)
     }
     
+    func nextLanterAfterTappingColumn(column: inout ChineseLanternsChunk, geo: GeometryProxy) {
+        let index = column.index
+        withAnimation {
+            column.chineseLanternsChunk[index].isTapped = true
+            if column.chineseLanternsChunk.count  - 1 > column.index {
+                column.index += 1
+                column.yPosition = geo.frame(in: .global).maxY + 100
+            }
+        }
+    }
+    
+    func nextLanterAfterMovingColumnA(geo: GeometryProxy){
+        let index = chineseLanternColumns.columnA.index
+        let time = chineseLanternColumns.columnA.chineseLanternsChunk[index].animationTime
+        DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+            withAnimation {
+                if self.chineseLanternColumns.columnA.chineseLanternsChunk.count  - 1 > index && !self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isTapped {
+                    self.chineseLanternColumns.columnA.index += 1
+                    self.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY + 100
+                }
+            }
+        })
+    }
 }
     

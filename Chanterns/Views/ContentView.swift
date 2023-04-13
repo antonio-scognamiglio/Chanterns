@@ -22,11 +22,6 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-//                ForEach(gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk){ lantern in
-//                            ChineseLanternView(chineseLantern: lantern)
-//                        .position(x: geo.frame(in: .global).minX + 150, y: gameViewModel.chineseLanternColumns.columnA.yPosition!)
-//                        .animation(.easeIn(duration: lantern.animationTime), value: gameViewModel.chineseLanternColumns.columnA.yPosition)
-//                    }
                 if !gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.isEmpty && !gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[gameViewModel.chineseLanternColumns.columnA.index].isAnimationEnd {
                     
                     ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex]
@@ -47,24 +42,19 @@ struct ContentView: View {
                                 }
                             })
                         })
-
+// change the index on tap gesture and reset position
                         .onTapGesture {
-                            withAnimation {
-                                gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].isTapped = true
-                                if gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.count  - 1 > gameViewModel.chineseLanternColumns.columnA.index {
-                                    gameViewModel.chineseLanternColumns.columnA.index += 1
-                                    gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY + 100
-                                }
-                            }
-                        }
+                            gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnA, geo: geo)                       }
                 }
             }
+            // Start the game
             .onAppear {
                 gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
                 }
         }
+            // Reset Position after index has changed
             .onChange(of: gameViewModel.chineseLanternColumns.columnA.index) { newValue in
                 gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
             }
