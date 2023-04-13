@@ -59,5 +59,55 @@ class GameViewModel: ObservableObject {
             }
         })
     }
+    
+    func nextLanterAfterMovingColumnB(geo: GeometryProxy) {
+        let index = chineseLanternColumns.columnB.index
+        let time = chineseLanternColumns.columnB.chineseLanternsChunk[index].animationTime
+        DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+            withAnimation {
+                if self.chineseLanternColumns.columnB.chineseLanternsChunk.count  - 1 > index && !self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isTapped {
+                    self.chineseLanternColumns.columnB.index += 1
+                    self.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).maxY + 100
+                }
+            }
+        })
+    }
+    
+    func nextLanterAfterMovingColumnC(geo: GeometryProxy) {
+        let index = chineseLanternColumns.columnC.index
+        let time = chineseLanternColumns.columnC.chineseLanternsChunk[index].animationTime
+        DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+            withAnimation {
+                if self.chineseLanternColumns.columnC.chineseLanternsChunk.count  - 1 > index && !self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isTapped {
+                    self.chineseLanternColumns.columnC.index += 1
+                    self.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).maxY + 100
+                }
+            }
+        })
+    }
+    
+    func nextLanterAfterMovingColumnD(geo: GeometryProxy) {
+        let index = chineseLanternColumns.columnD.index
+        let time = chineseLanternColumns.columnD.chineseLanternsChunk[index].animationTime
+        DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+            withAnimation {
+                if self.chineseLanternColumns.columnD.chineseLanternsChunk.count  - 1 > index && !self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isTapped {
+                    self.chineseLanternColumns.columnD.index += 1
+                    self.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).maxY + 100
+                }
+            }
+        })
+    }
+    
+    // Devo stare attento a quando chiamare questa funzione altrimenti la chiamo in loop
+    func canCreateLantern(column: ChineseLanternsChunk) -> Bool {
+        if
+            !column.chineseLanternsChunk.isEmpty && !column.chineseLanternsChunk[column.index].isAnimationEnd {
+            return true
+        } else {
+            return false
+        }
+        
+    }
 }
     

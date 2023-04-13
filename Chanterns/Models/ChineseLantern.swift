@@ -66,5 +66,13 @@ struct ChineseLanternColumns: Identifiable {
     var columnB: ChineseLanternsChunk = ChineseLanternsChunk()
     var columnC: ChineseLanternsChunk = ChineseLanternsChunk()
     var columnD: ChineseLanternsChunk = ChineseLanternsChunk()
+    
 }
 
+//public enum CurrentColumn: Int {
+//    case columnA = 0
+//    case columnB = 1
+//    case columnC = 2
+//    case columnD = 3
+// 
+//}
