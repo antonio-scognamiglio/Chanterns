@@ -29,32 +29,27 @@ struct ContentView: View {
 //                    }
                 if !gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.isEmpty && !gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[gameViewModel.chineseLanternColumns.columnA.index].isAnimationEnd {
                     
-                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[gameViewModel.chineseLanternColumns.columnA.index]
+                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex]
 )
                         .position(x: geo.frame(in: .global).minX + 150, y: gameViewModel.chineseLanternColumns.columnA.yPosition!)
                         .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[gameViewModel.chineseLanternColumns.columnA.index].animationTime), value: gameViewModel.chineseLanternColumns.columnA.yPosition)
                         .id(gameViewModel.chineseLanternColumns.columnA.index )
-//                        .onChange(of: gameViewModel.chineseLanternColumns.columnA.yPosition){ newPosition in
-//                            if newPosition == geo.frame(in: .global).minY  {
-//
-//                                DispatchQueue.main.asyncAfter(deadline: .now() + gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].animationTime){
-//                                    withAnimation {
-//                                        gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].isAnimationEnd = true
-//                                    }
-//                                }
-//                            }
-//                                // make the lantern disappear if reached the topScreen
-//
-//                                // change the index of the lantern
-//
-//                                // reset the position
-//
-//
-//
-//                        }
+                    // change lantern after destination reached
+                        .onChange(of: gameViewModel.chineseLanternColumns.columnA.yPosition, perform: {_ in
+                            let time = gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].animationTime
+                            DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+                                withAnimation {
+                                    if gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.count  - 1 > gameViewModel.chineseLanternColumns.columnA.index  {
+                                        gameViewModel.chineseLanternColumns.columnA.index += 1
+                                        gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY
+                                    }
+                                }
+                            })
+                        })
+
                         .onTapGesture {
                             withAnimation {
-//                                gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[gameViewModel.chineseLanternColumns.columnA.index].isTapped = true
+                                gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].isTapped = true
                                 if gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.count  - 1 > gameViewModel.chineseLanternColumns.columnA.index {
                                     gameViewModel.chineseLanternColumns.columnA.index += 1
                                     gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY
@@ -65,21 +60,12 @@ struct ContentView: View {
             }
             .onAppear {
                 gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY)
-                // non va bene sull'on Appear perché questa operazione va fatta sempre, ogni volta che cambia l'indice
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY
                 }
         }
             .onChange(of: gameViewModel.chineseLanternColumns.columnA.index) { newValue in
                 gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY
-            }
-            // questo dovrebbe funzionare per resettare la posizione, ma non funziona bene
-            .onChange(of: gameViewModel.chineseLanternColumns.columnA.yPosition) { newValue in
-                if gameViewModel.chineseLanternColumns.columnA.yPosition == geo.frame(in: .global).maxY {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].animationTime){
-                        gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[gameViewModel.chineseLanternColumns.columnA.index].isAnimationEnd = true
-                }
-                }
             }
             
         }
