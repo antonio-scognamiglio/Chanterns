@@ -25,9 +25,10 @@ struct ContentView: View {
                 if !gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.isEmpty && !gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[gameViewModel.chineseLanternColumns.columnA.index].isAnimationEnd {
                     
                     ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex]
-)
-                        .position(x: geo.frame(in: .global).minX + 150, y: gameViewModel.chineseLanternColumns.columnA.yPosition!)
-                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[gameViewModel.chineseLanternColumns.columnA.index].animationTime), value: gameViewModel.chineseLanternColumns.columnA.yPosition)
+                    )
+                    
+                        .position(x: geo.frame(in: .global).minX + 120, y: gameViewModel.chineseLanternColumns.columnA.yPosition!)
+                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].animationTime), value: gameViewModel.chineseLanternColumns.columnA.yPosition)
                         .id(gameViewModel.chineseLanternColumns.columnA.index )
                     // change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnA.yPosition, perform: {_ in

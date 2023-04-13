@@ -47,7 +47,7 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func nextLanterAfterMovingColumnA(geo: GeometryProxy){
+    func nextLanterAfterMovingColumnA(geo: GeometryProxy) {
         let index = chineseLanternColumns.columnA.index
         let time = chineseLanternColumns.columnA.chineseLanternsChunk[index].animationTime
         DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
