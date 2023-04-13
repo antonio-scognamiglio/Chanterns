@@ -37,11 +37,12 @@ struct ContentView: View {
                     // change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnA.yPosition, perform: {_ in
                             let time = gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].animationTime
+                            let index = gameViewModel.chineseLanternColumns.columnA.index
                             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                                 withAnimation {
-                                    if gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.count  - 1 > gameViewModel.chineseLanternColumns.columnA.index  {
+                                    if gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.count  - 1 > columnAIndex && !gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[index].isTapped {
                                         gameViewModel.chineseLanternColumns.columnA.index += 1
-                                        gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY
+                                        gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY + 100
                                     }
                                 }
                             })
@@ -52,7 +53,7 @@ struct ContentView: View {
                                 gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnAIndex].isTapped = true
                                 if gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk.count  - 1 > gameViewModel.chineseLanternColumns.columnA.index {
                                     gameViewModel.chineseLanternColumns.columnA.index += 1
-                                    gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY
+                                    gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY + 100
                                 }
                             }
                         }
@@ -61,11 +62,11 @@ struct ContentView: View {
             .onAppear {
                 gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY
+                    gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
                 }
         }
             .onChange(of: gameViewModel.chineseLanternColumns.columnA.index) { newValue in
-                gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY
+                gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
             }
             
         }
