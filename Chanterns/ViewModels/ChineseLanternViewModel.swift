@@ -117,7 +117,8 @@ class GameViewModel: ObservableObject {
             let time = chineseLanternColumns.columnA.chineseLanternsChunk[index].animationTime
             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                 withAnimation {
-                    if self.chineseLanternColumns.columnA.chineseLanternsChunk.count  - 1 > index && !self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isTapped {
+                    if self.chineseLanternColumns.columnA.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isTapped && !self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isAnimationEnd {
+                        self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isTapped = true
                         self.chineseLanternColumns.columnA.index += 1
                         self.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY + 100
                     }
@@ -128,7 +129,9 @@ class GameViewModel: ObservableObject {
             let time = chineseLanternColumns.columnB.chineseLanternsChunk[index].animationTime
             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                 withAnimation {
-                    if self.chineseLanternColumns.columnB.chineseLanternsChunk.count  - 1 > index && !self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isTapped {
+                    if self.chineseLanternColumns.columnB.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isTapped &&
+                        !self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isAnimationEnd {
+                        self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isTapped = true
                         self.chineseLanternColumns.columnB.index += 1
                         self.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).maxY + 100
                     }
@@ -139,7 +142,8 @@ class GameViewModel: ObservableObject {
             let time = chineseLanternColumns.columnC.chineseLanternsChunk[index].animationTime
             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                 withAnimation {
-                    if self.chineseLanternColumns.columnC.chineseLanternsChunk.count  - 1 > index && !self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isTapped {
+                    if self.chineseLanternColumns.columnC.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isTapped && !self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isAnimationEnd {
+                        self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isTapped = true
                         self.chineseLanternColumns.columnC.index += 1
                         self.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).maxY + 100
                     }
@@ -150,7 +154,9 @@ class GameViewModel: ObservableObject {
             let time = chineseLanternColumns.columnD.chineseLanternsChunk[index].animationTime
             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                 withAnimation {
-                    if self.chineseLanternColumns.columnD.chineseLanternsChunk.count  - 1 > index && !self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isTapped {
+                    if self.chineseLanternColumns.columnD.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isTapped &&
+                        !self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isAnimationEnd {
+                        self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isTapped = true
                         self.chineseLanternColumns.columnD.index += 1
                         self.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).maxY + 100
                     }
@@ -164,7 +170,8 @@ class GameViewModel: ObservableObject {
     // Devo stare attento a quando chiamare questa funzione altrimenti la chiamo in loop
     func canCreateLantern(column: ChineseLanternsChunk) -> Bool {
         if
-            !column.chineseLanternsChunk.isEmpty && !column.chineseLanternsChunk[column.index].isAnimationEnd {
+            !column.chineseLanternsChunk.isEmpty 
+                && !column.chineseLanternsChunk[column.index].isAnimationEnd && !column.chineseLanternsChunk[column.index].isTapped {
             return true
         } else {
             return false
