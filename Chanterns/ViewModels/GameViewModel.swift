@@ -74,7 +74,9 @@ class GameViewModel: ObservableObject {
                 meaning: "Talk nonsense"),
     ]
     
-    static let charactersList = ["我", "你", "老", "莫", "是", "人", "吗", "包"]
+    static let charactersList = [
+        "我","你","老","莫","是","人","吗","包","开","门","见","山","压","力","效","应","全","神","贯","注","朝","三","暮","四","厮","守","终","生","眼","见","为","实","四","海","为","家","顺","其","自","然","火","上","加","油","胡","说","八","道"
+    ]
     static let lanternImages = ["ChineseLantern01", "ChineseLantern02"]
     
     private func generateLantern () -> ChineseLantern {
@@ -170,7 +172,7 @@ class GameViewModel: ObservableObject {
     // Devo stare attento a quando chiamare questa funzione altrimenti la chiamo in loop
     func canCreateLantern(column: ChineseLanternsChunk) -> Bool {
         if
-            !column.chineseLanternsChunk.isEmpty 
+            !column.chineseLanternsChunk.isEmpty
                 && !column.chineseLanternsChunk[column.index].isAnimationEnd && !column.chineseLanternsChunk[column.index].isTapped {
             return true
         } else {
