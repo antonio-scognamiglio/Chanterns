@@ -12,29 +12,60 @@ struct ContentView: View {
     
     
     var arrayCharacters = ["你","好","老","神"]
-//    var columnAIndex: Int {
-//        gameViewModel.chineseLanternColumns.columnA.index
+    
+    var columnIndex: (CurrentColumn) -> Int {
+        {
+            column in
+            switch column {
+            case .columnA:
+                return gameViewModel.chineseLanternColumns.columnA.index
+            case .columnB:
+                return gameViewModel.chineseLanternColumns.columnB.index
+            case .columnC:
+                return gameViewModel.chineseLanternColumns.columnC.index
+            case .columnD:
+                return gameViewModel.chineseLanternColumns.columnD.index
+            }
+        }
+    }
+    
+    var canCreateLanterns: (CurrentColumn) -> Bool {
+        {
+            column in
+            switch column {
+            case .columnA:
+                return gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnA)
+            case .columnB:
+                return gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnB)
+            case .columnC:
+                return gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnC)
+            case .columnD:
+                return gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnD)
+            }
+        }
+        
+    }
+
+    
+//    var columnIndices: [Int] {
+//        [
+//            gameViewModel.chineseLanternColumns.columnA.index,
+//            gameViewModel.chineseLanternColumns.columnB.index,
+//            gameViewModel.chineseLanternColumns.columnC.index,
+//            gameViewModel.chineseLanternColumns.columnD.index
+//        ]
 //    }
-    
-    var columnIndices: [Int] {
-        [
-            gameViewModel.chineseLanternColumns.columnA.index,
-            gameViewModel.chineseLanternColumns.columnB.index,
-            gameViewModel.chineseLanternColumns.columnC.index,
-            gameViewModel.chineseLanternColumns.columnD.index
-        ]
-    }
-    
-    var canCreateColumns: [Bool] {
-        // Is not elegant... But it works
-        [
-            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnA),
-            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnB),
-            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnC),
-            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnD)
-            
-        ]
-    }
+//
+//    var canCreateColumns: [Bool] {
+//        // Is not elegant... But it works
+//        [
+//            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnA),
+//            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnB),
+//            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnC),
+//            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnD)
+//
+//        ]
+//    }
     
     var body: some View {
         GeometryReader { geo in
@@ -44,11 +75,11 @@ struct ContentView: View {
                     .scaledToFill()
                     .ignoresSafeArea()
                 // First Column
-                if canCreateColumns[0] {
-                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndices[0]]
+                if canCreateLanterns(.columnA) {
+                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)]
                     )
                         .position(x: geo.frame(in: .global).minX + 120, y: gameViewModel.chineseLanternColumns.columnA.yPosition!)
-                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndices[0]].animationTime), value: gameViewModel.chineseLanternColumns.columnA.yPosition)
+                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)].animationTime), value: gameViewModel.chineseLanternColumns.columnA.yPosition)
                         .id(gameViewModel.chineseLanternColumns.columnA.index )
                     // Change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnA.yPosition, perform: {_ in
@@ -63,11 +94,11 @@ struct ContentView: View {
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnA, geo: geo)                       }
                 }
                 // Second Column
-                if canCreateColumns[1] {
-                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk[columnIndices[1]]
+                if canCreateLanterns(.columnB) {
+                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk[columnIndex(.columnB)]
                     )
                         .position(x: geo.frame(in: .global).midX - 120, y: gameViewModel.chineseLanternColumns.columnB.yPosition!)
-                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk[columnIndices[1]].animationTime), value: gameViewModel.chineseLanternColumns.columnB.yPosition)
+                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk[columnIndex(.columnB)].animationTime), value: gameViewModel.chineseLanternColumns.columnB.yPosition)
                         .id(gameViewModel.chineseLanternColumns.columnB.index )
                     // Change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnB.yPosition, perform: {_ in
@@ -82,11 +113,11 @@ struct ContentView: View {
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnB, geo: geo)                       }
                 }
                 // Third Column
-                if canCreateColumns[2] {
-                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk[columnIndices[2]]
+                if canCreateLanterns(.columnC) {
+                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk[columnIndex(.columnC)]
                     )
                         .position(x: geo.frame(in: .global).midX + 120, y: gameViewModel.chineseLanternColumns.columnC.yPosition!)
-                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk[columnIndices[2]].animationTime), value: gameViewModel.chineseLanternColumns.columnC.yPosition)
+                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk[columnIndex(.columnC)].animationTime), value: gameViewModel.chineseLanternColumns.columnC.yPosition)
                         .id(gameViewModel.chineseLanternColumns.columnC.index)
                     // Change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnC.yPosition, perform: {_ in
@@ -101,11 +132,11 @@ struct ContentView: View {
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnC, geo: geo)                       }
                 }
                 // Fourth Column
-                if canCreateColumns[3] {
-                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk[columnIndices[3]]
+                if canCreateLanterns(.columnD) {
+                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk[columnIndex(.columnD)]
                     )
                         .position(x: geo.frame(in: .global).maxX - 120, y: gameViewModel.chineseLanternColumns.columnD.yPosition!)
-                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk[columnIndices[3]].animationTime), value: gameViewModel.chineseLanternColumns.columnD.yPosition)
+                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk[columnIndex(.columnD)].animationTime), value: gameViewModel.chineseLanternColumns.columnD.yPosition)
                         .id(gameViewModel.chineseLanternColumns.columnD.index)
                     // Change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnD.yPosition, perform: {_ in

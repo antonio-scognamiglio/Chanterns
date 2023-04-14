@@ -69,10 +69,10 @@ struct ChineseLanternColumns: Identifiable {
     
 }
 
-//public enum CurrentColumn: Int {
-//    case columnA = 0
-//    case columnB = 1
-//    case columnC = 2
-//    case columnD = 3
-// 
-//}
+public enum CurrentColumn {
+    case columnA
+    case columnB
+    case columnC
+    case columnD
+ 
+}

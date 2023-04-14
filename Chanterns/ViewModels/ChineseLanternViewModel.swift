@@ -107,7 +107,7 @@ class GameViewModel: ObservableObject {
         } else {
             return false
         }
-        
     }
+    
 }
     
