@@ -8,17 +8,6 @@
 import Foundation
 import SwiftUI
 
-//struct ChineseLantern: Identifiable, Equatable, Hashable {
-//    let id = UUID()
-//    var lanternImage: String
-//    var character: String
-//    var isAnimationEnd: Bool
-//    var animationTime: Double
-//    var isTapped: Bool
-//
-//    static let example = ChineseLantern(lanternImage: "ChineseLantern02", character: "我", isAnimationEnd: false, animationTime: 3.0, isTapped: false)
-//}
-
 class ChineseLantern: Identifiable, Equatable, ObservableObject {
     static func == (lhs: ChineseLantern, rhs: ChineseLantern) -> Bool {
         lhs.id == rhs.id
@@ -42,14 +31,7 @@ class ChineseLantern: Identifiable, Equatable, ObservableObject {
     }
     
 }
-// A piece of an Array of Chinese Lanterns
-//struct ChineseLanternsChunk: Identifiable {
-//    let id = UUID()
-//    var index = 0
-//    var yPosition: CGFloat?
-//    var chineseLanternsChunk: [ChineseLantern] = []
-//
-//}
+
 
 struct ChineseLanternsChunk: Identifiable {
     let id = UUID()
@@ -69,10 +51,10 @@ struct ChineseLanternColumns: Identifiable {
     
 }
 
-//public enum CurrentColumn: Int {
-//    case columnA = 0
-//    case columnB = 1
-//    case columnC = 2
-//    case columnD = 3
-// 
-//}
+public enum CurrentColumn {
+    case columnA
+    case columnB
+    case columnC
+    case columnD
+ 
+}
