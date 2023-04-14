@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var gameViewModel = GameViewModel()
     
-    
     var arrayCharacters = ["你","好","老","神"]
     
     var columnIndex: (CurrentColumn) -> Int {
@@ -45,27 +44,6 @@ struct ContentView: View {
         }
         
     }
-
-    
-//    var columnIndices: [Int] {
-//        [
-//            gameViewModel.chineseLanternColumns.columnA.index,
-//            gameViewModel.chineseLanternColumns.columnB.index,
-//            gameViewModel.chineseLanternColumns.columnC.index,
-//            gameViewModel.chineseLanternColumns.columnD.index
-//        ]
-//    }
-//
-//    var canCreateColumns: [Bool] {
-//        // Is not elegant... But it works
-//        [
-//            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnA),
-//            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnB),
-//            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnC),
-//            gameViewModel.canCreateLantern(column: gameViewModel.chineseLanternColumns.columnD)
-//
-//        ]
-//    }
     
     var body: some View {
         GeometryReader { geo in
@@ -83,7 +61,7 @@ struct ContentView: View {
                         .id(gameViewModel.chineseLanternColumns.columnA.index )
                     // Change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnA.yPosition, perform: {_ in
-                            gameViewModel.nextLanterAfterMovingColumnA(geo: geo)
+                            gameViewModel.nextLanterAfterMovingColumn(column: .columnA, geo: geo)
                         })
                     // Reset Position after index has changed
                     .onChange(of: gameViewModel.chineseLanternColumns.columnA.index) { newValue in
@@ -102,7 +80,7 @@ struct ContentView: View {
                         .id(gameViewModel.chineseLanternColumns.columnB.index )
                     // Change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnB.yPosition, perform: {_ in
-                            gameViewModel.nextLanterAfterMovingColumnB(geo: geo)
+                            gameViewModel.nextLanterAfterMovingColumn(column: .columnB, geo: geo)
                         })
                     // Reset Position after index has changed
                     .onChange(of: gameViewModel.chineseLanternColumns.columnB.index) { newValue in
@@ -121,7 +99,7 @@ struct ContentView: View {
                         .id(gameViewModel.chineseLanternColumns.columnC.index)
                     // Change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnC.yPosition, perform: {_ in
-                            gameViewModel.nextLanterAfterMovingColumnC(geo: geo)
+                            gameViewModel.nextLanterAfterMovingColumn(column: .columnC, geo: geo)
                         })
                     // Reset Position after index has changed
                     .onChange(of: gameViewModel.chineseLanternColumns.columnC.index) { newValue in
@@ -140,7 +118,7 @@ struct ContentView: View {
                         .id(gameViewModel.chineseLanternColumns.columnD.index)
                     // Change lantern after destination reached
                         .onChange(of: gameViewModel.chineseLanternColumns.columnD.yPosition, perform: {_ in
-                            gameViewModel.nextLanterAfterMovingColumnD(geo: geo)
+                            gameViewModel.nextLanterAfterMovingColumn(column: .columnD, geo: geo)
                         })
                     // Reset Position after index has changed
                     .onChange(of: gameViewModel.chineseLanternColumns.columnD.index) { newValue in
