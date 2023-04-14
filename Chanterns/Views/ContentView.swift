@@ -66,7 +66,7 @@ struct ContentView: View {
                 if canCreateColumns[1] {
                     ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk[columnIndices[1]]
                     )
-                        .position(x: geo.frame(in: .global).minX + 360, y: gameViewModel.chineseLanternColumns.columnB.yPosition!)
+                        .position(x: geo.frame(in: .global).midX - 120, y: gameViewModel.chineseLanternColumns.columnB.yPosition!)
                         .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk[columnIndices[1]].animationTime), value: gameViewModel.chineseLanternColumns.columnB.yPosition)
                         .id(gameViewModel.chineseLanternColumns.columnB.index )
                     // Change lantern after destination reached
@@ -85,7 +85,7 @@ struct ContentView: View {
                 if canCreateColumns[2] {
                     ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk[columnIndices[2]]
                     )
-                        .position(x: geo.frame(in: .global).minX + 600, y: gameViewModel.chineseLanternColumns.columnC.yPosition!)
+                        .position(x: geo.frame(in: .global).midX + 120, y: gameViewModel.chineseLanternColumns.columnC.yPosition!)
                         .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk[columnIndices[2]].animationTime), value: gameViewModel.chineseLanternColumns.columnC.yPosition)
                         .id(gameViewModel.chineseLanternColumns.columnC.index)
                     // Change lantern after destination reached
@@ -100,6 +100,26 @@ struct ContentView: View {
                         .onTapGesture {
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnC, geo: geo)                       }
                 }
+                // Fourth Column
+                if canCreateColumns[3] {
+                    ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk[columnIndices[3]]
+                    )
+                        .position(x: geo.frame(in: .global).maxX - 120, y: gameViewModel.chineseLanternColumns.columnD.yPosition!)
+                        .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk[columnIndices[3]].animationTime), value: gameViewModel.chineseLanternColumns.columnD.yPosition)
+                        .id(gameViewModel.chineseLanternColumns.columnD.index)
+                    // Change lantern after destination reached
+                        .onChange(of: gameViewModel.chineseLanternColumns.columnD.yPosition, perform: {_ in
+                            gameViewModel.nextLanterAfterMovingColumnD(geo: geo)
+                        })
+                    // Reset Position after index has changed
+                    .onChange(of: gameViewModel.chineseLanternColumns.columnD.index) { newValue in
+                        gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
+                    }
+                    // change the index on tap gesture and reset position
+                        .onTapGesture {
+                            gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)                       }
+                }
+
             }
             // Start the game
             .onAppear {
@@ -108,6 +128,7 @@ struct ContentView: View {
                     gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
                     gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
                     gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
+                    gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
                 }
         }
           
