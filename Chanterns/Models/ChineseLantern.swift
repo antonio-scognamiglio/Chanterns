@@ -24,7 +24,7 @@ class ChineseLantern: Identifiable, Equatable, ObservableObject {
         lhs.id == rhs.id
     }
     
-    let id = UUID()
+    @Published var id = UUID()
     @Published var lanternImage: String
     @Published var character: String
     @Published var isAnimationEnd: Bool
@@ -43,6 +43,14 @@ class ChineseLantern: Identifiable, Equatable, ObservableObject {
     
 }
 // A piece of an Array of Chinese Lanterns
+//struct ChineseLanternsChunk: Identifiable {
+//    let id = UUID()
+//    var index = 0
+//    var yPosition: CGFloat?
+//    var chineseLanternsChunk: [ChineseLantern] = []
+//
+//}
+
 struct ChineseLanternsChunk: Identifiable {
     let id = UUID()
     var index = 0
@@ -51,12 +59,20 @@ struct ChineseLanternsChunk: Identifiable {
     
 }
 
+
 struct ChineseLanternColumns: Identifiable {
     let id = UUID()
     var columnA: ChineseLanternsChunk = ChineseLanternsChunk()
     var columnB: ChineseLanternsChunk = ChineseLanternsChunk()
     var columnC: ChineseLanternsChunk = ChineseLanternsChunk()
     var columnD: ChineseLanternsChunk = ChineseLanternsChunk()
+    
 }
 
-
+//public enum CurrentColumn: Int {
+//    case columnA = 0
+//    case columnB = 1
+//    case columnC = 2
+//    case columnD = 3
+// 
+//}
