@@ -13,7 +13,7 @@ struct OnBoardingView: View {
     var body: some View {
         
         TabView(selection: $selection) {
-            OnBoardingPageView()
+            PageOneView()
                 .tag(1)
             Text("Bro 2")
                 .tag(2)

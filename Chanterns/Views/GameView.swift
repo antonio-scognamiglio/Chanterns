@@ -55,7 +55,7 @@ struct GameView: View {
                 
                 // ChengYu Scroll
                 VStack {
-                    ChengYuView(chengYu: ChengYu.example)
+                    ChengYuView(chengYu: ChengYu.example, showPinyin: false)
                     Spacer()
                 }
                 

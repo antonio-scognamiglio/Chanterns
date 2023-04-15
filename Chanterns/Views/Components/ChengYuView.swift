@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChengYuView: View {
     @State var chengYu: ChengYu
+    @State var showPinyin: Bool
     
     var scrollImages = ["ScrollClose", "ScrollSemiOpen", "ScrollOpen"]
     @State var index = 0
@@ -26,9 +27,31 @@ struct ChengYuView: View {
                 .scaledToFit()
 //                .frame(width: UIScreen.main.bounds.width / 2)
 //                .animation(.linear(duration: 0.2), value: index)
-
-            Text(showChengYu ? chengYu.complete : "")
-                .font(.system(size: CGFloat(fontSize)))
+//            VStack {
+//                Text(showChengYu ? chengYu.complete : "")
+//                    .font(.system(size: CGFloat(fontSize)))
+//                if showPinyin && showChengYu {
+//                    HStack {
+//                        ForEach(chengYu.arrayCharacters){ hanzi in
+//                            Text(hanzi.pinyin)
+//                                .font(.system(size: 46))
+//                        }
+//                    }
+//                }
+//            }
+            HStack {
+                if showChengYu {
+                        ForEach(chengYu.arrayCharacters){ character in
+                            VStack {
+                                Text(character.hanzi)
+                                    .font(.system(size: CGFloat(fontSize)))
+                                Text(showPinyin ? character.pinyin : "")
+                                    .font(.system(size: CGFloat(fontSize - 30)))
+                            }
+                        }
+                    
+                }
+            }
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 , execute: {
@@ -47,6 +70,6 @@ struct ChengYuView: View {
 
 struct ChengYuView_Previews: PreviewProvider {
     static var previews: some View {
-        ChengYuView(chengYu: ChengYu.example)
+        ChengYuView(chengYu: ChengYu.example, showPinyin: true)
     }
 }

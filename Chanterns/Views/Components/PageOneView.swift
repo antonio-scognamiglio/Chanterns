@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct OnBoardingPageView: View {
+struct PageOneView: View {
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 Color.whiteShade
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
-                    .cornerRadius(15)
+                    .cornerRadius(20)
                 VStack {
                     Text("Hey you, \(Text("你好").fontWeight(.bold)) (hello)!\nIn this playground, I’ll introduce you to a bit of Chinese Culture.")
                     .font(.system(size: 48))
                     .padding(.horizontal, 30)
-                    .padding(.top, 50)
-                    ChengYuView(chengYu: .example, fontSize: 72)
+                    .padding(.top, 100)
+                    ChengYuView(chengYu: .example, showPinyin: true, fontSize: 70)
                         .frame(width: geo.size.width * 0.4)
-                        .padding(.vertical)
-                    Text("This above is a Chengyu, is a type of traditional Chinese idiomatic expression and they are very common in the spoken language.")
+                        .padding(.vertical, 30)
+                    Text("This above is a Chengyu a type of traditional Chinese idiomatic expression and they are very common in the spoken language.")
                     .font(.system(size: 48))
                     .padding(.horizontal, 30)
 //                    Spacer()
@@ -39,6 +39,6 @@ struct OnBoardingPageView: View {
 
 struct OnBoardingPageView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingPageView()
+        PageOneView()
     }
 }
