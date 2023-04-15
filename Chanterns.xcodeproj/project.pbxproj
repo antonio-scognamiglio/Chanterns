@@ -7,28 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7136585029EAA7B000416CA1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136584F29EAA7B000416CA1 /* Level.swift */; };
+		7136585229EAA7D600416CA1 /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136585129EAA7D600416CA1 /* GameMenu.swift */; };
 		71925F5E29E7E79B0081A393 /* Animation-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71925F5D29E7E79B0081A393 /* Animation-Extension.swift */; };
+		71925F6029E9ABD60081A393 /* ChengYuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71925F5F29E9ABD60081A393 /* ChengYuView.swift */; };
 		71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */; };
-		71F54D1729DEB53000F2DD9D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D1629DEB53000F2DD9D /* ContentView.swift */; };
+		71F54D1729DEB53000F2DD9D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D1629DEB53000F2DD9D /* GameView.swift */; };
 		71F54D1929DEB53200F2DD9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F54D1829DEB53200F2DD9D /* Assets.xcassets */; };
 		71F54D1C29DEB53200F2DD9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F54D1B29DEB53200F2DD9D /* Preview Assets.xcassets */; };
 		71F54D2329E0209B00F2DD9D /* ChineseLantern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */; };
 		71F54D2529E023E400F2DD9D /* ChineseLanternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */; };
-		71F54D2729E0257200F2DD9D /* ChineseLanternViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2629E0257200F2DD9D /* ChineseLanternViewModel.swift */; };
+		71F54D2729E0257200F2DD9D /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2629E0257200F2DD9D /* GameViewModel.swift */; };
 		71F54D2929E0264500F2DD9D /* ChengYu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2829E0264500F2DD9D /* ChengYu.swift */; };
 		71F54D2F29E05C3600F2DD9D /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2E29E05C3600F2DD9D /* Array-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7136584F29EAA7B000416CA1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		7136585129EAA7D600416CA1 /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
 		71925F5D29E7E79B0081A393 /* Animation-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation-Extension.swift"; sourceTree = "<group>"; };
+		71925F5F29E9ABD60081A393 /* ChengYuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuView.swift; sourceTree = "<group>"; };
 		71F54D1129DEB53000F2DD9D /* Chanterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chanterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanternsApp.swift; sourceTree = "<group>"; };
-		71F54D1629DEB53000F2DD9D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		71F54D1629DEB53000F2DD9D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		71F54D1829DEB53200F2DD9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71F54D1B29DEB53200F2DD9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLantern.swift; sourceTree = "<group>"; };
 		71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLanternView.swift; sourceTree = "<group>"; };
-		71F54D2629E0257200F2DD9D /* ChineseLanternViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLanternViewModel.swift; sourceTree = "<group>"; };
+		71F54D2629E0257200F2DD9D /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		71F54D2829E0264500F2DD9D /* ChengYu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYu.swift; sourceTree = "<group>"; };
 		71F54D2E29E05C3600F2DD9D /* Array-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +93,7 @@
 			children = (
 				71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */,
 				71F54D2829E0264500F2DD9D /* ChengYu.swift */,
+				7136584F29EAA7B000416CA1 /* Level.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -94,7 +101,7 @@
 		71F54D2B29E0265D00F2DD9D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				71F54D2629E0257200F2DD9D /* ChineseLanternViewModel.swift */,
+				71F54D2629E0257200F2DD9D /* GameViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -102,8 +109,10 @@
 		71F54D2C29E0267300F2DD9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				71F54D1629DEB53000F2DD9D /* ContentView.swift */,
+				7136585129EAA7D600416CA1 /* GameMenu.swift */,
+				71F54D1629DEB53000F2DD9D /* GameView.swift */,
 				71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */,
+				71925F5F29E9ABD60081A393 /* ChengYuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,13 +196,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71F54D1729DEB53000F2DD9D /* ContentView.swift in Sources */,
+				71F54D1729DEB53000F2DD9D /* GameView.swift in Sources */,
+				71925F6029E9ABD60081A393 /* ChengYuView.swift in Sources */,
 				71F54D2529E023E400F2DD9D /* ChineseLanternView.swift in Sources */,
 				71F54D2F29E05C3600F2DD9D /* Array-Extension.swift in Sources */,
-				71F54D2729E0257200F2DD9D /* ChineseLanternViewModel.swift in Sources */,
+				71F54D2729E0257200F2DD9D /* GameViewModel.swift in Sources */,
 				71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */,
 				71F54D2329E0209B00F2DD9D /* ChineseLantern.swift in Sources */,
 				71925F5E29E7E79B0081A393 /* Animation-Extension.swift in Sources */,
+				7136585029EAA7B000416CA1 /* Level.swift in Sources */,
+				7136585229EAA7D600416CA1 /* GameMenu.swift in Sources */,
 				71F54D2929E0264500F2DD9D /* ChengYu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
