@@ -18,7 +18,6 @@ struct GameMenu: View {
                 Image("BigChineseLantern01")
                     .resizable()
                     .scaledToFit()
-                    .shadow(radius: 5)
                     .frame(height: UIScreen.main.bounds.height * 0.3)
                 Image("Sticker")
                     .resizable()
