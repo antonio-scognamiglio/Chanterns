@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct PageOneView: View {
+    @State var showNextButton: Bool
+    @State var showPreviousButton: Bool
+    @State var showSkipButton: Bool
+    @State var showStartButton: Bool
+    
+    @Binding var showOnboarding: Bool
+    @Binding var selection: Int
     
     var body: some View {
         GeometryReader { geo in
@@ -27,6 +34,64 @@ struct PageOneView: View {
                     .font(.system(size: 48))
                     .padding(.horizontal, 30)
 //                    Spacer()
+                    
+                    HStack {
+                        if showSkipButton {
+                            Button(action: {
+                                withAnimation {
+                                    showOnboarding = false
+                                }
+                            }, label: {
+                                Text("Skip")
+                                    .foregroundColor(.gameButtonTop)
+                                    .font(.system(size: 24))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(uiColor: .systemGroupedBackground))
+                                    .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
+                                    .padding(.horizontal, 7)
+                                    .padding(.top)
+                            })
+                        }
+                        
+                        Spacer()
+                        if showPreviousButton{
+                            Button(action: {
+                                withAnimation {
+                                    selection -= 1
+                                }
+                            }, label: {
+                                Text("\(Image(systemName: "chevron.left")) Previous")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(uiColor: .systemGroupedBackground))
+                                    .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
+                                    .background(Color.gameButtonGradient)
+                                    .cornerRadius(15)
+                                    .shadow(radius: 2)
+                                    .padding(.horizontal, 10)
+                                    .padding(.top)
+                            })
+                        }
+                        
+                        if showNextButton {
+                            Button(action: {
+                                withAnimation {
+                                    selection += 1
+                                }
+                            }, label: {
+                                Text("Next \(Image(systemName: "chevron.right"))")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(uiColor: .systemGroupedBackground))
+                                    .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
+                                    .background(Color.gameButtonGradient)
+                                    .cornerRadius(15)
+                                    .shadow(radius: 2)
+                                    .padding(.trailing, 50)
+                                    .padding(.top)
+                            })
+                        }
+                    }
                 }
                 .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75, alignment: .top)
             }
@@ -39,6 +104,6 @@ struct PageOneView: View {
 
 struct OnBoardingPageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageOneView()
+        PageOneView(showNextButton: true, showPreviousButton: true, showSkipButton: true, showStartButton: true, showOnboarding: .constant(false), selection: .constant(1))
     }
 }

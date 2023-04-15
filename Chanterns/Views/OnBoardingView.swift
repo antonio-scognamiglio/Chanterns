@@ -9,11 +9,11 @@ import SwiftUI
 
 struct OnBoardingView: View {
 @State private var selection = 1
-    
+    @State var showOnboarding = true
     var body: some View {
         
         TabView(selection: $selection) {
-            PageOneView()
+            PageOneView(showNextButton: true, showPreviousButton: false, showSkipButton: true, showStartButton: false, showOnboarding: $showOnboarding, selection: $selection)
                 .tag(1)
             Text("Bro 2")
                 .tag(2)
