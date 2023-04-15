@@ -15,6 +15,7 @@ struct ChengYuView: View {
     @State var showScrollClose = true
     @State var startAnimation = false
     @State var showChengYu = false
+    @State var fontSize = 96
 //    @State var showScrollSemi = false
 //    @State var showScrollOpen = false
     
@@ -23,11 +24,11 @@ struct ChengYuView: View {
             Image(scrollImages[index])
                 .resizable()
                 .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width / 2)
+//                .frame(width: UIScreen.main.bounds.width / 2)
 //                .animation(.linear(duration: 0.2), value: index)
 
             Text(showChengYu ? chengYu.complete : "")
-                .font(.system(size: 96))
+                .font(.system(size: CGFloat(fontSize)))
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 , execute: {
