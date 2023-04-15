@@ -13,7 +13,15 @@ struct OnBoardingView: View {
     var body: some View {
         
         TabView(selection: $selection) {
-            PageOneView(showNextButton: true, showPreviousButton: false, showSkipButton: true, showStartButton: false, showOnboarding: $showOnboarding, selection: $selection)
+            PageView(
+                topText: Text("Hey you, \(Text("你好").fontWeight(.bold)) (hello)!\nIn this playground, I’ll introduce you to a bit of Chinese Culture."),
+                bottomText: Text("This above is a Chengyu a type of traditional Chinese idiomatic expression and they are very common in the spoken language."),
+                showNextButton: true,
+                showPreviousButton: false,
+                showSkipButton: true,
+                showStartButton: false,
+                showOnboarding: $showOnboarding,
+                selection: $selection)
                 .tag(1)
             Text("Bro 2")
                 .tag(2)
