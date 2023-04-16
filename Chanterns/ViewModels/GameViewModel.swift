@@ -10,6 +10,12 @@ import SwiftUI
 
 class GameViewModel: ObservableObject {
     @Published var isGameStarted = false
+    
+    // This will be used to pause all the animations
+    @Published var isAnimationPaused = false
+    var yStartPosition: CGFloat = 0
+    var YEndPosition: CGFloat = 0
+    
     @Published var chineseLanternColumns: ChineseLanternColumns = ChineseLanternColumns()
     @Published var chengYus = [
         // Level 1

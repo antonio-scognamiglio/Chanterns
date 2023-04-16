@@ -13,6 +13,21 @@ struct GameView: View {
     @State var hasTapped = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    // This is for pausing the animation
+    // Li devo inizializzare su un'on appear, non riesco a metterli a nil, ma devo cambiargli il valore
+
+    // this formula will generally always be the same
+    private var remainingDuration: RemainingDurationProvider<Double> {
+      { currentPosition in
+          gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)].animationTime * (1 - (currentPosition - gameViewModel.yStartPosition) / (gameViewModel.YEndPosition - gameViewModel.yStartPosition))
+      }
+    }
+
+    
+    private let animationColumnA: AnimationWithDurationProvider = { duration in
+        .linear(duration: duration)
+      }
+    
     var arrayCharacters = ["你","好","老","神"]
     
     var columnIndex: (CurrentColumn) -> Int {
@@ -174,6 +189,11 @@ struct GameView: View {
                         }
                     }
                 }
+            // inizializzo le distanze
+            .onAppear {
+                gameViewModel.yStartPosition = geo.frame(in: .global).maxY
+                gameViewModel.YEndPosition = geo.frame(in: .global).minY - 200
+            }
             // To start the game
             .onTapGesture {
                 withAnimation {
@@ -187,8 +207,11 @@ struct GameView: View {
                     gameViewModel.generateColumns(lanternsPerColumn: 5, yPosition: geo.frame(in: .global).maxY)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
+                            
                             gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
+                            
                             gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
+                            
                             gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
                         }
                 }
