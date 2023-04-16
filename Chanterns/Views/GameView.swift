@@ -52,17 +52,28 @@ struct GameView: View {
                 Image("NightSkyDarkPortraitBigStars")
 //                    .frame(height: geo.size.height)
                     .edgesIgnoringSafeArea(.all)
-                
+               
                 // ChengYu Scroll
                 VStack {
-                    ChengYuView(chengYu: ChengYu.example)
-                    Spacer()
+                    if gameViewModel.isGameStarted {
+                        ChengYuView(chengYu: ChengYu.example, showPinyin: false)
+                            .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
+
+                    } else {
+                        Image("ScrollClose")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
+                    }
+                Text("")
+                        .frame(height: geo.size.height * 0.3)
+                    Text("Tap on the screen to start!")
+                        .foregroundColor(.yellowStar)
+                        .font(.system(size: 48))
+                    
                 }
+               
                 
-//                    VStack {
-                        // ChengYu Scroll
-//                        ChengYuView(chengYu: ChengYu.example)
-//                            .frame(width: geo.size.width)
                     // First Column
                     if canCreateLanterns(.columnA) {
                         ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)]
@@ -139,23 +150,23 @@ struct GameView: View {
                         .onTapGesture {
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)                       }
                     }
-//                    }
 
+                TopBarView(livesLeft: .constant(3), timeLeft: .constant(10))
                 }
-            // Start the game
-            .onAppear {
-                gameViewModel.generateColumns(lanternsPerColumn: 5, yPosition: geo.frame(in: .global).maxY)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
-                    gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
-                    gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
-                    gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
+            // To start the game
+            .onTapGesture {
+                withAnimation {
+                    gameViewModel.isGameStarted = true
+                    gameViewModel.generateColumns(lanternsPerColumn: 5, yPosition: geo.frame(in: .global).maxY)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
+                        gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
+                        gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
+                        gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
+                    }
                 }
-        }
-
             }
-          
-            
+        }
         
     }
 }

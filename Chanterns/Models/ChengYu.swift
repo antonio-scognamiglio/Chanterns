@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ChineseCharacter {
+struct ChineseCharacter: Identifiable {
+    let id = UUID()
     var hanzi: String
     var pinyin: String
     var isGuessed: Bool
