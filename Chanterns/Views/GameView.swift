@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GameView: View {
     @StateObject var gameViewModel = GameViewModel()
+    @State var timeLeft: Int
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var arrayCharacters = ["你","好","老","神"]
     
@@ -72,8 +74,10 @@ struct GameView: View {
                         .font(.system(size: 48))
                     
                 }
-               
                 
+               // Columns
+                Group {
+                    
                     // First Column
                     if canCreateLanterns(.columnA) {
                         ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)]
@@ -150,20 +154,28 @@ struct GameView: View {
                         .onTapGesture {
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)                       }
                     }
-
-                TopBarView(livesLeft: .constant(3), timeLeft: .constant(10))
+                    
+                }
+                
+                TopBarView(livesLeft: .constant(3), timeLeft: $timeLeft)
+                    .onReceive(timer) { _ in
+                        if timeLeft > 0 && gameViewModel.isGameStarted {
+                                timeLeft -= 1
+                        }
+                    }
                 }
             // To start the game
             .onTapGesture {
                 withAnimation {
                     gameViewModel.isGameStarted = true
                     gameViewModel.generateColumns(lanternsPerColumn: 5, yPosition: geo.frame(in: .global).maxY)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
-                        gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
-                        gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
-                        gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
-                    }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
+                            gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
+                            gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
+                            gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
+                        }
+                    
                 }
             }
         }
@@ -173,6 +185,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView()
+        GameView(timeLeft: 10)
     }
 }
