@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7130AB0529EAEFDC00F31A15 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0429EAEFDC00F31A15 /* OnBoardingView.swift */; };
-		7130AB0829EAF47700F31A15 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0729EAF47700F31A15 /* PageView.swift */; };
+		7130AB0829EAF47700F31A15 /* PageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0729EAF47700F31A15 /* PageOneView.swift */; };
 		7130AB0A29EAFCD000F31A15 /* Color-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0929EAFCD000F31A15 /* Color-Extension.swift */; };
-		7130AB0C29EB075200F31A15 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0B29EB075200F31A15 /* PageTwoView.swift */; };
+		7130AB1029EC060C00F31A15 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0F29EC060C00F31A15 /* PageTwoView.swift */; };
 		7136585029EAA7B000416CA1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136584F29EAA7B000416CA1 /* Level.swift */; };
 		7136585229EAA7D600416CA1 /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136585129EAA7D600416CA1 /* GameMenu.swift */; };
 		71925F5E29E7E79B0081A393 /* Animation-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71925F5D29E7E79B0081A393 /* Animation-Extension.swift */; };
@@ -28,9 +28,9 @@
 
 /* Begin PBXFileReference section */
 		7130AB0429EAEFDC00F31A15 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
-		7130AB0729EAF47700F31A15 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		7130AB0729EAF47700F31A15 /* PageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneView.swift; sourceTree = "<group>"; };
 		7130AB0929EAFCD000F31A15 /* Color-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extension.swift"; sourceTree = "<group>"; };
-		7130AB0B29EB075200F31A15 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
+		7130AB0F29EC060C00F31A15 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
 		7136584F29EAA7B000416CA1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		7136585129EAA7D600416CA1 /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
 		71925F5D29E7E79B0081A393 /* Animation-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation-Extension.swift"; sourceTree = "<group>"; };
@@ -61,8 +61,8 @@
 		7130AB0629EAF31800F31A15 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				7130AB0729EAF47700F31A15 /* PageView.swift */,
-				7130AB0B29EB075200F31A15 /* PageTwoView.swift */,
+				7130AB0729EAF47700F31A15 /* PageOneView.swift */,
+				7130AB0F29EC060C00F31A15 /* PageTwoView.swift */,
 				71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */,
 				71925F5F29E9ABD60081A393 /* ChengYuView.swift */,
 			);
@@ -226,10 +226,10 @@
 				71925F5E29E7E79B0081A393 /* Animation-Extension.swift in Sources */,
 				7136585029EAA7B000416CA1 /* Level.swift in Sources */,
 				7130AB0529EAEFDC00F31A15 /* OnBoardingView.swift in Sources */,
-				7130AB0829EAF47700F31A15 /* PageView.swift in Sources */,
+				7130AB0829EAF47700F31A15 /* PageOneView.swift in Sources */,
 				7136585229EAA7D600416CA1 /* GameMenu.swift in Sources */,
 				71F54D2929E0264500F2DD9D /* ChengYu.swift in Sources */,
-				7130AB0C29EB075200F31A15 /* PageTwoView.swift in Sources */,
+				7130AB1029EC060C00F31A15 /* PageTwoView.swift in Sources */,
 				7130AB0A29EAFCD000F31A15 /* Color-Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

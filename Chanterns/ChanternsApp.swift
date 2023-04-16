@@ -11,7 +11,7 @@ import SwiftUI
 struct ChanternsApp: App {
     var body: some Scene {
         WindowGroup {
-            GameView()
+            OnBoardingView()
         }
     }
 }

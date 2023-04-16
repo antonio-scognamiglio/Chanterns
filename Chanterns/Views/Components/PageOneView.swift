@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PageView: View {
+struct PageOneView: View {
     @State var topText: Text
     @State var bottomText: Text
     @State var showNextButton: Bool
@@ -27,41 +27,26 @@ struct PageView: View {
                     .cornerRadius(20)
                 VStack {
                     topText
-                    .font(.system(size: 48))
+                    .font(.system(size: 44))
                     .padding(.horizontal, 30)
-                    .padding(.top, 100)
-                    
-
-//                    ChengYuView(chengYu: .example, showPinyin: true, fontSize: 70)
+//                    .padding(.top)
+ 
 //                        .frame(width: geo.size.width * 0.4)
 //                        .padding(.vertical, 30)
                     GeometryReader { innerGeo in
-                        ZStack {
-                            Image("NightSkyDark")
-                                .resizable()
-                                .frame(width: geo.size.width * 0.75)
-                            
-                            Image("ChineseLantern01")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: geo.size.width * 0.15)
-                            //                                .padding(.vertical, 30)
-                                .position(x: innerPosition?.x ?? innerGeo.frame(in: .local).midX, y: innerPosition?.y ?? innerGeo.frame(in: .local).midY)
-
+                     
+                            VStack {
+                                ChengYuView(chengYu: .example, showPinyin: true, fontSize: 70)
+                                    .frame(width: innerGeo.size.width * 0.7)
+                            }
+                            .frame(width: innerGeo.size.width, height: innerGeo.size.height)
                         }
-                        .onAppear {
-                            innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX, y: innerGeo.frame(in: .local).midY)
-                            
-                        }
-                    }
-                    
-                    
+                                                
                     
                     
                     bottomText
-                    .font(.system(size: 48))
+                    .font(.system(size: 44))
                     .padding(.horizontal, 30)
-//                    Spacer()
                     
                     HStack {
                         if showSkipButton {
@@ -77,7 +62,7 @@ struct PageView: View {
                                     .foregroundColor(Color(uiColor: .systemGroupedBackground))
                                     .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
                                     .padding(.horizontal, 7)
-                                    .padding(.top)
+//                                    .padding(.top)
                             })
                         }
                         
@@ -97,7 +82,7 @@ struct PageView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.horizontal, 10)
-                                    .padding(.top)
+//                                    .padding(.top)
                             })
                         }
                         
@@ -116,7 +101,7 @@ struct PageView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.trailing, 50)
-                                    .padding(.top)
+//                                    .padding(.top)
                             })
                         }
                         
@@ -135,13 +120,13 @@ struct PageView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.trailing, 50)
-                                    .padding(.top)
+//                                    .padding(.top)
                             })
                         }
 
                     }
                 }
-                .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75, alignment: .top)
+                .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.70, alignment: .top)
             }
             .padding(.bottom, 50)
             .frame(width: geo.size.width, height: UIScreen.main.bounds.height)
@@ -152,6 +137,6 @@ struct PageView: View {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(topText: Text("Hey you, \(Text("你好").fontWeight(.bold)) (hello)!\nIn this playground, I’ll introduce you to a bit of Chinese Culture."), bottomText: Text("This above is a Chengyu a type of traditional Chinese idiomatic expression and they are very common in the spoken language."), showNextButton: true, showPreviousButton: true, showSkipButton: true, showStartButton: false, showOnboarding: .constant(false), selection: .constant(1))
+        PageOneView(topText: Text("Hey you, \(Text("你好").fontWeight(.bold)) (hello)!\nIn this playground, I’ll introduce you to a bit of Chinese Culture."), bottomText: Text("This above is a Chengyu a type of traditional Chinese idiomatic expression and they are very common in the spoken language."), showNextButton: true, showPreviousButton: true, showSkipButton: true, showStartButton: false, showOnboarding: .constant(false), selection: .constant(2))
     }
 }

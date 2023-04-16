@@ -13,9 +13,9 @@ struct OnBoardingView: View {
     var body: some View {
         
         TabView(selection: $selection) {
-            PageView(
+            PageOneView(
                 topText: Text("Hey you, \(Text("你好").fontWeight(.bold)) (hello)!\nIn this playground, I’ll introduce you to a bit of Chinese Culture."),
-                bottomText: Text("This above is a Chengyu a type of traditional Chinese idiomatic expression and they are very common in the spoken language."),
+                bottomText: Text("This above is a \(Text("Chengyu").fontWeight(.bold)) a type of traditional Chinese idiomatic expression and they are very common in the spoken language."),
                 showNextButton: true,
                 showPreviousButton: false,
                 showSkipButton: true,
@@ -23,7 +23,14 @@ struct OnBoardingView: View {
                 showOnboarding: $showOnboarding,
                 selection: $selection)
                 .tag(1)
-            Text("Bro 2")
+            PageTwoView(
+                topText: Text("The main goal of this game is to discover the meaning of these ChengYu.\nAs you can see on this Chinese lantern, there’s a character."), bottomText: Text("You need to recreate the sequence shown on the scroll by tapping on lanterns. Order matters."),
+                showNextButton: true,
+                showPreviousButton: true,
+                showSkipButton: true,
+                showStartButton: false,
+                showOnboarding: $showOnboarding,
+                selection: $selection)
                 .tag(2)
             Text("Pagina 3")
                 .tag(3)
@@ -36,6 +43,7 @@ struct OnBoardingView: View {
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .bottomTrailing)
                     .padding(.trailing, 50)
                     .padding(.top, 50)
+                  
             }
         }
         .ignoresSafeArea()
