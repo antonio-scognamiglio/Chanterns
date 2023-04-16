@@ -10,6 +10,7 @@ import SwiftUI
 struct GameView: View {
     @StateObject var gameViewModel = GameViewModel()
     @State var timeLeft: Int
+    @State var hasTapped = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var arrayCharacters = ["你","好","老","神"]
@@ -57,27 +58,36 @@ struct GameView: View {
                
                 // ChengYu Scroll
                 VStack {
-                    if gameViewModel.isGameStarted {
+                    if hasTapped {
                         ChengYuView(chengYu: ChengYu.example, showPinyin: false)
                             .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
+                            .opacity(timeLeft > 0 ? 1 : 0)
+                            .animation(Animation.default, value: timeLeft)
 
-                    } else {
+                    } else if !hasTapped && timeLeft > 0 {
                         Image("ScrollClose")
                             .resizable()
                             .scaledToFit()
                             .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
                     }
+//                    else {
+//                        ChengYuView(chengYu: ChengYu.example, showPinyin: false)
+//                            .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
+//                            .opacity(0)
+//                    }
+                    
                 Text("")
                         .frame(height: geo.size.height * 0.3)
                     Text("Tap on the screen to start!")
                         .foregroundColor(.yellowStar)
                         .font(.system(size: 48))
+                        .opacity(!hasTapped ? 1 : 0)
+                        .animation(Animation.default, value: hasTapped)
                     
                 }
                 
                // Columns
                 Group {
-                    
                     // First Column
                     if canCreateLanterns(.columnA) {
                         ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)]
@@ -159,7 +169,7 @@ struct GameView: View {
                 
                 TopBarView(livesLeft: .constant(3), timeLeft: $timeLeft)
                     .onReceive(timer) { _ in
-                        if timeLeft > 0 && gameViewModel.isGameStarted {
+                        if timeLeft > 0 && hasTapped {
                                 timeLeft -= 1
                         }
                     }
@@ -167,6 +177,12 @@ struct GameView: View {
             // To start the game
             .onTapGesture {
                 withAnimation {
+                hasTapped = true
+                }
+            }
+            
+            .onChange(of: timeLeft) { _ in
+                if timeLeft == 0 {
                     gameViewModel.isGameStarted = true
                     gameViewModel.generateColumns(lanternsPerColumn: 5, yPosition: geo.frame(in: .global).maxY)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -175,7 +191,6 @@ struct GameView: View {
                             gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
                             gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
                         }
-                    
                 }
             }
         }
@@ -185,6 +200,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(timeLeft: 10)
+        GameView(timeLeft: 3)
     }
 }
