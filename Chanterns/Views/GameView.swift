@@ -167,7 +167,7 @@ struct GameView: View {
                     
                 }
                 
-                TopBarView(livesLeft: .constant(3), timeLeft: $timeLeft)
+                TopBarView(livesLeft: .constant(3), timeLeft: $timeLeft, chengYu: .constant(ChengYu.example))
                     .onReceive(timer) { _ in
                         if timeLeft > 0 && hasTapped {
                                 timeLeft -= 1

@@ -22,10 +22,12 @@ struct ChengYu: Identifiable {
     var meaning: String
     
     
-    static let example =  ChengYu(arrayCharacters: [ChineseCharacter(hanzi: "开", pinyin: "kāi", isGuessed: false),
-                                                    ChineseCharacter(hanzi: "门", pinyin: "mén", isGuessed: false),
-                                                    ChineseCharacter(hanzi: "见", pinyin: "jiàn", isGuessed: false),
-                                                    ChineseCharacter(hanzi: "山", pinyin: "shān", isGuessed: false)],
-                                  complete: "开门见山", meaning: "Come straight to the point; without preamble")
+    static let example =  ChengYu(
+        arrayCharacters: [
+            ChineseCharacter(hanzi: "开", pinyin: "kāi", isGuessed: true),
+            ChineseCharacter(hanzi: "门", pinyin: "mén", isGuessed: true),
+            ChineseCharacter(hanzi: "见", pinyin: "jiàn", isGuessed: false),
+            ChineseCharacter(hanzi: "山", pinyin: "shān", isGuessed: false)],
+        complete: "开门见山", meaning: "Come straight to the point; without preamble")
 }
 
