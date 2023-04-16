@@ -9,15 +9,17 @@ import SwiftUI
 
 struct TopBarView: View {
     @Binding var livesLeft: Int
+    @Binding var timeLeft: Int
     
     var body: some View {
         
         GeometryReader { geo in
             HStack {
+                // Hearts
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.gameButtonGradient)
-                        .frame(width: geo.size.width * 0.27, height: geo.size.height * 0.075)
+                        .frame(width: geo.size.width * 0.27, height: geo.size.height * 0.07)
                     HStack(spacing: 30) {
                         Image(systemName: livesLeft >= 1 ? "heart.fill" : "heart")
                             .foregroundColor(.redHeart)
@@ -34,14 +36,33 @@ struct TopBarView: View {
                     }
                 }
                 Spacer()
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.gameButtonGradient)
-                    .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.075)
+                // Time
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.gameButtonGradient)
+                        .frame(width: geo.size.width * 0.16, height: geo.size.height * 0.07)
+                    Text("\(timeLeft)")
+                        .foregroundColor(.whiteShade)
+                        .font(.system(size: 76))
+                        .shadow(radius: 5)
+                }
                 Spacer()
                 Spacer()
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.gameButtonGradient)
-                    .frame(width: geo.size.height * 0.08, height: geo.size.height * 0.075)
+                // Play/Pause Button
+                Button {
+                    
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.gameButtonGradient)
+                            .frame(width: geo.size.height * 0.08, height: geo.size.height * 0.07)
+                        Image(systemName: "pause.fill")
+                            .foregroundColor(.whiteShade)
+                            .font(.system(size: 60))
+                            .shadow(radius: 5)
+                    }
+                }
+              
             }
             .padding(.horizontal, 20)
             .padding(.top, 30)
@@ -51,6 +72,6 @@ struct TopBarView: View {
 
 struct TopBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TopBarView(livesLeft: .constant(2))
+        TopBarView(livesLeft: .constant(2), timeLeft: .constant(10))
     }
 }
