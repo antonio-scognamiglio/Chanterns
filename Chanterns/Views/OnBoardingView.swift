@@ -32,7 +32,7 @@ struct OnBoardingView: View {
                 showOnboarding: $showOnboarding,
                 selection: $selection)
                 .tag(2)
-            Text("Pagina 3")
+            PageThreeView(showNextButton: false, showPreviousButton: true, showSkipButton: false, showStartButton: true, showOnboarding: $showOnboarding, selection: $selection)
                 .tag(3)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))

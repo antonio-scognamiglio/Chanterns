@@ -1,5 +1,5 @@
 //
-//  PageTwoView.swift
+//  PageThreeView.swift
 //  Chanterns
 //
 //  Created by Antonio Scognamiglio on 16/04/23.
@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct PageTwoView: View {
-    @State var topText: Text
-    @State var bottomText: Text
+struct PageThreeView: View {
     @State var showNextButton: Bool
     @State var showPreviousButton: Bool
     @State var showSkipButton: Bool
@@ -17,8 +15,8 @@ struct PageTwoView: View {
     
     @Binding var showOnboarding: Bool
     @Binding var selection: Int
-    @State var innerPosition: CGPoint?
-    @State var forceUpdate = UUID()
+ 
+
     
     var body: some View {
         GeometryReader { geo in
@@ -26,54 +24,34 @@ struct PageTwoView: View {
                 Color.whiteShade
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
                     .cornerRadius(20)
-                VStack {
-                    topText
+                VStack(alignment: .leading) {
+                    Text("In every level there will be a top bar composed of three elements.")
                     .font(.system(size: 44))
-//                    .padding(.horizontal, 30)
-//                    .padding(.top)
- 
-//                        .frame(width: geo.size.width * 0.4)
-//                        .padding(.vertical, 30)
+                    .padding(.horizontal, 30)
+                    
                     GeometryReader { innerGeo in
-                            ZStack {
-                                Image("NightSkyDark")
-                                    .resizable()
-                                    .cornerRadius(10)
-    //                                .scaledToFill()
-                                    .frame(width: geo.size.width * 0.75, height: geo.size.height * 0.25)
-                                
-                                Image("ChineseLantern01")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .overlay {
-                                        Text("好")
-                                            .font(.system(size: 48))
-                                            .padding(.bottom, 20)
-                                    }
-                                    .frame(width: geo.size.width * 0.15)
-                                //                                .padding(.vertical, 30)
-                                    .position(x: innerPosition?.x ?? innerGeo.frame(in: .local).midX + 200, y: innerPosition?.y ?? innerGeo.frame(in: .local).midY)
-                                   
-                            }
-                            .id(forceUpdate)
-                            .onAppear {
-                                forceUpdate = UUID()
-                                innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX + 200, y: innerGeo.frame(in: .local).midY)
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                                    withAnimation(Animation.linear(duration: 5).repeatForever()) {
-                                            innerPosition?.x -= 400
-                                        }
-                                }
+                        VStack {
+                            Image("TopBar")
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(10)
+                                .frame(width: innerGeo.size.width * 0.9)
                         }
-                            .onDisappear {
-                                innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX + 200, y: innerGeo.frame(in: .local).midY)
-                            }
+                        .frame(width: innerGeo.size.width, height: innerGeo.size.height)
                     }
                     
-                    
-                    bottomText
-                    .font(.system(size: 44))
-//                    .padding(.horizontal, 30)
+                    Text("On the left are your chances of making a mistake, every time you tap on the wrong lantern you will lose a chance.")
+                        .font(.system(size: 44))
+                        .padding(.horizontal, 30)
+                        .padding(.bottom)
+                    Text("In the center is the time you have to memorize the scroll before it disappears.")
+                        .font(.system(size: 44))
+                        .padding(.horizontal, 30)
+                        .padding(.bottom)
+                    Text("Finally on the right is a button to pause the game.")
+                        .font(.system(size: 44))
+                        .padding(.horizontal, 30)
+//                    Spacer()
                     
                     HStack {
                         if showSkipButton {
@@ -162,8 +140,8 @@ struct PageTwoView: View {
     }
 }
 
-struct PageTwoView_Previews: PreviewProvider {
+struct PageThreeView_Previews: PreviewProvider {
     static var previews: some View {
-        PageTwoView(topText: Text("The main goal of this game is to discover the meaning of these ChengYu.\nAs you can see on this Chinese lantern, there’s a character."), bottomText: Text("You need to recreate the sequence shown on the scroll by tapping on lanterns. Order matters."), showNextButton: true, showPreviousButton: true, showSkipButton: true, showStartButton: false, showOnboarding: .constant(false), selection: .constant(2))
+        PageThreeView(showNextButton: true, showPreviousButton: true, showSkipButton: true, showStartButton: false, showOnboarding: .constant(false), selection: .constant(2))
     }
 }

@@ -43,7 +43,6 @@ struct PageOneView: View {
                         }
                                                 
                     
-                    
                     bottomText
                     .font(.system(size: 44))
                     .padding(.horizontal, 30)
