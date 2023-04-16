@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class GameViewModel: ObservableObject {
-    @Published var isGameStarted = true
+    @Published var isGameStarted = false
     @Published var chineseLanternColumns: ChineseLanternColumns = ChineseLanternColumns()
     @Published var chengYus = [
         // Level 1
