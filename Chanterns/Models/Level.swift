@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Level {
+struct Level: Equatable {
+    static func == (lhs: Level, rhs: Level) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    let id = UUID()
     var timeLeft: Int
     var chengYu: ChengYu
     var isUnlocked: Bool

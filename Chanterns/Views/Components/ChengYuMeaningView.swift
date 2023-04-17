@@ -15,8 +15,8 @@ struct ChengYuMeaningView: View {
             ZStack {
                 Image("ScrollOpen")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: geo.size.width * 0.85)
+//                    .scaledToFit()
+                    .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.35)
                     .shadow(radius: 5)
                     .overlay {
                         VStack{
@@ -33,11 +33,11 @@ struct ChengYuMeaningView: View {
                                 
                                 Text(chengYu.meaning)
                                     .font(.system(size: 34))
-                                    .frame(width: geo.size.width * 0.65, alignment: .leading)
+                                    .frame(width: geo.size.width * 0.68, alignment: .leading)
 //                                    .padding(.top, 1)
                             Spacer()
                             }
-                        .frame(height: geo.size.height * 0.2)
+                        .frame(height: geo.size.height * 0.24)
                         }
                     }
             .frame(width: geo.size.width, height: geo.size.height)

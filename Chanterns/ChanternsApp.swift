@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ChanternsApp: App {
+    @StateObject var gameViewModel = GameViewModel()
     var body: some Scene {
         WindowGroup {
-            GameView(timeLeft: 3)
+            ChengYuListView()
+                .environmentObject(gameViewModel)
 //                .preferredColorScheme(.dark)
         }
     }

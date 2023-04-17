@@ -73,6 +73,7 @@
 		7130AB0629EAF31800F31A15 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */,
 				7130AB0729EAF47700F31A15 /* PageOneView.swift */,
 				7130AB0F29EC060C00F31A15 /* PageTwoView.swift */,
 				7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */,
@@ -146,7 +147,6 @@
 				7130AB0429EAEFDC00F31A15 /* OnBoardingView.swift */,
 				7130AB1729EDA7B800F31A15 /* LevelsView.swift */,
 				7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */,
-				7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */,
 				7136585129EAA7D600416CA1 /* GameMenuView.swift */,
 				71F54D1629DEB53000F2DD9D /* GameView.swift */,
 				7130AB0629EAF31800F31A15 /* Components */,
