@@ -13,6 +13,7 @@ struct TopBarView: View {
     // Non sono sicuro che un binding basti per manifestare il cambio
     @Binding var chengYu: ChengYu
     
+    @ObservedObject var gameViewModel: GameViewModel
     var body: some View {
         
         GeometryReader { geo in
@@ -77,6 +78,13 @@ struct TopBarView: View {
                 Spacer()
                 // Play/Pause Button
                 Button {
+                    gameViewModel.isAnimationPaused = true
+                    withAnimation {
+                        gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk = []
+                        gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk = []
+                        gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk = []
+                        gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk = []
+                    }
                     
                 } label: {
                     ZStack {
@@ -99,6 +107,6 @@ struct TopBarView: View {
 
 struct TopBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TopBarView(livesLeft: .constant(2), timeLeft: .constant(0), chengYu: .constant(ChengYu.example))
+        TopBarView(livesLeft: .constant(2), timeLeft: .constant(1), chengYu: .constant(ChengYu.example), gameViewModel: GameViewModel())
     }
 }

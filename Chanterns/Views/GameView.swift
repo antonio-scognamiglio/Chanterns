@@ -13,21 +13,6 @@ struct GameView: View {
     @State var hasTapped = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    // This is for pausing the animation
-    // Li devo inizializzare su un'on appear, non riesco a metterli a nil, ma devo cambiargli il valore
-
-    // this formula will generally always be the same
-    private var remainingDuration: RemainingDurationProvider<Double> {
-      { currentPosition in
-          gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)].animationTime * (1 - (currentPosition - gameViewModel.yStartPosition) / (gameViewModel.YEndPosition - gameViewModel.yStartPosition))
-      }
-    }
-
-    
-    private let animationColumnA: AnimationWithDurationProvider = { duration in
-        .linear(duration: duration)
-      }
-    
     var arrayCharacters = ["你","好","老","神"]
     
     var columnIndex: (CurrentColumn) -> Int {
@@ -182,12 +167,13 @@ struct GameView: View {
                     
                 }
                 
-                TopBarView(livesLeft: .constant(3), timeLeft: $timeLeft, chengYu: .constant(ChengYu.example))
+                TopBarView(livesLeft: .constant(3), timeLeft: $timeLeft, chengYu: .constant(ChengYu.example), gameViewModel: gameViewModel)
                     .onReceive(timer) { _ in
-                        if timeLeft > 0 && hasTapped {
+                        if timeLeft > 0 && hasTapped && !gameViewModel.isAnimationPaused {
                                 timeLeft -= 1
                         }
                     }
+                  
                 }
             // inizializzo le distanze
             .onAppear {
@@ -204,7 +190,7 @@ struct GameView: View {
             .onChange(of: timeLeft) { _ in
                 if timeLeft == 0 {
                     gameViewModel.isGameStarted = true
-                    gameViewModel.generateColumns(lanternsPerColumn: 5, yPosition: geo.frame(in: .global).maxY)
+                    gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
                             
