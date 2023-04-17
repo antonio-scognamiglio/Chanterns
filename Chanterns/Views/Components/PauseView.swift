@@ -24,6 +24,7 @@ struct PauseView: View {
                             VStack(spacing: 50) {
                                 Button {
                                     withAnimation {
+
                                         gameViewModel.isAnimationPaused = false
 //                                        // generate lanterns again
                                         

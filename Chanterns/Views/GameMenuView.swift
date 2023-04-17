@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GameMenu: View {
+struct GameMenuView: View {
     let buttonColor = Color(#colorLiteral(red: 0.8797428012, green: 0.8797428012, blue: 0.8797428012, alpha: 1))
     
     var body: some View {
@@ -67,6 +67,6 @@ struct GameMenu: View {
 
 struct GameMenu_Previews: PreviewProvider {
     static var previews: some View {
-        GameMenu()
+        GameMenuView()
     }
 }
