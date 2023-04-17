@@ -27,7 +27,7 @@ struct ChengYuListView: View {
                         .padding(.top, 30)
                     Spacer()
                     LazyVGrid(columns: columns, spacing: 100) {
-                        ForEach(gameViewModel.levels, id: \.levelNumber) { level in
+                        ForEach(gameViewModel.levels) { level in
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(Color.scrollPaper)

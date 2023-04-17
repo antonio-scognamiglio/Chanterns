@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Level: Equatable {
+struct Level: Equatable, Identifiable {
     static func == (lhs: Level, rhs: Level) -> Bool {
         lhs.id == rhs.id
     }
@@ -20,16 +20,16 @@ struct Level: Equatable {
     var levelNumber: LevelNumber
 }
 
-enum LevelNumber {
-    case level1
-    case level2
-    case level3
-    case level4
-    case level5
-    case level6
-    case level7
-    case level8
-    case level9
+enum LevelNumber: String {
+    case level1 = "1"
+    case level2 = "2"
+    case level3 = "3"
+    case level4 = "4"
+    case level5 = "5"
+    case level6 = "6"
+    case level7 = "7"
+    case level8 = "8"
+    case level9 = "9"
     
     func generateAnimationTime() -> Double {
         switch self {
