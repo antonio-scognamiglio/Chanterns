@@ -11,7 +11,8 @@ import SwiftUI
 struct ChanternsApp: App {
     var body: some Scene {
         WindowGroup {
-            OnBoardingView()
+            GameView(timeLeft: 3)
+//                .preferredColorScheme(.dark)
         }
     }
 }

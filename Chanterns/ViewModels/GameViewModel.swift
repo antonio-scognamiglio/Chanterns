@@ -17,6 +17,7 @@ class GameViewModel: ObservableObject {
     var YEndPosition: CGFloat = 0
     
     @Published var chineseLanternColumns: ChineseLanternColumns = ChineseLanternColumns()
+    @Published var temporaryArray: ChineseLanternColumns = ChineseLanternColumns()
     @Published var chengYus = [
         // Level 1
         ChengYu(arrayCharacters: [ChineseCharacter(hanzi: "开", pinyin: "kāi", isGuessed: false),
@@ -125,7 +126,7 @@ class GameViewModel: ObservableObject {
             let time = chineseLanternColumns.columnA.chineseLanternsChunk[index].animationTime
             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                 withAnimation {
-                    if self.chineseLanternColumns.columnA.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isTapped && !self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isAnimationEnd {
+                    if self.chineseLanternColumns.columnA.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isTapped && !self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isAnimationEnd && !self.isAnimationPaused {
                         self.chineseLanternColumns.columnA.chineseLanternsChunk[index].isTapped = true
                         self.chineseLanternColumns.columnA.index += 1
                         self.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).maxY + 100
@@ -138,7 +139,7 @@ class GameViewModel: ObservableObject {
             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                 withAnimation {
                     if self.chineseLanternColumns.columnB.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isTapped &&
-                        !self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isAnimationEnd {
+                        !self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isAnimationEnd && !self.isAnimationPaused {
                         self.chineseLanternColumns.columnB.chineseLanternsChunk[index].isTapped = true
                         self.chineseLanternColumns.columnB.index += 1
                         self.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).maxY + 100
@@ -150,7 +151,7 @@ class GameViewModel: ObservableObject {
             let time = chineseLanternColumns.columnC.chineseLanternsChunk[index].animationTime
             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                 withAnimation {
-                    if self.chineseLanternColumns.columnC.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isTapped && !self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isAnimationEnd {
+                    if self.chineseLanternColumns.columnC.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isTapped && !self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isAnimationEnd && !self.isAnimationPaused {
                         self.chineseLanternColumns.columnC.chineseLanternsChunk[index].isTapped = true
                         self.chineseLanternColumns.columnC.index += 1
                         self.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).maxY + 100
@@ -163,7 +164,7 @@ class GameViewModel: ObservableObject {
             DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                 withAnimation {
                     if self.chineseLanternColumns.columnD.chineseLanternsChunk.count > index + 1 && !self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isTapped &&
-                        !self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isAnimationEnd {
+                        !self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isAnimationEnd && !self.isAnimationPaused  {
                         self.chineseLanternColumns.columnD.chineseLanternsChunk[index].isTapped = true
                         self.chineseLanternColumns.columnD.index += 1
                         self.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).maxY + 100

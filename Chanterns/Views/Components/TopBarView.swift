@@ -78,12 +78,17 @@ struct TopBarView: View {
                 Spacer()
                 // Play/Pause Button
                 Button {
-                    gameViewModel.isAnimationPaused = true
+                   
                     withAnimation {
-                        gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk = []
-                        gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk = []
-                        gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk = []
-                        gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk = []
+                        gameViewModel.isAnimationPaused = true
+                        
+//                        gameViewModel.temporaryArray = gameViewModel.chineseLanternColumns
+//                        gameViewModel.chineseLanternColumns = ChineseLanternColumns()
+
+//                        gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk = []
+//                        gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk = []
+//                        gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk = []
+//                        gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk = []
                     }
                     
                 } label: {
