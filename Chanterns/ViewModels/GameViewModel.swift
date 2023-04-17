@@ -90,7 +90,7 @@ class GameViewModel: ObservableObject {
                                            ChineseCharacter(hanzi: "山", pinyin: "shān", isGuessed: false)],
             complete: "开门见山", meaning: "Come straight to the point; without preamble"),
         isUnlocked: true,
-        isCompleted: false, levelNumber: .level1),
+        isCompleted: true, levelNumber: .level1),
     Level(timeLeft: 9,
           chengYu:  ChengYu(arrayCharacters: [ChineseCharacter(hanzi: "全", pinyin: "quán", isGuessed: false),
                                               ChineseCharacter(hanzi: "神", pinyin: "shén", isGuessed: false),

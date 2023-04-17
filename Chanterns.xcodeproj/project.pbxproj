@@ -14,6 +14,9 @@
 		7130AB1229EC0F9E00F31A15 /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */; };
 		7130AB1429EC193A00F31A15 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1329EC193A00F31A15 /* TopBarView.swift */; };
 		7130AB1629ED488400F31A15 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1529ED488400F31A15 /* PauseView.swift */; };
+		7130AB1829EDA7B800F31A15 /* LevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1729EDA7B800F31A15 /* LevelsView.swift */; };
+		7130AB1A29EDA7CA00F31A15 /* ChengYuListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */; };
+		7130AB1C29EDB1B900F31A15 /* ChengYuMeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */; };
 		7136585029EAA7B000416CA1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136584F29EAA7B000416CA1 /* Level.swift */; };
 		7136585229EAA7D600416CA1 /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136585129EAA7D600416CA1 /* GameMenuView.swift */; };
 		71925F5E29E7E79B0081A393 /* Animation-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71925F5D29E7E79B0081A393 /* Animation-Extension.swift */; };
@@ -37,6 +40,9 @@
 		7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
 		7130AB1329EC193A00F31A15 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		7130AB1529ED488400F31A15 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		7130AB1729EDA7B800F31A15 /* LevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsView.swift; sourceTree = "<group>"; };
+		7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuListView.swift; sourceTree = "<group>"; };
+		7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuMeaningView.swift; sourceTree = "<group>"; };
 		7136584F29EAA7B000416CA1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		7136585129EAA7D600416CA1 /* GameMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
 		71925F5D29E7E79B0081A393 /* Animation-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation-Extension.swift"; sourceTree = "<group>"; };
@@ -138,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				7130AB0429EAEFDC00F31A15 /* OnBoardingView.swift */,
+				7130AB1729EDA7B800F31A15 /* LevelsView.swift */,
+				7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */,
+				7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */,
 				7136585129EAA7D600416CA1 /* GameMenuView.swift */,
 				71F54D1629DEB53000F2DD9D /* GameView.swift */,
 				7130AB0629EAF31800F31A15 /* Components */,
@@ -230,6 +239,7 @@
 				71925F6029E9ABD60081A393 /* ChengYuView.swift in Sources */,
 				7130AB1629ED488400F31A15 /* PauseView.swift in Sources */,
 				71F54D2529E023E400F2DD9D /* ChineseLanternView.swift in Sources */,
+				7130AB1C29EDB1B900F31A15 /* ChengYuMeaningView.swift in Sources */,
 				71F54D2F29E05C3600F2DD9D /* Array-Extension.swift in Sources */,
 				71F54D2729E0257200F2DD9D /* GameViewModel.swift in Sources */,
 				71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */,
@@ -243,6 +253,8 @@
 				7130AB1029EC060C00F31A15 /* PageTwoView.swift in Sources */,
 				7130AB1229EC0F9E00F31A15 /* PageThreeView.swift in Sources */,
 				7130AB0A29EAFCD000F31A15 /* Color-Extension.swift in Sources */,
+				7130AB1A29EDA7CA00F31A15 /* ChengYuListView.swift in Sources */,
+				7130AB1829EDA7B800F31A15 /* LevelsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
