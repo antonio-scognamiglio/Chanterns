@@ -225,8 +225,13 @@ struct GameView: View {
            
             // Inizializzo le distanze
             .onAppear {
+                // non so se le sto usando ancora le distanze
                 gameViewModel.yStartPosition = geo.frame(in: .global).maxY
                 gameViewModel.YEndPosition = geo.frame(in: .global).minY - 200
+                
+                level.chengYu.arrayCharacters.forEach { character in
+                    gameViewModel.leftToBeGuessed.append(character.hanzi)
+                }
             }
             // To start the game
             .onTapGesture {
