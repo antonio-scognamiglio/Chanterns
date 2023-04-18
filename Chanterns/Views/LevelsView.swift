@@ -10,6 +10,7 @@ import SwiftUI
 struct LevelsView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     @Environment (\.dismiss) var dismiss
+    @State private var isActive = false
     
     let columns = [
         GridItem(.adaptive(minimum: 270))
@@ -47,7 +48,11 @@ struct LevelsView: View {
                         ForEach(gameViewModel.levels) { level in
 
                             if level.isUnlocked {
-                                NavigationLink(destination: GameView(currentLevel: level)){
+                                Button {
+                                    withAnimation {
+                                        isActive = true
+                                    }
+                                } label: {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(Color.scrollPaper)
@@ -98,6 +103,9 @@ struct LevelsView: View {
             .background {
                 Image("NightSkyLightPortrait")
                     .ignoresSafeArea()
+            }
+            .fullScreenCover(isPresented: $isActive) {
+                GameView()
             }
         }
     }

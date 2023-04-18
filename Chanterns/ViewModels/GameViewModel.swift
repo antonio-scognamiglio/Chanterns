@@ -24,6 +24,7 @@ class GameViewModel: ObservableObject {
     @Published var hasWon = false
     @Published var showCongratulations = false
     @Published var levels: [Level] = Level.originalLevels
+    @Published var currentLevel = Level.originalLevels[0]
 
     
     
@@ -53,16 +54,16 @@ class GameViewModel: ObservableObject {
     }
     
     // Needs to be changed, everything should be moved to the viewModel
-    func checkTap(column: ChineseLanternsChunk, level: Level){
+    func checkTap(column: ChineseLanternsChunk){
         let index = column.index
         withAnimation {
             if leftToBeGuessed.first == column.chineseLanternsChunk[index].character {
-                if let characterIndex: Int = level.chengYu.arrayCharacters.firstIndex(where: { character in
+                if let characterIndex: Int = currentLevel.chengYu.arrayCharacters.firstIndex(where: { character in
                     character.hanzi == column.chineseLanternsChunk[index].character
                 }){
                 leftToBeGuessed.removeFirst()
 //                    replaceCharacter(hanziToBeReplaced: level.chengYu.arrayCharacters[characterIndex].hanzi)
-                level.chengYu.arrayCharacters[characterIndex].isGuessed = true
+                    currentLevel.chengYu.arrayCharacters[characterIndex].isGuessed = true
                     if leftToBeGuessed.isEmpty {
                         // svuotare tutte le colonne
                         withAnimation {
@@ -230,17 +231,17 @@ class GameViewModel: ObservableObject {
     }
     
     // Questa funzione restituisce il livello corrente allo stato non iniziato
-    func tryAgain(level: Level) -> Level {
+    func tryAgain() {
         resetGame()
-        let levelIndex: Int = levels.firstIndex(of: level) ?? 0
-        return levels[levelIndex]
+        let levelIndex: Int = levels.firstIndex(of: currentLevel) ?? 0
+        currentLevel = levels[levelIndex]
     }
     
-    func nextLevel(level: Level) -> Level? {
+    func nextLevel() -> Level? {
         // Resetto il gioco
         resetGame()
         // prendo l'indice del livello
-        let levelIndex: Int = levels.firstIndex(of: level) ?? 0
+        let levelIndex: Int = levels.firstIndex(of: currentLevel) ?? 0
         // segno il livello come completo
         levels[levelIndex].isCompleted = true
         // Se c'è un altro livello dopo questo, lo sblocco e lo restituisco

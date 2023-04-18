@@ -10,7 +10,6 @@ import SwiftUI
 struct LostMenuView: View {
     
     @EnvironmentObject var gameViewModel: GameViewModel
-    @ObservedObject var currentLevel: Level
     
     var body: some View {
         GeometryReader { geo in
@@ -24,6 +23,7 @@ struct LostMenuView: View {
                                 Button {
                                     withAnimation {
 // try again action
+                                        gameViewModel.tryAgain()
                                     }
                                     
                                 } label: {
@@ -62,6 +62,6 @@ struct LostMenuView: View {
 
 struct LostMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        LostMenuView(currentLevel: Level.originalLevels[0])
+        LostMenuView()
     }
 }

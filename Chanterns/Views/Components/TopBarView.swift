@@ -14,7 +14,7 @@ struct TopBarView: View {
 
 //    @Binding var chengYu: ChengYu
     
-    @ObservedObject var level: Level
+ 
     @EnvironmentObject var gameViewModel: GameViewModel
     
     var body: some View {
@@ -43,12 +43,12 @@ struct TopBarView: View {
                 }
                 Spacer()
                 // Time
-                if level.timeLeft > 0 {
+                if gameViewModel.currentLevel.timeLeft > 0 {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.gameButtonGradient)
                             .frame(width: geo.size.width * 0.16, height: geo.size.height * 0.07)
-                        Text("\(level.timeLeft)")
+                        Text("\(gameViewModel.currentLevel.timeLeft)")
                             .foregroundColor(.whiteShade)
                             .font(.system(size: 76))
                             .shadow(radius: 5)
@@ -60,9 +60,9 @@ struct TopBarView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: geo.size.width * 0.3, height: geo.size.height * 0.08)
-                            .animation(.easeIn, value: level.timeLeft)
+                            .animation(.easeIn, value: gameViewModel.currentLevel.timeLeft)
                         HStack {
-                            ForEach(level.chengYu.arrayCharacters) { character in
+                            ForEach(gameViewModel.currentLevel.chengYu.arrayCharacters) { character in
                                 if character.isGuessed{
                                     Text(character.hanzi)
                                         .font(.system(size: UIScreen.main.bounds.width > 850 ? 70 : 50))
@@ -115,7 +115,7 @@ struct TopBarView: View {
 
 struct TopBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TopBarView(level: Level.originalLevels[0])
+        TopBarView()
             .environmentObject(GameViewModel())
     }
 }
