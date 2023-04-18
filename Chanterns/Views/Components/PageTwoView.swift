@@ -23,17 +23,13 @@ struct PageTwoView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color.whiteShade
+                Color.white
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
                     .cornerRadius(20)
                 VStack {
                     topText
                     .font(.system(size: 44))
-//                    .padding(.horizontal, 30)
-//                    .padding(.top)
- 
-//                        .frame(width: geo.size.width * 0.4)
-//                        .padding(.vertical, 30)
+
                     GeometryReader { innerGeo in
                             ZStack {
                                 Image("NightSkyDark")

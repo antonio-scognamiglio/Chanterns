@@ -10,7 +10,10 @@ import SwiftUI
 struct GameView: View {
     @StateObject var gameViewModel = GameViewModel()
     @State var timeLeft: Int
+    @State var livesLeft = 3
     @State var hasTapped = false
+    @State var level: Level
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var arrayCharacters = ["你","好","老","神"]
@@ -53,6 +56,7 @@ struct GameView: View {
         GeometryReader { geo in
             ZStack {
                 Image("NightSkyDarkPortraitBigStars")
+                    .resizable()
                     .blur(radius: gameViewModel.isAnimationPaused ? 5 : 0)
                 .edgesIgnoringSafeArea(.all)
                 
@@ -199,22 +203,21 @@ struct GameView: View {
                         .onTapGesture {
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)                       }
                     }
-                    
                 }
-                
                 
                 if gameViewModel.isAnimationPaused {
                         PauseView(gameViewModel: gameViewModel)
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
                 }
                 
-                TopBarView(livesLeft: .constant(3), timeLeft: $timeLeft, chengYu: .constant(ChengYu.example), gameViewModel: gameViewModel)
+                TopBarView(livesLeft: $livesLeft, timeLeft: $timeLeft, chengYu: .constant(ChengYu.example), gameViewModel: gameViewModel)
                     .onReceive(timer) { _ in
                         if timeLeft > 0 && hasTapped && !gameViewModel.isAnimationPaused {
                                 timeLeft -= 1
                         }
                     }
                 }
+            .navigationBarBackButtonHidden()
            
             // Inizializzo le distanze
             .onAppear {
@@ -227,11 +230,11 @@ struct GameView: View {
                 hasTapped = true
                 }
             }
-            
+            // DECOMMENTARE
             .onChange(of: timeLeft) { _ in
                 if timeLeft == 0 {
                     gameViewModel.isGameStarted = true
-                    gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY)
+                    gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY, level: level.levelNumber)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
                             
@@ -265,6 +268,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(timeLeft: 3)
+        GameView(timeLeft: 3, level: Level.originalLevels[0])
     }
 }

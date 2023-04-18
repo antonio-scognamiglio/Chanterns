@@ -122,7 +122,12 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level1 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList
                 }
             }
             return levelCharacters.shuffled()

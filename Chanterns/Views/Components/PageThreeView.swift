@@ -21,7 +21,7 @@ struct PageThreeView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color.whiteShade
+                Color.white
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
                     .cornerRadius(20)
                 VStack(alignment: .leading) {

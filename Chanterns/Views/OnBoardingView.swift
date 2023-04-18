@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-@State private var selection = 1
-    @State var showOnboarding = true
+    @State private var selection = 1
+    @Binding var showOnboarding: Bool
+    
     var body: some View {
         
         TabView(selection: $selection) {
@@ -52,6 +53,6 @@ struct OnBoardingView: View {
 
 struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(showOnboarding: .constant(true))
     }
 }

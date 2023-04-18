@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let whiteShade = Color(uiColor: #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1))
+    static let whiteShade = Color(uiColor: #colorLiteral(red: 0.8509803922, green: 0.8509803922, blue: 0.8509803922, alpha: 1))
     static let scrollPaper = Color(uiColor: #colorLiteral(red: 1, green: 0.9725490196, blue: 0.9176470588, alpha: 1))
     static let yellowStar = Color(uiColor: #colorLiteral(red: 1, green: 0.8980392157, blue: 0.5921568627, alpha: 1))
     static let yellowScroll = Color(uiColor: #colorLiteral(red: 0.9294117647, green: 0.7764705882, blue: 0.5333333333, alpha: 1))

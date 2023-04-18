@@ -14,7 +14,10 @@ struct ChengYuListView: View {
     @State var isShowingMeaning = false
     @State var chengYuIndex = 0
     let columns = [
-        GridItem(.adaptive(minimum: 300))
+        GridItem(.flexible(minimum: 150)),
+        GridItem(.flexible(minimum: 150)),
+        GridItem(.flexible(minimum: 150))
+
     ]
     
     var body: some View {
@@ -38,8 +41,9 @@ struct ChengYuListView: View {
                                     .font(.system(size: 96))
                                     .foregroundColor(.scrollPaper)
                                     .padding(.leading, 50)
-                                Spacer()
+                               
                             }
+                            Spacer()
                         }
                     }
                     .padding(.top, 30)
@@ -57,7 +61,7 @@ struct ChengYuListView: View {
                             .overlay {
                                 if level.isCompleted {
                                     Text(level.chengYu.complete)
-                                        .font(.system(size: 60))
+                                        .font(.system(size: 50))
                                 } else {
                                     Text("????")
                                         .font(.system(size: 60))
@@ -74,7 +78,7 @@ struct ChengYuListView: View {
                                 }
                             }
                             .frame(minHeight: 130)
-                            .padding(.horizontal, 30)
+                            .padding(.horizontal, 20)
                         }
                     }
                     .frame(height: geo.size.height * 0.73)
@@ -95,6 +99,7 @@ struct ChengYuListView: View {
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
                 }
             }
+            .navigationBarBackButtonHidden()
             .frame(width: geo.size.width, height: geo.size.height)
             .background {
                 Image("NightSkyLightNoStars")
