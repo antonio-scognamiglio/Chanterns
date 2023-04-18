@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ChengYuListView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
+    @Environment (\.dismiss) var dismiss
+    
     @State var isShowingMeaning = false
     @State var chengYuIndex = 0
     let columns = [
@@ -19,12 +21,29 @@ struct ChengYuListView: View {
         GeometryReader { geo in
             ZStack {
                 VStack {
-                    Image("ScrollOpen")
-                        .overlay{
-                            Text("ChengYu")
-                                .font(.system(size: 48))
+                    ZStack {
+                        Image("ScrollOpen")
+                            .overlay{
+                                Text("ChengYu")
+                                    .font(.system(size: 48))
+                            }
+                        
+                        HStack {
+                            Button {
+                                withAnimation {
+                                    dismiss()
+                                }
+                            } label: {
+                                Image(systemName: "arrowshape.left.fill")
+                                    .font(.system(size: 96))
+                                    .foregroundColor(.scrollPaper)
+                                    .padding(.leading, 50)
+                                Spacer()
+                            }
                         }
-                        .padding(.top, 30)
+                    }
+                    .padding(.top, 30)
+                    
                     Spacer()
                     LazyVGrid(columns: columns, spacing: 100) {
                         ForEach(gameViewModel.levels) { level in

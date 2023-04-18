@@ -9,7 +9,8 @@ import SwiftUI
 
 struct LevelsView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
-   
+    @Environment (\.dismiss) var dismiss
+    
     let columns = [
         GridItem(.adaptive(minimum: 270))
     ]
@@ -18,12 +19,27 @@ struct LevelsView: View {
         GeometryReader { geo in
             ZStack {
                 VStack {
-                    Image("ScrollOpen")
+                    ZStack {
+                        Image("ScrollOpen")
                             .overlay{
                                 Text("Levels")
                                     .font(.system(size: 48))
                             }
-                            .padding(.top, 30)
+                        HStack {
+                            Button {
+                                withAnimation {
+                                    dismiss()
+                                }
+                            } label: {
+                                Image(systemName: "arrowshape.left.fill")
+                                    .font(.system(size: 96))
+                                    .foregroundColor(.scrollPaper)
+                                    .padding(.leading, 50)
+                                Spacer()
+                            }
+                        }
+                    }
+                    .padding(.top, 30)
                     Spacer()
                     LazyVGrid(columns: columns, spacing: 100) {
                         ForEach(gameViewModel.levels) { level in
