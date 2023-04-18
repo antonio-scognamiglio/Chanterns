@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ChineseLanternView: View {
     @StateObject var chineseLantern: ChineseLantern
-    var dynamicSize: CGFloat {
-        (UIScreen.main.bounds.width - 250) / 4
+    var dynamicWidth: CGFloat {
+        UIScreen.main.bounds.width * 0.25
     }
     
     var body: some View {
@@ -23,7 +23,8 @@ struct ChineseLanternView: View {
                 Image(chineseLantern.lanternImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: dynamicSize)
+                    .frame(width: dynamicWidth)
+//                    .frame(width: 300, height: 300)
                 Text(chineseLantern.character)
                     .font(.system(size: UIScreen.main.bounds.width > 850 ? 96 : 70))
                     .padding(.bottom, 30)

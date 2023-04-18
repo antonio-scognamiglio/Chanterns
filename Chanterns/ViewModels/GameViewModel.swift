@@ -26,7 +26,7 @@ class GameViewModel: ObservableObject {
 //    static let charactersList = [
 //        "我","你","老","莫","是","人","吗","包","开","门","见","山","压","力","效","应","全","神","贯","注","朝","三","暮","四","厮","守","终","生","眼","见","为","实","四","海","为","家","顺","其","自","然","火","上","加","油","胡","说","八","道"
 //    ]
-    static let lanternImages = ["ChineseLantern01", "ChineseLantern02b", "ChineseLantern03"]
+    static let lanternImages = ["Lantern01", "Lantern02", "Lantern03"]
     
 //    private func generateLantern (level: Level) -> ChineseLantern {
 //        let newLantern = ChineseLantern(lanternImage: GameViewModel.lanternImages.randomElement()!, character: GameViewModel.charactersList.randomElement()!, isAnimationEnd: false, animationTime: Double.random(in: 3.0...6.00), isTapped: false)
