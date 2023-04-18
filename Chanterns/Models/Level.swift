@@ -144,7 +144,8 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level2 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
+                    levelCharacters = Array(repeating: level.chengYu.complete, count: 10) + ChineseCharacter.characterList
+//                    + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
@@ -153,7 +154,7 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level3 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 4) + ChineseCharacter.characterList
+                    levelCharacters = Array(repeating: level.chengYu.complete, count: 9) + ChineseCharacter.characterList
                 }
             }
             return levelCharacters.shuffled()
@@ -162,7 +163,7 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level4 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 4) + ChineseCharacter.characterList
+                    levelCharacters = Array(repeating: level.chengYu.complete, count: 8) + ChineseCharacter.characterList
                 }
             }
             return levelCharacters.shuffled()
@@ -170,7 +171,7 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level5 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 4) + ChineseCharacter.characterList
+                    levelCharacters = Array(repeating: level.chengYu.complete, count: 7) + ChineseCharacter.characterList
                 }
             }
             return levelCharacters.shuffled()
@@ -178,7 +179,7 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level6 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 3) + ChineseCharacter.characterList
+                    levelCharacters = Array(repeating: level.chengYu.complete, count: 6) + ChineseCharacter.characterList
                 }
             }
             return levelCharacters.shuffled()
@@ -186,7 +187,7 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level7 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 3) + ChineseCharacter.characterList
+                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
                 }
             }
             return levelCharacters.shuffled()
@@ -194,7 +195,7 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level8 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 2) + ChineseCharacter.characterList
+                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
                 }
             }
             return levelCharacters.shuffled()
@@ -202,7 +203,7 @@ enum LevelNumber: String {
             var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level9 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 2) + ChineseCharacter.characterList
+                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
                 }
             }
             return levelCharacters.shuffled()
