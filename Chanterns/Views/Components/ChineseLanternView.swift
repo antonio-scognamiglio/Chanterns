@@ -25,8 +25,8 @@ struct ChineseLanternView: View {
                     .scaledToFit()
                     .frame(width: dynamicSize)
                 Text(chineseLantern.character)
-                    .font(.system(size: UIScreen.main.bounds.width > 850 ? 96 : 84))
-                    .padding(.bottom, 40)
+                    .font(.system(size: UIScreen.main.bounds.width > 850 ? 96 : 70))
+                    .padding(.bottom, 30)
             }
 //        }
     }

@@ -27,12 +27,13 @@ struct PageOneView: View {
                     .cornerRadius(20)
                 VStack {
                     topText
-                    .font(.system(size: 44))
+                    .font(.system(size: 36))
+                    
                     .padding(.horizontal, 30)
 
                     GeometryReader { innerGeo in
                             VStack {
-                                ChengYuView(chengYu: .example, showPinyin: true, fontSize: 70)
+                                ChengYuView(chengYu: .example, showPinyin: true)
                                     .frame(width: innerGeo.size.width * 0.7)
                             }
                             .frame(width: innerGeo.size.width, height: innerGeo.size.height)
@@ -40,7 +41,8 @@ struct PageOneView: View {
                                                 
                     
                     bottomText
-                    .font(.system(size: 44))
+                    .font(.system(size: 36))
+
                     .padding(.horizontal, 30)
                     
                     HStack {

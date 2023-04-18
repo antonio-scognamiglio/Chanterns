@@ -16,7 +16,7 @@ struct ChengYuView: View {
     @State var showScrollClose = true
     @State var startAnimation = false
     @State var showChengYu = false
-    @State var fontSize = 96
+
 //    @State var showScrollSemi = false
 //    @State var showScrollOpen = false
     
@@ -45,9 +45,9 @@ struct ChengYuView: View {
                     ForEach(chengYu.arrayCharacters){ character in
                         VStack {
                             Text(character.hanzi)
-                                .font(.system(size: CGFloat(fontSize)))
+                                .font(.system(size: UIScreen.main.bounds.width > 850 ? 66 : 56))
                             Text(showPinyin ? character.pinyin : "")
-                                .font(.system(size: CGFloat(fontSize - 30)))
+                                .font(.system(size: UIScreen.main.bounds.width > 850 ? 50 : 40))
                         }
                     }
                     

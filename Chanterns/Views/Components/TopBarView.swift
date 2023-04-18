@@ -62,11 +62,11 @@ struct TopBarView: View {
                             ForEach(ChengYu.example.arrayCharacters) { character in
                                 if character.isGuessed{
                                     Text(character.hanzi)
-                                        .font(.system(size: 60))
+                                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 70 : 50))
                                         .animation(.easeIn, value: character.isGuessed)
                                 } else {
                                     Text("?")
-                                        .font(.system(size: 70))
+                                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 74 : 54))
                                         .animation(.easeIn, value: character.isGuessed)
                                 }
                                 
@@ -112,6 +112,6 @@ struct TopBarView: View {
 
 struct TopBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TopBarView(livesLeft: .constant(2), timeLeft: .constant(1), chengYu: .constant(ChengYu.example), gameViewModel: GameViewModel())
+        TopBarView(livesLeft: .constant(2), timeLeft: .constant(0), chengYu: .constant(ChengYu.example), gameViewModel: GameViewModel())
     }
 }

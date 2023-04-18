@@ -28,7 +28,7 @@ struct PageTwoView: View {
                     .cornerRadius(20)
                 VStack {
                     topText
-                    .font(.system(size: 44))
+                        .font(.system(size: 36))
 
                     GeometryReader { innerGeo in
                             ZStack {
@@ -68,7 +68,7 @@ struct PageTwoView: View {
                     
                     
                     bottomText
-                    .font(.system(size: 44))
+                        .font(.system(size: 36))
 //                    .padding(.horizontal, 30)
                     
                     HStack {

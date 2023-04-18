@@ -26,7 +26,7 @@ struct PageThreeView: View {
                     .cornerRadius(20)
                 VStack(alignment: .leading) {
                     Text("In every level there will be a top bar composed of three elements.")
-                    .font(.system(size: 44))
+                        .font(.system(size: 36))
                     .padding(.horizontal, 30)
                     
                     GeometryReader { innerGeo in
@@ -41,15 +41,15 @@ struct PageThreeView: View {
                     }
                     
                     Text("On the left are your chances of making a mistake, every time you tap on the wrong lantern you will lose a chance.")
-                        .font(.system(size: 44))
+                        .font(.system(size: 36))
                         .padding(.horizontal, 30)
                         .padding(.bottom)
                     Text("In the center is the time you have to memorize the scroll before it disappears.")
-                        .font(.system(size: 44))
+                        .font(.system(size: 36))
                         .padding(.horizontal, 30)
                         .padding(.bottom)
                     Text("Finally on the right is a button to pause the game.")
-                        .font(.system(size: 44))
+                        .font(.system(size: 36))
                         .padding(.horizontal, 30)
 //                    Spacer()
                     
