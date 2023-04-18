@@ -58,7 +58,6 @@ class GameViewModel: ObservableObject {
     // Needs to be changed, everything should be moved to the viewModel
     func checkTap(column: ChineseLanternsChunk, level: Level){
         let index = column.index
-        print("MI HAI TOCCATO *****************")
         withAnimation {
             if leftToBeGuessed.first == column.chineseLanternsChunk[index].character {
                 if let characterIndex: Int = level.chengYu.arrayCharacters.firstIndex(where: { character in
