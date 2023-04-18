@@ -60,6 +60,7 @@ class GameViewModel: ObservableObject {
                     character.hanzi == column.chineseLanternsChunk[index].character
                 }){
                 leftToBeGuessed.removeFirst()
+                    transformCharacter(hanziToTransform: level.chengYu.arrayCharacters[characterIndex].hanzi)
                 level.chengYu.arrayCharacters[characterIndex].isGuessed = true
                     if leftToBeGuessed.isEmpty {
                         // svuotare tutte le colonne
@@ -173,6 +174,45 @@ class GameViewModel: ObservableObject {
         // oppure chineseLanternColumns = ChineseLanternColumns()
     }
     
+    // sostituisce i caratteri già indovinati del chengyu con il prossimo che resta da indovinare
+    func transformCharacter(hanziToTransform: String){
+        for chineseLantern in chineseLanternColumns.columnA.chineseLanternsChunk {
+            if chineseLantern.character == hanziToTransform {
+                if leftToBeGuessed.isEmpty {
+                    withAnimation {
+                        chineseLantern.character = leftToBeGuessed.first!
+                    }
+                }
+            }
+        }
+        for chineseLantern in chineseLanternColumns.columnB.chineseLanternsChunk {
+            if chineseLantern.character == hanziToTransform {
+                if leftToBeGuessed.isEmpty {
+                    withAnimation {
+                        chineseLantern.character = leftToBeGuessed.randomElement()!
+                    }
+                }
+            }
+        }
+        for chineseLantern in chineseLanternColumns.columnC.chineseLanternsChunk {
+            if chineseLantern.character == hanziToTransform {
+                if leftToBeGuessed.isEmpty {
+                    withAnimation {
+                        chineseLantern.character = leftToBeGuessed.randomElement()!
+                    }
+                }
+            }
+        }
+        for chineseLantern in chineseLanternColumns.columnD.chineseLanternsChunk {
+            if chineseLantern.character == hanziToTransform {
+                if leftToBeGuessed.isEmpty {
+                    withAnimation {
+                        chineseLantern.character = leftToBeGuessed.randomElement()!
+                    }
+                }
+            }
+        }
+    }
     func resetStats() {
         
     }
