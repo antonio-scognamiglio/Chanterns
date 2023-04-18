@@ -24,6 +24,7 @@ struct ChengYuListView: View {
         GeometryReader { geo in
             ZStack {
                 VStack {
+
                     ZStack {
                         Image("ScrollOpen")
                             .overlay{
@@ -46,9 +47,10 @@ struct ChengYuListView: View {
                             Spacer()
                         }
                     }
-                    .padding(.top, 30)
+//                    .frame(height: geo.size.height * 0.2)
+                    .padding(.top, 50)
                     
-                    Spacer()
+//                    Spacer()
                     LazyVGrid(columns: columns, spacing: 100) {
                         ForEach(gameViewModel.levels) { level in
                             ZStack {
@@ -81,8 +83,8 @@ struct ChengYuListView: View {
                             .padding(.horizontal, 20)
                         }
                     }
-                    .frame(height: geo.size.height * 0.73)
-                    Spacer()
+                    .frame(height: geo.size.height * 0.68)
+//                    Spacer()
                     HStack {
                         Image("ChineseLantern01")
                             .padding(.leading)

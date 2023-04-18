@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct TopBarView: View {
-    @Binding var livesLeft: Int
-    @Binding var timeLeft: Int
+//    @Binding var livesLeft: Int
+//    @Binding var timeLeft: Int
     // Non sono sicuro che un binding basti per manifestare il cambio
-    @Binding var chengYu: ChengYu
+
+//    @Binding var chengYu: ChengYu
     
-    @ObservedObject var gameViewModel: GameViewModel
+    @ObservedObject var level: Level
+    @EnvironmentObject var gameViewModel: GameViewModel
+    
     var body: some View {
         
         GeometryReader { geo in
@@ -23,16 +26,16 @@ struct TopBarView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.gameButtonGradient)
                         .frame(width: geo.size.width * 0.25, height: geo.size.height * 0.07)
-                    HStack(spacing: 25) {
-                        Image(systemName: livesLeft >= 1 ? "heart.fill" : "heart")
+                    HStack(spacing: 15) {
+                        Image(systemName: gameViewModel.livesLeft >= 1 ? "heart.fill" : "heart")
                             .foregroundColor(.redHeart)
                             .font(.system(size: 44))
                             .shadow(radius: 5)
-                        Image(systemName: livesLeft >= 2 ? "heart.fill" : "heart")
+                        Image(systemName: gameViewModel.livesLeft >= 2 ? "heart.fill" : "heart")
                             .foregroundColor(.redHeart)
                             .font(.system(size: 44))
                             .shadow(radius: 5)
-                        Image(systemName: livesLeft >= 3 ? "heart.fill" : "heart")
+                        Image(systemName: gameViewModel.livesLeft >= 3 ? "heart.fill" : "heart")
                             .foregroundColor(.redHeart)
                             .font(.system(size: 44))
                             .shadow(radius: 5)
@@ -40,12 +43,12 @@ struct TopBarView: View {
                 }
                 Spacer()
                 // Time
-                if timeLeft > 0 {
+                if level.timeLeft > 0 {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.gameButtonGradient)
                             .frame(width: geo.size.width * 0.16, height: geo.size.height * 0.07)
-                        Text("\(timeLeft)")
+                        Text("\(level.timeLeft)")
                             .foregroundColor(.whiteShade)
                             .font(.system(size: 76))
                             .shadow(radius: 5)
@@ -57,9 +60,9 @@ struct TopBarView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: geo.size.width * 0.3, height: geo.size.height * 0.08)
-                            .animation(.easeIn, value: timeLeft)
+                            .animation(.easeIn, value: level.timeLeft)
                         HStack {
-                            ForEach(ChengYu.example.arrayCharacters) { character in
+                            ForEach(level.chengYu.arrayCharacters) { character in
                                 if character.isGuessed{
                                     Text(character.hanzi)
                                         .font(.system(size: UIScreen.main.bounds.width > 850 ? 70 : 50))
@@ -112,6 +115,7 @@ struct TopBarView: View {
 
 struct TopBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TopBarView(livesLeft: .constant(2), timeLeft: .constant(0), chengYu: .constant(ChengYu.example), gameViewModel: GameViewModel())
+        TopBarView(level: Level.originalLevels[0])
+            .environmentObject(GameViewModel())
     }
 }

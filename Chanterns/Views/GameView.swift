@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct GameView: View {
-    @StateObject var gameViewModel = GameViewModel()
-    @State var timeLeft: Int
-    @State var livesLeft = 3
-    @State var hasTapped = false
-    @State var level: Level
+    @EnvironmentObject var gameViewModel: GameViewModel
+    @State var tapToStart = false
+    @StateObject var level: Level
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -63,13 +61,13 @@ struct GameView: View {
                    
                 // ChengYu Scroll
                 VStack {
-                    if hasTapped {
-                        ChengYuView(chengYu: ChengYu.example, showPinyin: false)
+                    if tapToStart {
+                        ChengYuView(chengYu: level.chengYu, showPinyin: false)
                             .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
-                            .opacity(timeLeft  > 0 && !gameViewModel.isAnimationPaused  ? 1 : 0)
-                            .animation(Animation.default, value: timeLeft)
+                            .opacity(level.timeLeft  > 0 && !gameViewModel.isAnimationPaused  ? 1 : 0)
+                            .animation(Animation.default, value: level.timeLeft)
 
-                    } else if !hasTapped && timeLeft > 0 {
+                    } else if !tapToStart && level.timeLeft > 0 {
                         Image("ScrollClose")
                             .resizable()
                             .scaledToFit()
@@ -86,8 +84,8 @@ struct GameView: View {
                     Text("Tap on the screen to start!")
                         .foregroundColor(.yellowStar)
                         .font(.system(size: 48))
-                        .opacity(!hasTapped ? 1 : 0)
-                        .animation(Animation.default, value: hasTapped)
+                        .opacity(!tapToStart ? 1 : 0)
+                        .animation(Animation.default, value: tapToStart)
                     
                 }
                 
@@ -122,6 +120,7 @@ struct GameView: View {
 
                         // change the index on tap gesture and reset position
                         .onTapGesture {
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnA, level: level)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnA, geo: geo)                       }
                     }
                     
@@ -149,6 +148,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnB, level: level)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnB, geo: geo)                       }
                     }
                     
@@ -175,6 +175,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnC, level: level)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnC, geo: geo)                       }
                     }
                     
@@ -201,6 +202,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnD, level: level)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)                       }
                     }
                 }
@@ -210,10 +212,12 @@ struct GameView: View {
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
                 }
                 
-                TopBarView(livesLeft: $livesLeft, timeLeft: $timeLeft, chengYu: .constant(ChengYu.example), gameViewModel: gameViewModel)
+                // Non si aggiorna la view
+                TopBarView(level: level)
+//                    .environmentObject(gameViewModel)
                     .onReceive(timer) { _ in
-                        if timeLeft > 0 && hasTapped && !gameViewModel.isAnimationPaused {
-                                timeLeft -= 1
+                        if level.timeLeft > 0 && tapToStart && !gameViewModel.isAnimationPaused {
+                            level.timeLeft -= 1
                         }
                     }
                 }
@@ -227,12 +231,12 @@ struct GameView: View {
             // To start the game
             .onTapGesture {
                 withAnimation {
-                hasTapped = true
+                tapToStart = true
                 }
             }
             // DECOMMENTARE
-            .onChange(of: timeLeft) { _ in
-                if timeLeft == 0 {
+            .onChange(of: level.timeLeft) { _ in
+                if level.timeLeft == 0 {
                     gameViewModel.isGameStarted = true
                     gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY, level: level.levelNumber)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -268,6 +272,7 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(timeLeft: 3, level: Level.originalLevels[0])
+        GameView(level: Level.originalLevels[0])
+            .environmentObject(GameViewModel())
     }
 }

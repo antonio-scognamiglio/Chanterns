@@ -40,15 +40,14 @@ struct LevelsView: View {
                             Spacer()
                         }
                     }
-                    .padding(.top, 30)
+                    .padding(.top, 50)
                     Spacer()
+                    
                     LazyVGrid(columns: columns, spacing: 100) {
                         ForEach(gameViewModel.levels) { level in
-//                            let index = gameViewModel.levels.firstIndex { loopLevel in
-//                                level.id == loopLevel.id
-//                            } ?? 0
+
                             if level.isUnlocked {
-                                NavigationLink(destination: GameView(timeLeft: 10, level: level)){
+                                NavigationLink(destination: GameView(level: level)){
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(Color.scrollPaper)
@@ -83,7 +82,7 @@ struct LevelsView: View {
                             }
                         }
                     }
-                    .frame(height: geo.size.height * 0.7)
+                    .frame(height: geo.size.height * 0.68)
                     Spacer()
                     HStack {
                         Image("ChineseLantern02b")

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameMenuView: View {
-    @EnvironmentObject var gameViewModel: GameViewModel
+    @StateObject var gameViewModel = GameViewModel()
     @State var isShowingOnboarding = true
     var body: some View {
         

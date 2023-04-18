@@ -7,17 +7,25 @@
 
 import Foundation
 
-struct Level: Equatable, Identifiable {
+class Level: Equatable, Identifiable, ObservableObject {
     static func == (lhs: Level, rhs: Level) -> Bool {
         lhs.id == rhs.id
     }
     
-    let id = UUID()
-    var timeLeft: Int
-    var chengYu: ChengYu
-    var isUnlocked: Bool
-    var isCompleted: Bool
-    var levelNumber: LevelNumber
+    @Published var id = UUID()
+    @Published var timeLeft: Int
+    @Published var chengYu: ChengYu
+    @Published var isUnlocked: Bool
+    @Published var isCompleted: Bool
+    @Published var levelNumber: LevelNumber
+    
+    init(timeLeft: Int, chengYu: ChengYu, isUnlocked: Bool, isCompleted: Bool, levelNumber: LevelNumber) {
+        self.timeLeft = timeLeft
+        self.chengYu = chengYu
+        self.isUnlocked = isUnlocked
+        self.isCompleted = isCompleted
+        self.levelNumber = levelNumber
+    }
     
     static let originalLevels: [Level] = [
         Level(

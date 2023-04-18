@@ -14,6 +14,7 @@ struct ChanternsApp: App {
     var body: some Scene {
         WindowGroup {
             GameMenuView()
+                .statusBar(hidden: true)
                 .preferredColorScheme(.light)
                 .environmentObject(gameViewModel)
         }
