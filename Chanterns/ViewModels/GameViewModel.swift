@@ -230,10 +230,10 @@ class GameViewModel: ObservableObject {
     }
     
     // Questa funzione restituisce il livello corrente allo stato non iniziato
-    func tryAgain(level: Level) -> Level {
+    func tryAgain(level: Level) {
         resetGame()
         let levelIndex: Int = levels.firstIndex(of: level) ?? 0
-        return levels[levelIndex]
+        level.cleanLevel(level: levels[levelIndex])
     }
     
     func nextLevel(level: Level) -> Level? {

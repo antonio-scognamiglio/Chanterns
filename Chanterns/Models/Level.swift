@@ -88,6 +88,13 @@ class Level: Equatable, Identifiable, ObservableObject {
                                              complete: "胡说八道", meaning: "Talk nonsense"), isUnlocked: false, isCompleted: false, levelNumber: .level9)
         
         ]
+    
+    func cleanLevel(level: Level){
+
+        self.chengYu = level.chengYu
+        self.timeLeft = level.timeLeft
+    }
+
 }
 
 enum LevelNumber: String {

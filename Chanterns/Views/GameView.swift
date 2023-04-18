@@ -11,6 +11,11 @@ struct GameView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     @State var tapToStart = false
     @StateObject var currentLevel: Level
+//    @State var tryAgain: Bool = false {
+//        didSet {
+//            gameViewModel.tryAgain(level: currentLevel)
+//        }
+//    }
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     

@@ -24,6 +24,7 @@ struct LostMenuView: View {
                                 Button {
                                     withAnimation {
 // try again action
+                                        gameViewModel.tryAgain(level: currentLevel)
                                     }
                                     
                                 } label: {
