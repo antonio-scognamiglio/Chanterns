@@ -13,25 +13,21 @@ class GameViewModel: ObservableObject {
     
     // This will be used to pause all the animations
     @Published var isAnimationPaused = false
-    var yStartPosition: CGFloat = 0
-    var YEndPosition: CGFloat = 0
+    
+//    var yStartPosition: CGFloat = 0
+//    var YEndPosition: CGFloat = 0
     
     @Published var chineseLanternColumns: ChineseLanternColumns = ChineseLanternColumns()
     @Published var livesLeft = 3
     @Published var leftToBeGuessed: [String] = []
-
+    @Published var hasLost = false
+    @Published var hasWon = false
+    @Published var showCongratulations = false
     @Published var levels: [Level] = Level.originalLevels
     
     
-//    static let charactersList = [
-//        "我","你","老","莫","是","人","吗","包","开","门","见","山","压","力","效","应","全","神","贯","注","朝","三","暮","四","厮","守","终","生","眼","见","为","实","四","海","为","家","顺","其","自","然","火","上","加","油","胡","说","八","道"
-//    ]
     static let lanternImages = ["Lantern01", "Lantern02", "Lantern03"]
     
-//    private func generateLantern (level: Level) -> ChineseLantern {
-//        let newLantern = ChineseLantern(lanternImage: GameViewModel.lanternImages.randomElement()!, character: GameViewModel.charactersList.randomElement()!, isAnimationEnd: false, animationTime: Double.random(in: 3.0...6.00), isTapped: false)
-//        return newLantern
-//    }
     
     private func generateLantern (level: LevelNumber) -> ChineseLantern {
         let newLantern = ChineseLantern(lanternImage: GameViewModel.lanternImages.randomElement()!, character: level.levelCharacters().randomElement()!, isAnimationEnd: false, animationTime: Double.random(in: 3.0...6.00), isTapped: false)
@@ -65,13 +61,24 @@ class GameViewModel: ObservableObject {
                 }){
                 leftToBeGuessed.removeFirst()
                 level.chengYu.arrayCharacters[characterIndex].isGuessed = true
-                }
-            } else {
-                if livesLeft > 0 {
-                    withAnimation {
-                        livesLeft -= 1
+                    if leftToBeGuessed.isEmpty {
+                        // svuotare tutte le colonne
+                        withAnimation {
+                            showCongratulations = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                            self.hasWon = true
+                        }
+                    }
+                        
                     }
                 }
+            } else if livesLeft >= 1 {
+                    withAnimation {
+                        livesLeft -= 1
+                        if livesLeft == 0 {
+                            hasLost = true
+                        }
+                    }
             }
         }
     }
@@ -153,6 +160,29 @@ class GameViewModel: ObservableObject {
         } else {
             return false
         }
+    }
+    
+    func resetColumns() {
+        withAnimation {
+            chineseLanternColumns.columnA.chineseLanternsChunk = []
+            chineseLanternColumns.columnB.chineseLanternsChunk = []
+            chineseLanternColumns.columnC.chineseLanternsChunk = []
+            chineseLanternColumns.columnD.chineseLanternsChunk = []
+        }
+        
+        // oppure chineseLanternColumns = ChineseLanternColumns()
+    }
+    
+    func resetStats() {
+        
+    }
+    
+    func restartGame(){
+        
+    }
+    
+    func nextLevel() {
+        
     }
     
 }

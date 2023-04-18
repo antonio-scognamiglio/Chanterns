@@ -14,8 +14,6 @@ struct GameView: View {
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    var arrayCharacters = ["你","好","老","神"]
-    
     var columnIndex: (CurrentColumn) -> Int {
         {
             column in
@@ -72,20 +70,37 @@ struct GameView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
+                        
                     }
-//                    else {
-//                        ChengYuView(chengYu: ChengYu.example, showPinyin: false)
-//                            .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
-//                            .opacity(0)
-//                    }
                     
                 Text("")
-                        .frame(height: geo.size.height * 0.3)
-                    Text("Tap on the screen to start!")
-                        .foregroundColor(.yellowStar)
-                        .font(.system(size: 48))
-                        .opacity(!tapToStart ? 1 : 0)
-                        .animation(Animation.default, value: tapToStart)
+                        .frame(height: geo.size.height * 0.4)
+
+                    if !tapToStart {
+                        Text("Tap on the screen to start!")
+                            .foregroundColor(.yellowStar)
+                            .font(.system(size: 48))
+                            .opacity(!tapToStart ? 1 : 0)
+                            .animation(Animation.default, value: tapToStart)
+                    } else if gameViewModel.showCongratulations && !gameViewModel.hasWon {
+                        Text("Congratulations!")
+                            .foregroundColor(.yellowStar)
+                            .font(.system(size: 48))
+                    } else if gameViewModel.hasWon {
+                        Text("Tap on the screen to go to the next level!")
+                            .foregroundColor(.yellowStar)
+                            .font(.system(size: 48))
+                            .frame(width: geo.size.width * 0.9)
+                    } else if gameViewModel.hasLost {
+                        Text("Ops ... Seems you don’t have any chances left.")
+                            .foregroundColor(.yellowStar)
+                            .font(.system(size: 48))
+                            .frame(width: geo.size.width * 0.9)
+                    }
+                    
+//                    Text("Tap on the screen to start!")
+//                        .foregroundColor(.yellowStar)
+//                        .font(.system(size: 48))
                     
                 }
                 
@@ -208,8 +223,11 @@ struct GameView: View {
                 }
                 
                 if gameViewModel.isAnimationPaused {
-                        PauseView(gameViewModel: gameViewModel)
+                        PauseView()
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
+                } else if gameViewModel.hasLost {
+                    LostMenuView()
+                    .transition(.asymmetric(insertion: .scale, removal: .identity))
                 }
                 
                 // Non si aggiorna la view
@@ -223,12 +241,8 @@ struct GameView: View {
                 }
             .navigationBarBackButtonHidden()
            
-            // Inizializzo le distanze
+        
             .onAppear {
-                // non so se le sto usando ancora le distanze
-                gameViewModel.yStartPosition = geo.frame(in: .global).maxY
-                gameViewModel.YEndPosition = geo.frame(in: .global).minY - 200
-                
                 level.chengYu.arrayCharacters.forEach { character in
                     gameViewModel.leftToBeGuessed.append(character.hanzi)
                 }
