@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 class GameViewModel: ObservableObject {
+    @Published var currentLevel = Level.originalLevels[0]
     @Published var isGameStarted = false
-    
     // This will be used to pause all the animations
     @Published var isAnimationPaused = false
     
@@ -230,10 +230,12 @@ class GameViewModel: ObservableObject {
     }
     
     // Questa funzione restituisce il livello corrente allo stato non iniziato
-    func tryAgain(level: Level) -> Level {
+    func tryAgain(level: Level) {
         resetGame()
         let levelIndex: Int = levels.firstIndex(of: level) ?? 0
-        return levels[levelIndex]
+//        return levels[levelIndex]
+            currentLevel = levels[levelIndex]
+        
     }
     
     func nextLevel(level: Level) -> Level? {

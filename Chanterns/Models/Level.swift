@@ -29,7 +29,7 @@ class Level: Equatable, Identifiable, ObservableObject {
     
     static let originalLevels: [Level] = [
         Level(
-            timeLeft: 1,
+            timeLeft: 10,
             chengYu: ChengYu(arrayCharacters: [ChineseCharacter(hanzi: "开", pinyin: "kāi", isGuessed: false),
                                                ChineseCharacter(hanzi: "门", pinyin: "mén", isGuessed: false),
                                                ChineseCharacter(hanzi: "见", pinyin: "jiàn", isGuessed: false),

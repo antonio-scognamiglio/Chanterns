@@ -10,7 +10,7 @@ import SwiftUI
 struct LevelsView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     @Environment (\.dismiss) var dismiss
-    
+    @State private var isActive = false
     let columns = [
         GridItem(.adaptive(minimum: 270))
     ]
@@ -47,21 +47,29 @@ struct LevelsView: View {
                         ForEach(gameViewModel.levels) { level in
 
                             if level.isUnlocked {
-                                NavigationLink(destination: GameView(currentLevel: level)){
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.scrollPaper)
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(lineWidth: 5)
-                                            .fill(Color.yellowScroll)
+                                NavigationLink(destination: GameView(), isActive: $isActive){
+                                    Button {
+                                        gameViewModel.currentLevel = level
+                                        withAnimation {
+                                            isActive = true
+                                        }
+                                    } label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .fill(Color.scrollPaper)
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .stroke(lineWidth: 5)
+                                                .fill(Color.yellowScroll)
+                                        }
+                                        .overlay {
+                                                Text(level.levelNumber.rawValue)
+                                                    .font(.system(size: 72))
+                                                    .foregroundColor(.black)
+                                        }
+                                        .frame(minHeight: 160)
+                                        .padding(.horizontal, 50)
                                     }
-                                    .overlay {
-                                            Text(level.levelNumber.rawValue)
-                                                .font(.system(size: 72))
-                                                .foregroundColor(.black)
-                                    }
-                                    .frame(minHeight: 160)
-                                    .padding(.horizontal, 50)
+                                    
                                 }
                             } else {
                                 ZStack {
