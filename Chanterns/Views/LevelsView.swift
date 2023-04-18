@@ -47,7 +47,7 @@ struct LevelsView: View {
                         ForEach(gameViewModel.levels) { level in
 
                             if level.isUnlocked {
-                                NavigationLink(destination: GameView(level: level)){
+                                NavigationLink(destination: GameView(currentLevel: level)){
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(Color.scrollPaper)

@@ -24,6 +24,7 @@ class GameViewModel: ObservableObject {
     @Published var hasWon = false
     @Published var showCongratulations = false
     @Published var levels: [Level] = Level.originalLevels
+
     
     
     static let lanternImages = ["Lantern01", "Lantern02", "Lantern03"]
@@ -60,7 +61,7 @@ class GameViewModel: ObservableObject {
                     character.hanzi == column.chineseLanternsChunk[index].character
                 }){
                 leftToBeGuessed.removeFirst()
-                    transformCharacter(hanziToTransform: level.chengYu.arrayCharacters[characterIndex].hanzi)
+                    replaceCharacter(hanziToBeReplaced: level.chengYu.arrayCharacters[characterIndex].hanzi)
                 level.chengYu.arrayCharacters[characterIndex].isGuessed = true
                     if leftToBeGuessed.isEmpty {
                         // svuotare tutte le colonne
@@ -175,9 +176,9 @@ class GameViewModel: ObservableObject {
     }
     
     // sostituisce i caratteri già indovinati del chengyu con il prossimo che resta da indovinare
-    func transformCharacter(hanziToTransform: String){
+    func replaceCharacter(hanziToBeReplaced: String){
         for chineseLantern in chineseLanternColumns.columnA.chineseLanternsChunk {
-            if chineseLantern.character == hanziToTransform {
+            if chineseLantern.character == hanziToBeReplaced {
                 if leftToBeGuessed.isEmpty {
                     withAnimation {
                         chineseLantern.character = leftToBeGuessed.first!
@@ -186,7 +187,7 @@ class GameViewModel: ObservableObject {
             }
         }
         for chineseLantern in chineseLanternColumns.columnB.chineseLanternsChunk {
-            if chineseLantern.character == hanziToTransform {
+            if chineseLantern.character == hanziToBeReplaced {
                 if leftToBeGuessed.isEmpty {
                     withAnimation {
                         chineseLantern.character = leftToBeGuessed.randomElement()!
@@ -195,7 +196,7 @@ class GameViewModel: ObservableObject {
             }
         }
         for chineseLantern in chineseLanternColumns.columnC.chineseLanternsChunk {
-            if chineseLantern.character == hanziToTransform {
+            if chineseLantern.character == hanziToBeReplaced {
                 if leftToBeGuessed.isEmpty {
                     withAnimation {
                         chineseLantern.character = leftToBeGuessed.randomElement()!
@@ -204,7 +205,7 @@ class GameViewModel: ObservableObject {
             }
         }
         for chineseLantern in chineseLanternColumns.columnD.chineseLanternsChunk {
-            if chineseLantern.character == hanziToTransform {
+            if chineseLantern.character == hanziToBeReplaced {
                 if leftToBeGuessed.isEmpty {
                     withAnimation {
                         chineseLantern.character = leftToBeGuessed.randomElement()!
@@ -213,15 +214,43 @@ class GameViewModel: ObservableObject {
             }
         }
     }
-    func resetStats() {
-        
+    
+    
+    func resetGame() {
+        withAnimation {
+            isGameStarted = false
+            isAnimationPaused = false
+            chineseLanternColumns = ChineseLanternColumns()
+            livesLeft = 3
+            leftToBeGuessed = []
+            hasLost = false
+            hasWon = false
+            showCongratulations = false
+        }
     }
     
-    func restartGame(){
-        
+    // Questa funzione restituisce il livello corrente allo stato non iniziato
+    func tryAgain(level: Level) -> Level {
+        resetGame()
+        let levelIndex: Int = levels.firstIndex(of: level) ?? 0
+        return levels[levelIndex]
     }
     
-    func nextLevel() {
+    func nextLevel(level: Level) -> Level? {
+        // Resetto il gioco
+        resetGame()
+        // prendo l'indice del livello
+        let levelIndex: Int = levels.firstIndex(of: level) ?? 0
+        // segno il livello come completo
+        levels[levelIndex].isCompleted = true
+        // Se c'è un altro livello dopo questo, lo sblocco e lo restituisco
+        if levels.count - 1 > levelIndex {
+            levels[levelIndex + 1].isUnlocked = true
+            return levels[levelIndex + 1]
+        } else {
+            // Altrimenti mando dietro nil
+            return nil
+        }
         
     }
     

@@ -10,7 +10,7 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     @State var tapToStart = false
-    @StateObject var level: Level
+    @StateObject var currentLevel: Level
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -60,12 +60,12 @@ struct GameView: View {
                 // ChengYu Scroll
                 VStack {
                     if tapToStart {
-                        ChengYuView(chengYu: level.chengYu, showPinyin: false)
+                        ChengYuView(chengYu: currentLevel.chengYu, showPinyin: false)
                             .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
-                            .opacity(level.timeLeft  > 0 && !gameViewModel.isAnimationPaused  ? 1 : 0)
-                            .animation(Animation.default, value: level.timeLeft)
+                            .opacity(currentLevel.timeLeft  > 0 && !gameViewModel.isAnimationPaused  ? 1 : 0)
+                            .animation(Animation.default, value: currentLevel.timeLeft)
 
-                    } else if !tapToStart && level.timeLeft > 0 {
+                    } else if !tapToStart && currentLevel.timeLeft > 0 {
                         Image("ScrollClose")
                             .resizable()
                             .scaledToFit()
@@ -135,7 +135,7 @@ struct GameView: View {
 
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnA, level: level)
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnA, level: currentLevel)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnA, geo: geo)                       }
                     }
                     
@@ -163,7 +163,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnB, level: level)
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnB, level: currentLevel)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnB, geo: geo)                       }
                     }
                     
@@ -190,7 +190,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnC, level: level)
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnC, level: currentLevel)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnC, geo: geo)                       }
                     }
                     
@@ -217,7 +217,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnD, level: level)
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnD, level: currentLevel)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)                       }
                     }
                 }
@@ -226,16 +226,16 @@ struct GameView: View {
                         PauseView()
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
                 } else if gameViewModel.hasLost {
-                    LostMenuView()
+                    LostMenuView(currentLevel: currentLevel)
                     .transition(.asymmetric(insertion: .scale, removal: .identity))
                 }
                 
                 // Non si aggiorna la view
-                TopBarView(level: level)
+                TopBarView(level: currentLevel)
 //                    .environmentObject(gameViewModel)
                     .onReceive(timer) { _ in
-                        if level.timeLeft > 0 && tapToStart && !gameViewModel.isAnimationPaused {
-                            level.timeLeft -= 1
+                        if currentLevel.timeLeft > 0 && tapToStart && !gameViewModel.isAnimationPaused {
+                            currentLevel.timeLeft -= 1
                         }
                     }
                 }
@@ -243,21 +243,28 @@ struct GameView: View {
            
         
             .onAppear {
-                level.chengYu.arrayCharacters.forEach { character in
+                currentLevel.chengYu.arrayCharacters.forEach { character in
                     gameViewModel.leftToBeGuessed.append(character.hanzi)
                 }
             }
             // To start the game
             .onTapGesture {
-                withAnimation {
-                tapToStart = true
+                if !gameViewModel.hasWon {
+                    withAnimation {
+                    tapToStart = true
+                    }
+                } else if !gameViewModel.hasWon {
+                    withAnimation {
+                    // GO TO NEXT LEVEL
+                    }
                 }
+               
             }
             // DECOMMENTARE
-            .onChange(of: level.timeLeft) { _ in
-                if level.timeLeft == 0 {
+            .onChange(of: currentLevel.timeLeft) { _ in
+                if currentLevel.timeLeft == 0 {
                     gameViewModel.isGameStarted = true
-                    gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY, level: level.levelNumber)
+                    gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY, level: currentLevel.levelNumber)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
                             
@@ -291,7 +298,7 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(level: Level.originalLevels[0])
+        GameView(currentLevel: Level.originalLevels[0])
             .environmentObject(GameViewModel())
     }
 }
