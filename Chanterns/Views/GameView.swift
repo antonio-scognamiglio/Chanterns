@@ -135,7 +135,7 @@ struct GameView: View {
 
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnA, level: gameViewModel.currentLevel)
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnA)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnA, geo: geo)                       }
                     }
                     
@@ -163,7 +163,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnB, level: gameViewModel.currentLevel)
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnB)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnB, geo: geo)                       }
                     }
                     
@@ -190,7 +190,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnC, level: gameViewModel.currentLevel)
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnC)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnC, geo: geo)                       }
                     }
                     
@@ -217,7 +217,7 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnD, level: gameViewModel.currentLevel)
+                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnD)
                             gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)                       }
                     }
                 }
