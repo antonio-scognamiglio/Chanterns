@@ -23,6 +23,8 @@ class GameViewModel: ObservableObject {
     @Published var hasLost = false
     @Published var hasWon = false
     @Published var showCongratulations = false
+ 
+    // In questo modo funziona perché li sto assegnando ad una classe, e quindi i cambiamenti si riflettono, cioè sto copiando il loro riferimento in memoria
     @Published var levels: [Level] = Level.originalLevels
 
     
@@ -63,6 +65,7 @@ class GameViewModel: ObservableObject {
                 leftToBeGuessed.removeFirst()
 //                    replaceCharacter(hanziToBeReplaced: level.chengYu.arrayCharacters[characterIndex].hanzi)
                 level.chengYu.arrayCharacters[characterIndex].isGuessed = true
+                    
                     if leftToBeGuessed.isEmpty {
                         // svuotare tutte le colonne
                         withAnimation {
@@ -232,8 +235,23 @@ class GameViewModel: ObservableObject {
     // Questa funzione restituisce il livello corrente allo stato non iniziato
     func tryAgain(level: Level) {
         resetGame()
-        let levelIndex: Int = levels.firstIndex(of: level) ?? 0
-        level.cleanLevel(level: levels[levelIndex])
+//        let levelIndex: Int = Level.originalLevels.firstIndex(of: level) ?? 0
+        for loop in OriginalLevels.defaultLevels {
+            if level.levelNumber == loop.levelNumber {
+                print("È LUI, TROVATOOO")
+                level.chengYu = loop.chengYu
+                level.timeLeft = loop.timeLeft
+            } else  {
+                print("********** NON HO TROVATO LO STESSO LIVELLO")
+            }
+        }
+//        level.cleanLevel(level: levels[levelIndex])
+        // STA FUNZIONANDO MALE QUESTA FUNZIONE
+//        level.chengYu = Level.originalLevels[levelIndex].chengYu
+//        level.timeLeft = Level.originalLevels[levelIndex].timeLeft
+        print("***********DENTRO LA FUNZIONE")
+        print(level.timeLeft)
+        print(level.chengYu)
     }
     
     func nextLevel(level: Level) -> Level? {

@@ -12,7 +12,7 @@ struct LevelsView: View {
     @Environment (\.dismiss) var dismiss
     
     let columns = [
-        GridItem(.adaptive(minimum: 270))
+        GridItem(.adaptive(minimum: 260))
     ]
     
     var body: some View {
@@ -40,7 +40,7 @@ struct LevelsView: View {
                             Spacer()
                         }
                     }
-                    .padding(.top, 50)
+                    .padding(.top, 40)
                     Spacer()
                     
                     LazyVGrid(columns: columns, spacing: 100) {
@@ -86,10 +86,14 @@ struct LevelsView: View {
                     Spacer()
                     HStack {
                         Image("ChineseLantern02b")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: geo.size.width * 0.18)
                             .shadow(color: .pink, radius: 150)
                             .padding(.leading)
                         Spacer()
                     }
+                    .frame(height: geo.size.height * 0.12)
                 }
           
             }

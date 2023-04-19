@@ -48,7 +48,7 @@ struct ChengYuListView: View {
                         }
                     }
 //                    .frame(height: geo.size.height * 0.2)
-                    .padding(.top, 50)
+//                    .padding(.top, 50)
                     
 //                    Spacer()
                     LazyVGrid(columns: columns, spacing: 100) {
@@ -90,6 +90,7 @@ struct ChengYuListView: View {
                             .padding(.leading)
                         Spacer()
                     }
+                    .frame(height: geo.size.height * 0.12)
                 }
                 .onTapGesture {
                     withAnimation {

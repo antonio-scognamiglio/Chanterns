@@ -231,7 +231,7 @@ struct GameView: View {
                         PauseView()
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
                 } else if gameViewModel.hasLost {
-                    LostMenuView(currentLevel: currentLevel)
+                    LostMenuView(currentLevel: currentLevel, tapToStart: $tapToStart)
                     .transition(.asymmetric(insertion: .scale, removal: .identity))
                 }
                 
@@ -303,7 +303,7 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(currentLevel: Level.originalLevels[0])
+        GameView(currentLevel: OriginalLevels.defaultLevels[0])
             .environmentObject(GameViewModel())
     }
 }

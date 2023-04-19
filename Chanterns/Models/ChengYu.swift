@@ -31,5 +31,6 @@ struct ChengYu: Identifiable {
             ChineseCharacter(hanzi: "见", pinyin: "jiàn", isGuessed: false),
             ChineseCharacter(hanzi: "山", pinyin: "shān", isGuessed: false)],
         complete: "开门见山", meaning: "Come straight to the point; without preamble")
+    
 }
 

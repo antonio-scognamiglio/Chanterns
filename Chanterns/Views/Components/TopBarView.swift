@@ -115,7 +115,7 @@ struct TopBarView: View {
 
 struct TopBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TopBarView(level: Level.originalLevels[0])
+        TopBarView(level: OriginalLevels.defaultLevels[0])
             .environmentObject(GameViewModel())
     }
 }

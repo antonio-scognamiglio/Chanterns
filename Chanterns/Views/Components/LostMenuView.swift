@@ -11,6 +11,7 @@ struct LostMenuView: View {
     
     @EnvironmentObject var gameViewModel: GameViewModel
     @ObservedObject var currentLevel: Level
+    @Binding var tapToStart: Bool
     
     var body: some View {
         GeometryReader { geo in
@@ -23,8 +24,13 @@ struct LostMenuView: View {
                             VStack(spacing: 50) {
                                 Button {
                                     withAnimation {
-// try again action
+                                        // try again action
+                                        
                                         gameViewModel.tryAgain(level: currentLevel)
+                                        tapToStart = false
+                                        print("********Current Level********")
+                                        print(currentLevel.timeLeft)
+                                        print(currentLevel.chengYu.arrayCharacters)
                                     }
                                     
                                 } label: {
@@ -63,6 +69,6 @@ struct LostMenuView: View {
 
 struct LostMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        LostMenuView(currentLevel: Level.originalLevels[0])
+        LostMenuView(currentLevel: OriginalLevels.defaultLevels[0], tapToStart: .constant(false))
     }
 }
