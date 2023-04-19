@@ -33,7 +33,7 @@ struct PageOneView: View {
 
                     GeometryReader { innerGeo in
                             VStack {
-                                ChengYuView(chengYu: .example, showPinyin: true)
+                                ChengYuView(chengYu: .constant(ChengYu.example), showPinyin: true)
                                     .frame(width: innerGeo.size.width * 0.7)
                             }
                             .frame(width: innerGeo.size.width, height: innerGeo.size.height)

@@ -65,7 +65,7 @@ struct GameView: View {
                 // ChengYu Scroll
                 VStack {
                     if tapToStart {
-                        ChengYuView(chengYu: currentLevel.chengYu, showPinyin: false)
+                        ChengYuView(chengYu: $currentLevel.chengYu, showPinyin: false)
                             .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
                             .opacity(currentLevel.timeLeft  > 0 && !gameViewModel.isAnimationPaused  ? 1 : 0)
                             .animation(Animation.default, value: currentLevel.timeLeft)
@@ -275,8 +275,21 @@ struct GameView: View {
                     }
                 } else if gameViewModel.hasWon {
                     withAnimation {
+                    
                     // GO TO NEXT LEVEL
-                        
+                        if let tmpLevel = gameViewModel.nextLevel(level: currentLevel){
+//                            currentLevel.id = tmpLevel.id
+                            currentLevel.chengYu = tmpLevel.chengYu
+                            currentLevel.isUnlocked = tmpLevel.isUnlocked
+                            currentLevel.isCompleted = false
+                            currentLevel.timeLeft = tmpLevel.timeLeft
+//                            currentLevel.levelNumber = tmpLevel.levelNumber
+                            
+                            tmpLevel.chengYu.arrayCharacters.forEach { character in
+                                gameViewModel.leftToBeGuessed.append(character.hanzi)
+                            }
+                            
+                        }
                     }
                 }
                

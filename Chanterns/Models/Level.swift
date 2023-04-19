@@ -12,7 +12,7 @@ class Level: Equatable, Identifiable, ObservableObject {
         lhs.id == rhs.id
     }
     
-    let id = UUID()
+    @Published var id = UUID()
     @Published var timeLeft: Int
     @Published var chengYu: ChengYu
     @Published var isUnlocked: Bool

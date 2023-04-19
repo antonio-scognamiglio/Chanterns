@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChengYuView: View {
-    @State var chengYu: ChengYu
+    @Binding var chengYu: ChengYu
     @State var showPinyin: Bool
     
     var scrollImages = ["ScrollClose", "ScrollSemiOpen", "ScrollOpen"]
@@ -79,6 +79,6 @@ struct ChengYuView: View {
 
 struct ChengYuView_Previews: PreviewProvider {
     static var previews: some View {
-        ChengYuView(chengYu: ChengYu.example, showPinyin: true)
+        ChengYuView(chengYu: .constant(ChengYu.example), showPinyin: true)
     }
 }
