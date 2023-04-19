@@ -56,7 +56,11 @@ struct GameMenuView: View {
                 }
                 .background {
                     Image("NightSkyLightPortrait")
+                        .resizable()
+                        .scaledToFill()
                         .ignoresSafeArea()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                       
             }
                 .fullScreenCover(isPresented: $isShowingOnboarding) {
                     OnBoardingView(showOnboarding: $isShowingOnboarding)

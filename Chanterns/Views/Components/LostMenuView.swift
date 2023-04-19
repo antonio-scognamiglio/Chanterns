@@ -12,6 +12,7 @@ struct LostMenuView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     @ObservedObject var currentLevel: Level
     @Binding var tapToStart: Bool
+    @Environment (\.dismiss) var dismiss
     
     var body: some View {
         GeometryReader { geo in
@@ -25,12 +26,10 @@ struct LostMenuView: View {
                                 Button {
                                     withAnimation {
                                         // try again action
-                                        
-                                        gameViewModel.tryAgain(level: currentLevel)
+                                  
+
+                                        gameViewModel.resetLevel(level: currentLevel)
                                         tapToStart = false
-                                        print("********Current Level********")
-                                        print(currentLevel.timeLeft)
-                                        print(currentLevel.chengYu.arrayCharacters)
                                     }
                                     
                                 } label: {
@@ -45,6 +44,9 @@ struct LostMenuView: View {
                                 }
                                 Button {
                                     // pop to root action
+                        
+                                    gameViewModel.resetLevel(level: currentLevel)
+                                    dismiss()
 
                                 } label: {
                                     RoundedRectangle(cornerRadius: 15)

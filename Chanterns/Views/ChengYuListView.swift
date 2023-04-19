@@ -106,6 +106,7 @@ struct ChengYuListView: View {
             .frame(width: geo.size.width, height: geo.size.height)
             .background {
                 Image("NightSkyLightNoStars")
+                    .resizable()
                     .onTapGesture {
                         withAnimation {
                             isShowingMeaning = false

@@ -228,11 +228,14 @@ struct GameView: View {
                 }
                 
                 if gameViewModel.isAnimationPaused {
-                        PauseView()
+                        PauseView(currentLevel: currentLevel)
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
                 } else if gameViewModel.hasLost {
                     LostMenuView(currentLevel: currentLevel, tapToStart: $tapToStart)
                     .transition(.asymmetric(insertion: .scale, removal: .identity))
+                } else if gameViewModel.hasWon {
+                    ChengYuMeaningView(chengYu: currentLevel.chengYu)
+                        .transition(.asymmetric(insertion: .scale, removal: .identity))
                 }
                 
                 // Non si aggiorna la view
@@ -258,14 +261,14 @@ struct GameView: View {
                     withAnimation {
                     tapToStart = true
                     }
-                } else if !gameViewModel.hasWon {
+                } else if gameViewModel.hasWon {
                     withAnimation {
                     // GO TO NEXT LEVEL
                     }
                 }
                
             }
-            // DECOMMENTARE
+      
             .onChange(of: currentLevel.timeLeft) { _ in
                 if currentLevel.timeLeft == 0 {
                     gameViewModel.isGameStarted = true

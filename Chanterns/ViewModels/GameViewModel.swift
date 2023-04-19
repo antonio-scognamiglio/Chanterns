@@ -70,9 +70,9 @@ class GameViewModel: ObservableObject {
                         // svuotare tutte le colonne
                         withAnimation {
                             showCongratulations = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                             self.hasWon = true
-                        }
+//                        }
                     }
                         
                     }
@@ -219,7 +219,7 @@ class GameViewModel: ObservableObject {
 //    }
     
     
-    func resetGame() {
+    func resetGameViewModel() {
         withAnimation {
             isGameStarted = false
             isAnimationPaused = false
@@ -233,8 +233,8 @@ class GameViewModel: ObservableObject {
     }
     
     // Questa funzione restituisce il livello corrente allo stato non iniziato
-    func tryAgain(level: Level) {
-        resetGame()
+    func resetLevel(level: Level) {
+        resetGameViewModel()
 //        let levelIndex: Int = Level.originalLevels.firstIndex(of: level) ?? 0
         for loop in OriginalLevels.defaultLevels {
             if level.levelNumber == loop.levelNumber {
@@ -245,10 +245,6 @@ class GameViewModel: ObservableObject {
                 print("********** NON HO TROVATO LO STESSO LIVELLO")
             }
         }
-//        level.cleanLevel(level: levels[levelIndex])
-        // STA FUNZIONANDO MALE QUESTA FUNZIONE
-//        level.chengYu = Level.originalLevels[levelIndex].chengYu
-//        level.timeLeft = Level.originalLevels[levelIndex].timeLeft
         print("***********DENTRO LA FUNZIONE")
         print(level.timeLeft)
         print(level.chengYu)
@@ -256,7 +252,7 @@ class GameViewModel: ObservableObject {
     
     func nextLevel(level: Level) -> Level? {
         // Resetto il gioco
-        resetGame()
+        resetGameViewModel()
         // prendo l'indice del livello
         let levelIndex: Int = levels.firstIndex(of: level) ?? 0
         // segno il livello come completo

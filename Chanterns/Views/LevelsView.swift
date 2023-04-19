@@ -101,6 +101,8 @@ struct LevelsView: View {
             .frame(width: geo.size.width, height: geo.size.height)
             .background {
                 Image("NightSkyLightPortrait")
+                    .resizable()
+                    
                     .ignoresSafeArea()
             }
         }

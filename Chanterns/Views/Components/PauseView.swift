@@ -11,6 +11,8 @@ struct PauseView: View {
     
     @EnvironmentObject var gameViewModel: GameViewModel
 //    @Binding var isMusicOn: Bool
+    @ObservedObject var currentLevel: Level
+    @Environment (\.dismiss) var dismiss
     
     var body: some View {
         GeometryReader { geo in
@@ -48,6 +50,8 @@ struct PauseView: View {
                                 Button {
                                     // pop to root action
                                     //
+                                    gameViewModel.resetLevel(level: currentLevel)
+                                    dismiss()
                                 } label: {
                                     RoundedRectangle(cornerRadius: 15)
                                         .fill(Color.whiteShade)
@@ -89,7 +93,7 @@ struct PauseView: View {
 
 struct PauseView_Previews: PreviewProvider {
     static var previews: some View {
-        PauseView()
+        PauseView(currentLevel: OriginalLevels.defaultLevels[0])
             .environmentObject(GameViewModel())
     }
 }

@@ -65,11 +65,11 @@ struct TopBarView: View {
                             ForEach(level.chengYu.arrayCharacters) { character in
                                 if character.isGuessed{
                                     Text(character.hanzi)
-                                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 70 : 50))
+                                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 66 : 46))
                                         .animation(.easeIn, value: character.isGuessed)
                                 } else {
                                     Text("?")
-                                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 74 : 54))
+                                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 70 : 54))
                                         .animation(.easeIn, value: character.isGuessed)
                                 }
                                 
