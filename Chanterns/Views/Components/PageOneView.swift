@@ -22,21 +22,18 @@ struct PageOneView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color.whiteShade
+                Color.white
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
                     .cornerRadius(20)
                 VStack {
                     topText
-                    .font(.system(size: 44))
+                    .font(.system(size: 36))
+                    
                     .padding(.horizontal, 30)
-//                    .padding(.top)
- 
-//                        .frame(width: geo.size.width * 0.4)
-//                        .padding(.vertical, 30)
+
                     GeometryReader { innerGeo in
-                     
                             VStack {
-                                ChengYuView(chengYu: .example, showPinyin: true, fontSize: 70)
+                                ChengYuView(chengYu: .constant(ChengYu.example), showPinyin: true)
                                     .frame(width: innerGeo.size.width * 0.7)
                             }
                             .frame(width: innerGeo.size.width, height: innerGeo.size.height)
@@ -44,7 +41,8 @@ struct PageOneView: View {
                                                 
                     
                     bottomText
-                    .font(.system(size: 44))
+                    .font(.system(size: 36))
+
                     .padding(.horizontal, 30)
                     
                     HStack {
@@ -61,7 +59,6 @@ struct PageOneView: View {
                                     .foregroundColor(Color(uiColor: .systemGroupedBackground))
                                     .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
                                     .padding(.horizontal, 7)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -119,7 +116,6 @@ struct PageOneView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.trailing, 50)
-//                                    .padding(.top)
                             })
                         }
 

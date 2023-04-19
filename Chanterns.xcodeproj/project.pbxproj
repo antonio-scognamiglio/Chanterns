@@ -13,8 +13,13 @@
 		7130AB1029EC060C00F31A15 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0F29EC060C00F31A15 /* PageTwoView.swift */; };
 		7130AB1229EC0F9E00F31A15 /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */; };
 		7130AB1429EC193A00F31A15 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1329EC193A00F31A15 /* TopBarView.swift */; };
+		7130AB1629ED488400F31A15 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1529ED488400F31A15 /* PauseView.swift */; };
+		7130AB1829EDA7B800F31A15 /* LevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1729EDA7B800F31A15 /* LevelsView.swift */; };
+		7130AB1A29EDA7CA00F31A15 /* ChengYuListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */; };
+		7130AB1C29EDB1B900F31A15 /* ChengYuMeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */; };
+		7130AB2029EF0C5800F31A15 /* LostMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1F29EF0C5800F31A15 /* LostMenuView.swift */; };
 		7136585029EAA7B000416CA1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136584F29EAA7B000416CA1 /* Level.swift */; };
-		7136585229EAA7D600416CA1 /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136585129EAA7D600416CA1 /* GameMenu.swift */; };
+		7136585229EAA7D600416CA1 /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136585129EAA7D600416CA1 /* GameMenuView.swift */; };
 		71925F5E29E7E79B0081A393 /* Animation-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71925F5D29E7E79B0081A393 /* Animation-Extension.swift */; };
 		71925F6029E9ABD60081A393 /* ChengYuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71925F5F29E9ABD60081A393 /* ChengYuView.swift */; };
 		71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */; };
@@ -35,8 +40,13 @@
 		7130AB0F29EC060C00F31A15 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
 		7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
 		7130AB1329EC193A00F31A15 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		7130AB1529ED488400F31A15 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		7130AB1729EDA7B800F31A15 /* LevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsView.swift; sourceTree = "<group>"; };
+		7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuListView.swift; sourceTree = "<group>"; };
+		7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuMeaningView.swift; sourceTree = "<group>"; };
+		7130AB1F29EF0C5800F31A15 /* LostMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostMenuView.swift; sourceTree = "<group>"; };
 		7136584F29EAA7B000416CA1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		7136585129EAA7D600416CA1 /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
+		7136585129EAA7D600416CA1 /* GameMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
 		71925F5D29E7E79B0081A393 /* Animation-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation-Extension.swift"; sourceTree = "<group>"; };
 		71925F5F29E9ABD60081A393 /* ChengYuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuView.swift; sourceTree = "<group>"; };
 		71F54D1129DEB53000F2DD9D /* Chanterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chanterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,12 +75,15 @@
 		7130AB0629EAF31800F31A15 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */,
 				7130AB0729EAF47700F31A15 /* PageOneView.swift */,
 				7130AB0F29EC060C00F31A15 /* PageTwoView.swift */,
 				7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */,
 				71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */,
 				71925F5F29E9ABD60081A393 /* ChengYuView.swift */,
 				7130AB1329EC193A00F31A15 /* TopBarView.swift */,
+				7130AB1529ED488400F31A15 /* PauseView.swift */,
+				7130AB1F29EF0C5800F31A15 /* LostMenuView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -134,8 +147,10 @@
 		71F54D2C29E0267300F2DD9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7136585129EAA7D600416CA1 /* GameMenuView.swift */,
 				7130AB0429EAEFDC00F31A15 /* OnBoardingView.swift */,
-				7136585129EAA7D600416CA1 /* GameMenu.swift */,
+				7130AB1729EDA7B800F31A15 /* LevelsView.swift */,
+				7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */,
 				71F54D1629DEB53000F2DD9D /* GameView.swift */,
 				7130AB0629EAF31800F31A15 /* Components */,
 			);
@@ -225,7 +240,9 @@
 				71F54D1729DEB53000F2DD9D /* GameView.swift in Sources */,
 				7130AB1429EC193A00F31A15 /* TopBarView.swift in Sources */,
 				71925F6029E9ABD60081A393 /* ChengYuView.swift in Sources */,
+				7130AB1629ED488400F31A15 /* PauseView.swift in Sources */,
 				71F54D2529E023E400F2DD9D /* ChineseLanternView.swift in Sources */,
+				7130AB1C29EDB1B900F31A15 /* ChengYuMeaningView.swift in Sources */,
 				71F54D2F29E05C3600F2DD9D /* Array-Extension.swift in Sources */,
 				71F54D2729E0257200F2DD9D /* GameViewModel.swift in Sources */,
 				71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */,
@@ -234,11 +251,14 @@
 				7136585029EAA7B000416CA1 /* Level.swift in Sources */,
 				7130AB0529EAEFDC00F31A15 /* OnBoardingView.swift in Sources */,
 				7130AB0829EAF47700F31A15 /* PageOneView.swift in Sources */,
-				7136585229EAA7D600416CA1 /* GameMenu.swift in Sources */,
+				7136585229EAA7D600416CA1 /* GameMenuView.swift in Sources */,
 				71F54D2929E0264500F2DD9D /* ChengYu.swift in Sources */,
 				7130AB1029EC060C00F31A15 /* PageTwoView.swift in Sources */,
 				7130AB1229EC0F9E00F31A15 /* PageThreeView.swift in Sources */,
 				7130AB0A29EAFCD000F31A15 /* Color-Extension.swift in Sources */,
+				7130AB1A29EDA7CA00F31A15 /* ChengYuListView.swift in Sources */,
+				7130AB1829EDA7B800F31A15 /* LevelsView.swift in Sources */,
+				7130AB2029EF0C5800F31A15 /* LostMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,8 +393,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,8 +427,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

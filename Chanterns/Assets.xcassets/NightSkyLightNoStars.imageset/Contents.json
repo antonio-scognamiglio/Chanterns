@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "NightSkyLightNoStars.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ChineseLantern02b.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

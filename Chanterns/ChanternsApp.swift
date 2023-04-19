@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct ChanternsApp: App {
+    @StateObject var gameViewModel = GameViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            OnBoardingView()
+            GameMenuView()
+                .statusBar(hidden: true)
+                .preferredColorScheme(.light)
+                .environmentObject(gameViewModel)
         }
     }
 }
