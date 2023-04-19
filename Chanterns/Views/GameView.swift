@@ -101,11 +101,11 @@ struct GameView: View {
                             .foregroundColor(.yellowStar)
                             .font(.system(size: 48))
                             .frame(width: geo.size.width * 0.9)
+                    } else {
+                        // PlaceHolder for the size
+                        Text(" ")
+                            .font(.system(size: 48))
                     }
-                    
-//                    Text("Tap on the screen to start!")
-//                        .foregroundColor(.yellowStar)
-//                        .font(.system(size: 48))
                     
                 }
                 

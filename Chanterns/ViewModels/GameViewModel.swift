@@ -63,7 +63,7 @@ class GameViewModel: ObservableObject {
                     character.hanzi == column.chineseLanternsChunk[index].character
                 }){
                 leftToBeGuessed.removeFirst()
-//                    replaceCharacter(hanziToBeReplaced: level.chengYu.arrayCharacters[characterIndex].hanzi)
+                    replaceCharacter(hanziToBeReplaced: level.chengYu.arrayCharacters[characterIndex].hanzi)
                 level.chengYu.arrayCharacters[characterIndex].isGuessed = true
                     
                     if leftToBeGuessed.isEmpty {
@@ -178,45 +178,47 @@ class GameViewModel: ObservableObject {
         // oppure chineseLanternColumns = ChineseLanternColumns()
     }
     
-    // sostituisce i caratteri già indovinati del chengyu con il prossimo che resta da indovinare
-//    func replaceCharacter(hanziToBeReplaced: String){
-//        for chineseLantern in chineseLanternColumns.columnA.chineseLanternsChunk {
-//            if chineseLantern.character == hanziToBeReplaced {
-//                if leftToBeGuessed.isEmpty {
-//                    withAnimation {
-//                        chineseLantern.character = leftToBeGuessed.first ?? "好"
-//                    }
-//                }
-//            }
-//        }
-//        for chineseLantern in chineseLanternColumns.columnB.chineseLanternsChunk {
-//            if chineseLantern.character == hanziToBeReplaced {
-//                if leftToBeGuessed.isEmpty {
-//                    withAnimation {
-//                        chineseLantern.character = leftToBeGuessed.first ?? "好"
-//                    }
-//                }
-//            }
-//        }
-//        for chineseLantern in chineseLanternColumns.columnC.chineseLanternsChunk {
-//            if chineseLantern.character == hanziToBeReplaced {
-//                if leftToBeGuessed.isEmpty {
-//                    withAnimation {
-//                        chineseLantern.character = leftToBeGuessed.first ?? "好"
-//                    }
-//                }
-//            }
-//        }
-//        for chineseLantern in chineseLanternColumns.columnD.chineseLanternsChunk {
-//            if chineseLantern.character == hanziToBeReplaced {
-//                if leftToBeGuessed.isEmpty {
-//                    withAnimation {
-//                        chineseLantern.character = leftToBeGuessed.first ?? "好"
-//                    }
-//                }
-//            }
-//        }
-//    }
+//     sostituisce i caratteri già indovinati del chengyu con il prossimo che resta da indovinare
+    func replaceCharacter(hanziToBeReplaced: String){
+        for chineseLantern in chineseLanternColumns.columnA.chineseLanternsChunk {
+            if chineseLantern.character == hanziToBeReplaced {
+                if !leftToBeGuessed.isEmpty {
+                    withAnimation {
+                        
+                        chineseLantern.character = leftToBeGuessed.first ?? "好"
+                        
+                    }
+                }
+            }
+        }
+        for chineseLantern in chineseLanternColumns.columnB.chineseLanternsChunk {
+            if chineseLantern.character == hanziToBeReplaced {
+                if !leftToBeGuessed.isEmpty {
+                    withAnimation {
+                        chineseLantern.character = leftToBeGuessed.first ?? "好"
+                    }
+                }
+            }
+        }
+        for chineseLantern in chineseLanternColumns.columnC.chineseLanternsChunk {
+            if chineseLantern.character == hanziToBeReplaced {
+                if !leftToBeGuessed.isEmpty {
+                    withAnimation {
+                        chineseLantern.character = leftToBeGuessed.first ?? "好"
+                    }
+                }
+            }
+        }
+        for chineseLantern in chineseLanternColumns.columnD.chineseLanternsChunk {
+            if chineseLantern.character == hanziToBeReplaced {
+                if !leftToBeGuessed.isEmpty {
+                    withAnimation {
+                        chineseLantern.character = leftToBeGuessed.first ?? "好"
+                    }
+                }
+            }
+        }
+    }
     
     
     func resetGameViewModel() {
@@ -238,16 +240,11 @@ class GameViewModel: ObservableObject {
 //        let levelIndex: Int = Level.originalLevels.firstIndex(of: level) ?? 0
         for loop in OriginalLevels.defaultLevels {
             if level.levelNumber == loop.levelNumber {
-                print("È LUI, TROVATOOO")
                 level.chengYu = loop.chengYu
                 level.timeLeft = loop.timeLeft
-            } else  {
-                print("********** NON HO TROVATO LO STESSO LIVELLO")
             }
         }
-        print("***********DENTRO LA FUNZIONE")
-        print(level.timeLeft)
-        print(level.chengYu)
+        
     }
     
     func nextLevel(level: Level) -> Level? {

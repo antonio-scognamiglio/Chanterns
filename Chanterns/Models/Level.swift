@@ -198,9 +198,9 @@ enum LevelNumber: String {
     }
     
     func levelCharacters() -> [String] {
+        var levelCharacters: [String] = []
         switch self {
         case .level1:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level1 {
                     for character in level.chengYu.arrayCharacters {
@@ -208,78 +208,119 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
             return levelCharacters.shuffled()
         
         case .level2:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level2 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 10) + ChineseCharacter.characterList
-//                    + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
             return levelCharacters.shuffled()
             
         case .level3:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level3 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 9) + ChineseCharacter.characterList
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
             return levelCharacters.shuffled()
             
         case .level4:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level4 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 8) + ChineseCharacter.characterList
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
             return levelCharacters.shuffled()
         case .level5:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level5 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 7) + ChineseCharacter.characterList
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
             return levelCharacters.shuffled()
         case .level6:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level6 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 6) + ChineseCharacter.characterList
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
+            
             return levelCharacters.shuffled()
+            
         case .level7:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level7 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
             return levelCharacters.shuffled()
+            
         case .level8:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level8 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
             return levelCharacters.shuffled()
+            
         case .level9:
-            var levelCharacters: [String] = []
             for level in Level.originalLevels {
                 if level.levelNumber == .level9 {
-                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
+                    for character in level.chengYu.arrayCharacters {
+                        for _ in 1...5 {
+                            levelCharacters.append(character.hanzi)
+                        }
+                    }
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
                 }
             }
             return levelCharacters.shuffled()
+//            for level in Level.originalLevels {
+//                if level.levelNumber == .level9 {
+//                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
+//                }
+//            }
+//            return levelCharacters.shuffled()
         }
     }
 }
