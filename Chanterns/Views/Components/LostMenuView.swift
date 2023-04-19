@@ -28,13 +28,13 @@ struct LostMenuView: View {
                                         // try again action
                                 
                                         gameViewModel.resetLevel(level: currentLevel)
-                                        print("******* Cheng Yu dopo il reset")
-                                        print(currentLevel.chengYu)
+//                                        print("******* Cheng Yu dopo il reset")
+//                                        print(currentLevel.chengYu)
                                         tapToStart = false
                                     }
-                                    currentLevel.chengYu.arrayCharacters.forEach { character in
-                                        gameViewModel.leftToBeGuessed.append(character.hanzi)
-                                    }
+//                                    currentLevel.chengYu.arrayCharacters.forEach { character in
+//                                        gameViewModel.leftToBeGuessed.append(character.hanzi)
+//                                    }
                                 } label: {
                                     RoundedRectangle(cornerRadius: 15)
                                         .fill(Color.whiteShade)

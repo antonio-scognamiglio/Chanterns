@@ -179,9 +179,13 @@ class GameViewModel: ObservableObject {
     }
     
 //     sostituisce i caratteri già indovinati del chengyu con il prossimo che resta da indovinare
-    func replaceCharacter(hanziToBeReplaced: String){
+    func replaceCharacter(hanziToBeReplaced: String) {
         for chineseLantern in chineseLanternColumns.columnA.chineseLanternsChunk {
-            if chineseLantern.character == hanziToBeReplaced {
+            
+            let index = chineseLanternColumns.columnA.chineseLanternsChunk.firstIndex(of: chineseLantern) ?? 0
+            
+            if chineseLantern.character == hanziToBeReplaced && index > chineseLanternColumns.columnA.index {
+                
                 if !leftToBeGuessed.isEmpty {
                     withAnimation {
                         
@@ -192,7 +196,8 @@ class GameViewModel: ObservableObject {
             }
         }
         for chineseLantern in chineseLanternColumns.columnB.chineseLanternsChunk {
-            if chineseLantern.character == hanziToBeReplaced {
+            let index = chineseLanternColumns.columnB.chineseLanternsChunk.firstIndex(of: chineseLantern) ?? 0
+            if chineseLantern.character == hanziToBeReplaced  && index > chineseLanternColumns.columnB.index{
                 if !leftToBeGuessed.isEmpty {
                     withAnimation {
                         chineseLantern.character = leftToBeGuessed.first ?? "好"
@@ -201,7 +206,8 @@ class GameViewModel: ObservableObject {
             }
         }
         for chineseLantern in chineseLanternColumns.columnC.chineseLanternsChunk {
-            if chineseLantern.character == hanziToBeReplaced {
+            let index = chineseLanternColumns.columnC.chineseLanternsChunk.firstIndex(of: chineseLantern) ?? 0
+            if chineseLantern.character == hanziToBeReplaced && index > chineseLanternColumns.columnC.index {
                 if !leftToBeGuessed.isEmpty {
                     withAnimation {
                         chineseLantern.character = leftToBeGuessed.first ?? "好"
@@ -210,7 +216,8 @@ class GameViewModel: ObservableObject {
             }
         }
         for chineseLantern in chineseLanternColumns.columnD.chineseLanternsChunk {
-            if chineseLantern.character == hanziToBeReplaced {
+            let index = chineseLanternColumns.columnD.chineseLanternsChunk.firstIndex(of: chineseLantern) ?? 0
+            if chineseLantern.character == hanziToBeReplaced && index > chineseLanternColumns.columnD.index {
                 if !leftToBeGuessed.isEmpty {
                     withAnimation {
                         chineseLantern.character = leftToBeGuessed.first ?? "好"
@@ -243,6 +250,9 @@ class GameViewModel: ObservableObject {
                 level.chengYu = loop.chengYu
                 level.timeLeft = loop.timeLeft
             }
+        }
+        level.chengYu.arrayCharacters.forEach { character in
+            leftToBeGuessed.append(character.hanzi)
         }
         
     }

@@ -140,8 +140,11 @@ struct GameView: View {
 
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnA, level: currentLevel)
-                            gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnA, geo: geo)                       }
+                            if !gameViewModel.hasWon {
+                                gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnA, level: currentLevel)
+                                gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnA, geo: geo)
+                            }
+                            }
                     }
                     
                     // Commento un attimo
@@ -168,8 +171,11 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnB, level: currentLevel)
-                            gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnB, geo: geo)                       }
+                            if !gameViewModel.hasWon {
+                                gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnB, level: currentLevel)
+                                gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnB, geo: geo)
+                            }
+                            }
                     }
                     
                     // Third Column
@@ -195,8 +201,11 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnC, level: currentLevel)
-                            gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnC, geo: geo)                       }
+                            if !gameViewModel.hasWon {
+                                gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnC, level: currentLevel)
+                                gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnC, geo: geo)
+                            }
+                            }
                     }
                     
                     // Fourth Column
@@ -222,8 +231,11 @@ struct GameView: View {
                         }
                         // change the index on tap gesture and reset position
                         .onTapGesture {
+                            if !gameViewModel.hasWon {
                             gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnD, level: currentLevel)
-                            gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)                       }
+                            gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)
+                        }
+                        }
                     }
                 }
                 
@@ -264,6 +276,7 @@ struct GameView: View {
                 } else if gameViewModel.hasWon {
                     withAnimation {
                     // GO TO NEXT LEVEL
+                        
                     }
                 }
                
