@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct TopBarView: View {
-//    @Binding var livesLeft: Int
-//    @Binding var timeLeft: Int
-    // Non sono sicuro che un binding basti per manifestare il cambio
-
-//    @Binding var chengYu: ChengYu
     
     @ObservedObject var level: Level
     @EnvironmentObject var gameViewModel: GameViewModel
@@ -79,21 +74,11 @@ struct TopBarView: View {
                 }
                 Spacer()
                 Spacer()
-                // Play/Pause Button
                 Button {
-                   
+                    
                     withAnimation {
                         gameViewModel.isAnimationPaused = true
-                        
-//                        gameViewModel.temporaryArray = gameViewModel.chineseLanternColumns
-//                        gameViewModel.chineseLanternColumns = ChineseLanternColumns()
-
-//                        gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk = []
-//                        gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk = []
-//                        gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk = []
-//                        gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk = []
                     }
-                    
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -105,7 +90,6 @@ struct TopBarView: View {
                             .shadow(radius: 5)
                     }
                 }
-              
             }
             .padding(.horizontal, 10)
             .padding(.top, 30)

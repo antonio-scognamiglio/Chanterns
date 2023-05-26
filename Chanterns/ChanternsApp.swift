@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct ChanternsApp: App {
     @StateObject var gameViewModel = GameViewModel()
+    @StateObject var audioManager = AudioManager()
     
     var body: some Scene {
         WindowGroup {
@@ -17,6 +18,8 @@ struct ChanternsApp: App {
                 .statusBar(hidden: true)
                 .preferredColorScheme(.light)
                 .environmentObject(gameViewModel)
+                .environmentObject(audioManager)
         }
+
     }
 }

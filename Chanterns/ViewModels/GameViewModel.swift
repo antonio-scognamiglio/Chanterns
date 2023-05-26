@@ -10,13 +10,8 @@ import SwiftUI
 
 class GameViewModel: ObservableObject {
     @Published var isGameStarted = false
-    
     // This will be used to pause all the animations
     @Published var isAnimationPaused = false
-    
-//    var yStartPosition: CGFloat = 0
-//    var YEndPosition: CGFloat = 0
-    
     @Published var chineseLanternColumns: ChineseLanternColumns = ChineseLanternColumns()
     @Published var livesLeft = 3
     @Published var leftToBeGuessed: [String] = []
@@ -26,7 +21,6 @@ class GameViewModel: ObservableObject {
  
     // In questo modo funziona perché li sto assegnando ad una classe, e quindi i cambiamenti si riflettono, cioè sto copiando il loro riferimento in memoria
     @Published var levels: [Level] = Level.originalLevels
-
     
     
     static let lanternImages = ["Lantern01", "Lantern02", "Lantern03"]
@@ -55,6 +49,7 @@ class GameViewModel: ObservableObject {
     }
     
     // Needs to be changed, everything should be moved to the viewModel
+    
     func checkTap(column: ChineseLanternsChunk, level: Level){
         let index = column.index
         withAnimation {
@@ -62,28 +57,27 @@ class GameViewModel: ObservableObject {
                 if let characterIndex: Int = level.chengYu.arrayCharacters.firstIndex(where: { character in
                     character.hanzi == column.chineseLanternsChunk[index].character
                 }){
-                leftToBeGuessed.removeFirst()
+                    leftToBeGuessed.removeFirst()
                     replaceCharacter(hanziToBeReplaced: level.chengYu.arrayCharacters[characterIndex].hanzi)
-                level.chengYu.arrayCharacters[characterIndex].isGuessed = true
+                    level.chengYu.arrayCharacters[characterIndex].isGuessed = true
                     
                     if leftToBeGuessed.isEmpty {
                         // svuotare tutte le colonne
                         withAnimation {
                             showCongratulations = true
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                            
                             self.hasWon = true
-//                        }
-                    }
+                        }
                         
                     }
                 }
             } else if livesLeft >= 1 {
-                    withAnimation {
-                        livesLeft -= 1
-                        if livesLeft == 0 {
-                            hasLost = true
-                        }
+                withAnimation {
+                    livesLeft -= 1
+                    if livesLeft == 0 {
+                        hasLost = true
                     }
+                }
             }
         }
     }
@@ -98,7 +92,7 @@ class GameViewModel: ObservableObject {
             }
         }
     }
-        
+    
     func nextLanterAfterMovingColumn(column: CurrentColumn, geo: GeometryProxy) {
         switch column {
         case .columnA:
@@ -151,9 +145,9 @@ class GameViewModel: ObservableObject {
                     }
                 }
             })
-
+            
         }
-    
+        
     }
     
     // Devo stare attento a quando chiamare questa funzione altrimenti la chiamo in loop
@@ -167,30 +161,15 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func resetColumns() {
-        withAnimation {
-            chineseLanternColumns.columnA.chineseLanternsChunk = []
-            chineseLanternColumns.columnB.chineseLanternsChunk = []
-            chineseLanternColumns.columnC.chineseLanternsChunk = []
-            chineseLanternColumns.columnD.chineseLanternsChunk = []
-        }
-        
-        // oppure chineseLanternColumns = ChineseLanternColumns()
-    }
     
 //     sostituisce i caratteri già indovinati del chengyu con il prossimo che resta da indovinare
     func replaceCharacter(hanziToBeReplaced: String) {
         for chineseLantern in chineseLanternColumns.columnA.chineseLanternsChunk {
-            
             let index = chineseLanternColumns.columnA.chineseLanternsChunk.firstIndex(of: chineseLantern) ?? 0
-            
             if chineseLantern.character == hanziToBeReplaced && index > chineseLanternColumns.columnA.index {
-                
                 if !leftToBeGuessed.isEmpty {
                     withAnimation {
-                        
                         chineseLantern.character = leftToBeGuessed.first ?? "好"
-                        
                     }
                 }
             }
@@ -244,7 +223,6 @@ class GameViewModel: ObservableObject {
     // Questa funzione restituisce il livello corrente allo stato non iniziato
     func resetLevel(level: Level) {
         resetGameViewModel()
-//        let levelIndex: Int = Level.originalLevels.firstIndex(of: level) ?? 0
         for loop in OriginalLevels.defaultLevels {
             if level.levelNumber == loop.levelNumber {
                 level.chengYu = loop.chengYu
@@ -258,22 +236,16 @@ class GameViewModel: ObservableObject {
     }
     
     func nextLevel(level: Level) -> Level? {
-        // Resetto il gioco
         resetGameViewModel()
-        // prendo l'indice del livello
         let levelIndex: Int = levels.firstIndex(of: level) ?? 0
-        // segno il livello come completo
         levels[levelIndex].isCompleted = true
-        // Se c'è un altro livello dopo questo, lo sblocco e lo restituisco
         if levels.count - 1 > levelIndex {
             levels[levelIndex + 1].isUnlocked = true
             return levels[levelIndex + 1]
         } else {
-            // Altrimenti mando dietro nil
             return nil
         }
-        
     }
-    
 }
-    
+
+

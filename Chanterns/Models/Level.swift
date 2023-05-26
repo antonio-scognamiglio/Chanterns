@@ -29,7 +29,7 @@ class Level: Equatable, Identifiable, ObservableObject {
     
     static let originalLevels: [Level] = [
         Level(
-            timeLeft: 5,
+            timeLeft: 10,
             chengYu: ChengYu(arrayCharacters: [ChineseCharacter(hanzi: "开", pinyin: "kāi", isGuessed: false),
                                                ChineseCharacter(hanzi: "门", pinyin: "mén", isGuessed: false),
                                                ChineseCharacter(hanzi: "见", pinyin: "jiàn", isGuessed: false),
@@ -102,7 +102,7 @@ struct OriginalLevels {
     
     static let defaultLevels = [
         Level(
-            timeLeft: 5,
+            timeLeft: 10,
             chengYu: ChengYu(arrayCharacters: [ChineseCharacter(hanzi: "开", pinyin: "kāi", isGuessed: false),
                                                ChineseCharacter(hanzi: "门", pinyin: "mén", isGuessed: false),
                                                ChineseCharacter(hanzi: "见", pinyin: "jiàn", isGuessed: false),
@@ -208,7 +208,7 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
@@ -221,7 +221,7 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
@@ -234,7 +234,7 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
@@ -247,7 +247,7 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
@@ -259,7 +259,7 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
@@ -271,7 +271,7 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             
@@ -285,7 +285,7 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
@@ -298,7 +298,7 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
@@ -311,16 +311,10 @@ enum LevelNumber: String {
                             levelCharacters.append(character.hanzi)
                         }
                     }
-                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 5)
+                    levelCharacters += ChineseCharacter.characterList + Array(repeating: level.chengYu.arrayCharacters.first!.hanzi, count: 10)
                 }
             }
             return levelCharacters.shuffled()
-//            for level in Level.originalLevels {
-//                if level.levelNumber == .level9 {
-//                    levelCharacters = Array(repeating: level.chengYu.complete, count: 5) + ChineseCharacter.characterList
-//                }
-//            }
-//            return levelCharacters.shuffled()
         }
     }
 }

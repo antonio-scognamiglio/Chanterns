@@ -17,21 +17,19 @@ struct ChengYuListView: View {
         GridItem(.flexible(minimum: 150)),
         GridItem(.flexible(minimum: 150)),
         GridItem(.flexible(minimum: 150))
-
     ]
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 VStack {
-
+                    
                     ZStack {
                         Image("ScrollOpen")
                             .overlay{
                                 Text("ChengYu")
                                     .font(.system(size: 48))
                             }
-                        
                         HStack {
                             Button {
                                 withAnimation {
@@ -42,15 +40,12 @@ struct ChengYuListView: View {
                                     .font(.system(size: 96))
                                     .foregroundColor(.scrollPaper)
                                     .padding(.leading, 50)
-                               
+                                
                             }
                             Spacer()
                         }
                     }
-//                    .frame(height: geo.size.height * 0.2)
-//                    .padding(.top, 50)
                     
-//                    Spacer()
                     LazyVGrid(columns: columns, spacing: 100) {
                         ForEach(gameViewModel.levels) { level in
                             ZStack {
@@ -84,7 +79,6 @@ struct ChengYuListView: View {
                         }
                     }
                     .frame(height: geo.size.height * 0.68)
-//                    Spacer()
                     HStack {
                         Image("ChineseLantern01")
                             .padding(.leading)
@@ -107,12 +101,13 @@ struct ChengYuListView: View {
             .background {
                 Image("NightSkyLightNoStars")
                     .resizable()
+                    .ignoresSafeArea()
                     .onTapGesture {
                         withAnimation {
                             isShowingMeaning = false
                         }
                     }
-
+                
             }
         }
     }

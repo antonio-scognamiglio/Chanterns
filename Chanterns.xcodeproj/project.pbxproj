@@ -7,57 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7130AB0529EAEFDC00F31A15 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0429EAEFDC00F31A15 /* OnBoardingView.swift */; };
-		7130AB0829EAF47700F31A15 /* PageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0729EAF47700F31A15 /* PageOneView.swift */; };
 		7130AB0A29EAFCD000F31A15 /* Color-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0929EAFCD000F31A15 /* Color-Extension.swift */; };
-		7130AB1029EC060C00F31A15 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB0F29EC060C00F31A15 /* PageTwoView.swift */; };
-		7130AB1229EC0F9E00F31A15 /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */; };
-		7130AB1429EC193A00F31A15 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1329EC193A00F31A15 /* TopBarView.swift */; };
-		7130AB1629ED488400F31A15 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1529ED488400F31A15 /* PauseView.swift */; };
-		7130AB1829EDA7B800F31A15 /* LevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1729EDA7B800F31A15 /* LevelsView.swift */; };
-		7130AB1A29EDA7CA00F31A15 /* ChengYuListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */; };
-		7130AB1C29EDB1B900F31A15 /* ChengYuMeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */; };
-		7130AB2029EF0C5800F31A15 /* LostMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130AB1F29EF0C5800F31A15 /* LostMenuView.swift */; };
-		7136585029EAA7B000416CA1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136584F29EAA7B000416CA1 /* Level.swift */; };
-		7136585229EAA7D600416CA1 /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136585129EAA7D600416CA1 /* GameMenuView.swift */; };
+		7138EB222A2153030056D74C /* ChengYu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB1F2A2153030056D74C /* ChengYu.swift */; };
+		7138EB232A2153030056D74C /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB202A2153030056D74C /* Level.swift */; };
+		7138EB242A2153030056D74C /* ChineseLantern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB212A2153030056D74C /* ChineseLantern.swift */; };
+		7138EB272A2153220056D74C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB262A2153220056D74C /* AudioManager.swift */; };
+		7138EB2C2A2153550056D74C /* WinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7138EB292A2153550056D74C /* WinSound.mp3 */; };
+		7138EB2D2A2153550056D74C /* Background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7138EB2A2A2153550056D74C /* Background.mp3 */; };
+		7138EB2E2A2153550056D74C /* Pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7138EB2B2A2153550056D74C /* Pop.wav */; };
+		7138EB3E2A2153AD0056D74C /* ChengYuListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB2F2A2153AD0056D74C /* ChengYuListView.swift */; };
+		7138EB3F2A2153AD0056D74C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB302A2153AD0056D74C /* GameView.swift */; };
+		7138EB402A2153AD0056D74C /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB322A2153AD0056D74C /* PageTwoView.swift */; };
+		7138EB412A2153AD0056D74C /* LostMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB332A2153AD0056D74C /* LostMenuView.swift */; };
+		7138EB422A2153AD0056D74C /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB342A2153AD0056D74C /* PageThreeView.swift */; };
+		7138EB432A2153AD0056D74C /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB352A2153AD0056D74C /* TopBarView.swift */; };
+		7138EB442A2153AD0056D74C /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB362A2153AD0056D74C /* PauseView.swift */; };
+		7138EB452A2153AD0056D74C /* ChengYuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB372A2153AD0056D74C /* ChengYuView.swift */; };
+		7138EB462A2153AD0056D74C /* ChineseLanternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB382A2153AD0056D74C /* ChineseLanternView.swift */; };
+		7138EB472A2153AD0056D74C /* ChengYuMeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB392A2153AD0056D74C /* ChengYuMeaningView.swift */; };
+		7138EB482A2153AD0056D74C /* PageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB3A2A2153AD0056D74C /* PageOneView.swift */; };
+		7138EB492A2153AD0056D74C /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB3B2A2153AD0056D74C /* OnBoardingView.swift */; };
+		7138EB4A2A2153AD0056D74C /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB3C2A2153AD0056D74C /* GameMenuView.swift */; };
+		7138EB4B2A2153AD0056D74C /* LevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138EB3D2A2153AD0056D74C /* LevelsView.swift */; };
 		71925F5E29E7E79B0081A393 /* Animation-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71925F5D29E7E79B0081A393 /* Animation-Extension.swift */; };
-		71925F6029E9ABD60081A393 /* ChengYuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71925F5F29E9ABD60081A393 /* ChengYuView.swift */; };
 		71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */; };
-		71F54D1729DEB53000F2DD9D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D1629DEB53000F2DD9D /* GameView.swift */; };
 		71F54D1929DEB53200F2DD9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F54D1829DEB53200F2DD9D /* Assets.xcassets */; };
 		71F54D1C29DEB53200F2DD9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F54D1B29DEB53200F2DD9D /* Preview Assets.xcassets */; };
-		71F54D2329E0209B00F2DD9D /* ChineseLantern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */; };
-		71F54D2529E023E400F2DD9D /* ChineseLanternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */; };
 		71F54D2729E0257200F2DD9D /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2629E0257200F2DD9D /* GameViewModel.swift */; };
-		71F54D2929E0264500F2DD9D /* ChengYu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2829E0264500F2DD9D /* ChengYu.swift */; };
 		71F54D2F29E05C3600F2DD9D /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F54D2E29E05C3600F2DD9D /* Array-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7130AB0429EAEFDC00F31A15 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
-		7130AB0729EAF47700F31A15 /* PageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneView.swift; sourceTree = "<group>"; };
 		7130AB0929EAFCD000F31A15 /* Color-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extension.swift"; sourceTree = "<group>"; };
-		7130AB0F29EC060C00F31A15 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
-		7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
-		7130AB1329EC193A00F31A15 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
-		7130AB1529ED488400F31A15 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
-		7130AB1729EDA7B800F31A15 /* LevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsView.swift; sourceTree = "<group>"; };
-		7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuListView.swift; sourceTree = "<group>"; };
-		7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuMeaningView.swift; sourceTree = "<group>"; };
-		7130AB1F29EF0C5800F31A15 /* LostMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostMenuView.swift; sourceTree = "<group>"; };
-		7136584F29EAA7B000416CA1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		7136585129EAA7D600416CA1 /* GameMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
+		7138EB1F2A2153030056D74C /* ChengYu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYu.swift; sourceTree = "<group>"; };
+		7138EB202A2153030056D74C /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		7138EB212A2153030056D74C /* ChineseLantern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseLantern.swift; sourceTree = "<group>"; };
+		7138EB262A2153220056D74C /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		7138EB292A2153550056D74C /* WinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WinSound.mp3; sourceTree = "<group>"; };
+		7138EB2A2A2153550056D74C /* Background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Background.mp3; sourceTree = "<group>"; };
+		7138EB2B2A2153550056D74C /* Pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pop.wav; sourceTree = "<group>"; };
+		7138EB2F2A2153AD0056D74C /* ChengYuListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuListView.swift; sourceTree = "<group>"; };
+		7138EB302A2153AD0056D74C /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		7138EB322A2153AD0056D74C /* PageTwoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
+		7138EB332A2153AD0056D74C /* LostMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LostMenuView.swift; sourceTree = "<group>"; };
+		7138EB342A2153AD0056D74C /* PageThreeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
+		7138EB352A2153AD0056D74C /* TopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		7138EB362A2153AD0056D74C /* PauseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		7138EB372A2153AD0056D74C /* ChengYuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuView.swift; sourceTree = "<group>"; };
+		7138EB382A2153AD0056D74C /* ChineseLanternView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseLanternView.swift; sourceTree = "<group>"; };
+		7138EB392A2153AD0056D74C /* ChengYuMeaningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuMeaningView.swift; sourceTree = "<group>"; };
+		7138EB3A2A2153AD0056D74C /* PageOneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageOneView.swift; sourceTree = "<group>"; };
+		7138EB3B2A2153AD0056D74C /* OnBoardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		7138EB3C2A2153AD0056D74C /* GameMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
+		7138EB3D2A2153AD0056D74C /* LevelsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsView.swift; sourceTree = "<group>"; };
 		71925F5D29E7E79B0081A393 /* Animation-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation-Extension.swift"; sourceTree = "<group>"; };
-		71925F5F29E9ABD60081A393 /* ChengYuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYuView.swift; sourceTree = "<group>"; };
 		71F54D1129DEB53000F2DD9D /* Chanterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chanterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanternsApp.swift; sourceTree = "<group>"; };
-		71F54D1629DEB53000F2DD9D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		71F54D1829DEB53200F2DD9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71F54D1B29DEB53200F2DD9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLantern.swift; sourceTree = "<group>"; };
-		71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLanternView.swift; sourceTree = "<group>"; };
 		71F54D2629E0257200F2DD9D /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
-		71F54D2829E0264500F2DD9D /* ChengYu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChengYu.swift; sourceTree = "<group>"; };
 		71F54D2E29E05C3600F2DD9D /* Array-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,18 +80,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7130AB0629EAF31800F31A15 /* Components */ = {
+		7138EB252A2153220056D74C /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				7130AB1B29EDB1B900F31A15 /* ChengYuMeaningView.swift */,
-				7130AB0729EAF47700F31A15 /* PageOneView.swift */,
-				7130AB0F29EC060C00F31A15 /* PageTwoView.swift */,
-				7130AB1129EC0F9E00F31A15 /* PageThreeView.swift */,
-				71F54D2429E023E400F2DD9D /* ChineseLanternView.swift */,
-				71925F5F29E9ABD60081A393 /* ChengYuView.swift */,
-				7130AB1329EC193A00F31A15 /* TopBarView.swift */,
-				7130AB1529ED488400F31A15 /* PauseView.swift */,
-				7130AB1F29EF0C5800F31A15 /* LostMenuView.swift */,
+				7138EB262A2153220056D74C /* AudioManager.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		7138EB282A2153550056D74C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7138EB292A2153550056D74C /* WinSound.mp3 */,
+				7138EB2A2A2153550056D74C /* Background.mp3 */,
+				7138EB2B2A2153550056D74C /* Pop.wav */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7138EB312A2153AD0056D74C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7138EB3A2A2153AD0056D74C /* PageOneView.swift */,
+				7138EB322A2153AD0056D74C /* PageTwoView.swift */,
+				7138EB342A2153AD0056D74C /* PageThreeView.swift */,
+				7138EB332A2153AD0056D74C /* LostMenuView.swift */,
+				7138EB352A2153AD0056D74C /* TopBarView.swift */,
+				7138EB362A2153AD0056D74C /* PauseView.swift */,
+				7138EB372A2153AD0056D74C /* ChengYuView.swift */,
+				7138EB382A2153AD0056D74C /* ChineseLanternView.swift */,
+				7138EB392A2153AD0056D74C /* ChengYuMeaningView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -109,6 +135,8 @@
 			children = (
 				71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */,
 				71F54D2A29E0264D00F2DD9D /* Models */,
+				7138EB252A2153220056D74C /* Music */,
+				7138EB282A2153550056D74C /* Resources */,
 				71F54D2B29E0265D00F2DD9D /* ViewModels */,
 				71F54D2C29E0267300F2DD9D /* Views */,
 				71F54D2D29E05C2600F2DD9D /* Utils */,
@@ -129,9 +157,9 @@
 		71F54D2A29E0264D00F2DD9D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				71F54D2229E0209B00F2DD9D /* ChineseLantern.swift */,
-				71F54D2829E0264500F2DD9D /* ChengYu.swift */,
-				7136584F29EAA7B000416CA1 /* Level.swift */,
+				7138EB1F2A2153030056D74C /* ChengYu.swift */,
+				7138EB212A2153030056D74C /* ChineseLantern.swift */,
+				7138EB202A2153030056D74C /* Level.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,12 +175,12 @@
 		71F54D2C29E0267300F2DD9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7136585129EAA7D600416CA1 /* GameMenuView.swift */,
-				7130AB0429EAEFDC00F31A15 /* OnBoardingView.swift */,
-				7130AB1729EDA7B800F31A15 /* LevelsView.swift */,
-				7130AB1929EDA7CA00F31A15 /* ChengYuListView.swift */,
-				71F54D1629DEB53000F2DD9D /* GameView.swift */,
-				7130AB0629EAF31800F31A15 /* Components */,
+				7138EB2F2A2153AD0056D74C /* ChengYuListView.swift */,
+				7138EB3C2A2153AD0056D74C /* GameMenuView.swift */,
+				7138EB302A2153AD0056D74C /* GameView.swift */,
+				7138EB3D2A2153AD0056D74C /* LevelsView.swift */,
+				7138EB3B2A2153AD0056D74C /* OnBoardingView.swift */,
+				7138EB312A2153AD0056D74C /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +253,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7138EB2E2A2153550056D74C /* Pop.wav in Resources */,
+				7138EB2D2A2153550056D74C /* Background.mp3 in Resources */,
+				7138EB2C2A2153550056D74C /* WinSound.mp3 in Resources */,
 				71F54D1C29DEB53200F2DD9D /* Preview Assets.xcassets in Resources */,
 				71F54D1929DEB53200F2DD9D /* Assets.xcassets in Resources */,
 			);
@@ -237,28 +268,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71F54D1729DEB53000F2DD9D /* GameView.swift in Sources */,
-				7130AB1429EC193A00F31A15 /* TopBarView.swift in Sources */,
-				71925F6029E9ABD60081A393 /* ChengYuView.swift in Sources */,
-				7130AB1629ED488400F31A15 /* PauseView.swift in Sources */,
-				71F54D2529E023E400F2DD9D /* ChineseLanternView.swift in Sources */,
-				7130AB1C29EDB1B900F31A15 /* ChengYuMeaningView.swift in Sources */,
+				7138EB412A2153AD0056D74C /* LostMenuView.swift in Sources */,
+				7138EB272A2153220056D74C /* AudioManager.swift in Sources */,
+				7138EB452A2153AD0056D74C /* ChengYuView.swift in Sources */,
 				71F54D2F29E05C3600F2DD9D /* Array-Extension.swift in Sources */,
+				7138EB4B2A2153AD0056D74C /* LevelsView.swift in Sources */,
+				7138EB472A2153AD0056D74C /* ChengYuMeaningView.swift in Sources */,
+				7138EB442A2153AD0056D74C /* PauseView.swift in Sources */,
 				71F54D2729E0257200F2DD9D /* GameViewModel.swift in Sources */,
 				71F54D1529DEB53000F2DD9D /* ChanternsApp.swift in Sources */,
-				71F54D2329E0209B00F2DD9D /* ChineseLantern.swift in Sources */,
 				71925F5E29E7E79B0081A393 /* Animation-Extension.swift in Sources */,
-				7136585029EAA7B000416CA1 /* Level.swift in Sources */,
-				7130AB0529EAEFDC00F31A15 /* OnBoardingView.swift in Sources */,
-				7130AB0829EAF47700F31A15 /* PageOneView.swift in Sources */,
-				7136585229EAA7D600416CA1 /* GameMenuView.swift in Sources */,
-				71F54D2929E0264500F2DD9D /* ChengYu.swift in Sources */,
-				7130AB1029EC060C00F31A15 /* PageTwoView.swift in Sources */,
-				7130AB1229EC0F9E00F31A15 /* PageThreeView.swift in Sources */,
+				7138EB492A2153AD0056D74C /* OnBoardingView.swift in Sources */,
+				7138EB3F2A2153AD0056D74C /* GameView.swift in Sources */,
+				7138EB242A2153030056D74C /* ChineseLantern.swift in Sources */,
+				7138EB232A2153030056D74C /* Level.swift in Sources */,
+				7138EB4A2A2153AD0056D74C /* GameMenuView.swift in Sources */,
 				7130AB0A29EAFCD000F31A15 /* Color-Extension.swift in Sources */,
-				7130AB1A29EDA7CA00F31A15 /* ChengYuListView.swift in Sources */,
-				7130AB1829EDA7B800F31A15 /* LevelsView.swift in Sources */,
-				7130AB2029EF0C5800F31A15 /* LostMenuView.swift in Sources */,
+				7138EB432A2153AD0056D74C /* TopBarView.swift in Sources */,
+				7138EB3E2A2153AD0056D74C /* ChengYuListView.swift in Sources */,
+				7138EB402A2153AD0056D74C /* PageTwoView.swift in Sources */,
+				7138EB462A2153AD0056D74C /* ChineseLanternView.swift in Sources */,
+				7138EB422A2153AD0056D74C /* PageThreeView.swift in Sources */,
+				7138EB482A2153AD0056D74C /* PageOneView.swift in Sources */,
+				7138EB222A2153030056D74C /* ChengYu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

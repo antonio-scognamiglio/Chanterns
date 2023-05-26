@@ -6,16 +6,13 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct GameView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
+    @EnvironmentObject var audioManager: AudioManager
     @State var tapToStart = false
     @StateObject var currentLevel: Level
-//    @State var tryAgain: Bool = false {
-//        didSet {
-//            gameViewModel.tryAgain(level: currentLevel)
-//        }
-//    }
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -59,9 +56,9 @@ struct GameView: View {
                 Image("NightSkyDarkPortraitBigStars")
                     .resizable()
                     .blur(radius: gameViewModel.isAnimationPaused ? 5 : 0)
-                .edgesIgnoringSafeArea(.all)
+                    .edgesIgnoringSafeArea(.all)
                 
-                   
+                
                 // ChengYu Scroll
                 VStack {
                     if tapToStart {
@@ -69,18 +66,17 @@ struct GameView: View {
                             .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
                             .opacity(currentLevel.timeLeft  > 0 && !gameViewModel.isAnimationPaused  ? 1 : 0)
                             .animation(Animation.default, value: currentLevel.timeLeft)
-
+                        
                     } else if !tapToStart && currentLevel.timeLeft > 0 {
                         Image("ScrollClose")
                             .resizable()
                             .scaledToFit()
                             .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.2)
-                        
                     }
                     
-                Text("")
+                    Text("")
                         .frame(height: geo.size.height * 0.4)
-
+                    
                     if !tapToStart {
                         Text("Tap on the screen to start!")
                             .foregroundColor(.yellowStar)
@@ -97,7 +93,7 @@ struct GameView: View {
                             .font(.system(size: 48))
                             .frame(width: geo.size.width * 0.9)
                     } else if gameViewModel.hasLost {
-                        Text("Ops ... Seems you don’t have any chances left.")
+                        Text("Ops ... Seems you don’t have any lives left.")
                             .foregroundColor(.yellowStar)
                             .font(.system(size: 48))
                             .frame(width: geo.size.width * 0.9)
@@ -109,17 +105,16 @@ struct GameView: View {
                     
                 }
                 
-               // Columns
+                // Columns
                 Group {
                     // First Column
                     if canCreateLanterns(.columnA) {
                         ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)]
                         )
+                        .drawingGroup()
                         .opacity(gameViewModel.isAnimationPaused ? 0 : 1)
                         .position(x: geo.frame(in: .global).minX + 120, y: gameViewModel.chineseLanternColumns.columnA.yPosition!)
-                        // Quando cambia la posizione animi il cambiamento
                         .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnA.chineseLanternsChunk[columnIndex(.columnA)].animationTime), value: gameViewModel.chineseLanternColumns.columnA.yPosition)
-                        
                         .id(gameViewModel.chineseLanternColumns.columnA.index)
                         
                         // Change the index after moving has finished
@@ -129,7 +124,7 @@ struct GameView: View {
                         })
                         // Doppio controllo, guardo anche se l'animazione è in pausa
                         .onChange(of: gameViewModel.isAnimationPaused, perform: {_ in
-
+                            
                             gameViewModel.nextLanterAfterMovingColumn(column: .columnA, geo: geo)
                         })
                         
@@ -141,17 +136,18 @@ struct GameView: View {
                         // change the index on tap gesture and reset position
                         .onTapGesture {
                             if !gameViewModel.hasWon {
+                                audioManager.tapEffect()
                                 gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnA, level: currentLevel)
                                 gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnA, geo: geo)
                             }
-                            }
+                        }
                     }
                     
-                    // Commento un attimo
                     // Second Column
                     if canCreateLanterns(.columnB) {
                         ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk[columnIndex(.columnB)]
                         )
+                        .drawingGroup()
                         .opacity(gameViewModel.isAnimationPaused ? 0 : 1)
                         .position(x: geo.frame(in: .global).midX - 120, y: gameViewModel.chineseLanternColumns.columnB.yPosition!)
                         .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnB.chineseLanternsChunk[columnIndex(.columnB)].animationTime), value: gameViewModel.chineseLanternColumns.columnB.yPosition)
@@ -162,7 +158,7 @@ struct GameView: View {
                         })
                         // Doppio controllo, guardo anche se l'animazione è in pausa
                         .onChange(of: gameViewModel.isAnimationPaused, perform: {_ in
-
+                            
                             gameViewModel.nextLanterAfterMovingColumn(column: .columnB, geo: geo)
                         })
                         // Reset Position after index has changed
@@ -172,16 +168,18 @@ struct GameView: View {
                         // change the index on tap gesture and reset position
                         .onTapGesture {
                             if !gameViewModel.hasWon {
+                                audioManager.tapEffect()
                                 gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnB, level: currentLevel)
                                 gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnB, geo: geo)
                             }
-                            }
+                        }
                     }
                     
                     // Third Column
                     if canCreateLanterns(.columnC) {
                         ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk[columnIndex(.columnC)]
                         )
+                        .drawingGroup()
                         .opacity(gameViewModel.isAnimationPaused ? 0 : 1)
                         .position(x: geo.frame(in: .global).midX + 120, y: gameViewModel.chineseLanternColumns.columnC.yPosition!)
                         .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnC.chineseLanternsChunk[columnIndex(.columnC)].animationTime), value: gameViewModel.chineseLanternColumns.columnC.yPosition)
@@ -192,7 +190,6 @@ struct GameView: View {
                         })
                         // Doppio controllo, guardo anche se l'animazione è in pausa
                         .onChange(of: gameViewModel.isAnimationPaused, perform: {_ in
-
                             gameViewModel.nextLanterAfterMovingColumn(column: .columnC, geo: geo)
                         })
                         // Reset Position after index has changed
@@ -202,16 +199,18 @@ struct GameView: View {
                         // change the index on tap gesture and reset position
                         .onTapGesture {
                             if !gameViewModel.hasWon {
+                                audioManager.tapEffect()
                                 gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnC, level: currentLevel)
                                 gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnC, geo: geo)
                             }
-                            }
+                        }
                     }
                     
                     // Fourth Column
                     if canCreateLanterns(.columnD) {
                         ChineseLanternView(chineseLantern: gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk[columnIndex(.columnD)]
                         )
+                        .drawingGroup()
                         .opacity(gameViewModel.isAnimationPaused ? 0 : 1)
                         .position(x: geo.frame(in: .global).maxX - 120, y: gameViewModel.chineseLanternColumns.columnD.yPosition!)
                         .animation(.easeIn(duration: gameViewModel.chineseLanternColumns.columnD.chineseLanternsChunk[columnIndex(.columnD)].animationTime), value: gameViewModel.chineseLanternColumns.columnD.yPosition)
@@ -222,7 +221,6 @@ struct GameView: View {
                         })
                         // Doppio controllo, guardo anche se l'animazione è in pausa
                         .onChange(of: gameViewModel.isAnimationPaused, perform: {_ in
-
                             gameViewModel.nextLanterAfterMovingColumn(column: .columnD, geo: geo)
                         })
                         // Reset Position after index has changed
@@ -232,37 +230,38 @@ struct GameView: View {
                         // change the index on tap gesture and reset position
                         .onTapGesture {
                             if !gameViewModel.hasWon {
-                            gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnD, level: currentLevel)
-                            gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)
-                        }
+                                audioManager.tapEffect()
+                                gameViewModel.checkTap(column: gameViewModel.chineseLanternColumns.columnD, level: currentLevel)
+                                gameViewModel.nextLanterAfterTappingColumn(column: &gameViewModel.chineseLanternColumns.columnD, geo: geo)
+                            }
                         }
                     }
                 }
                 
                 if gameViewModel.isAnimationPaused {
-                        PauseView(currentLevel: currentLevel)
+                    PauseView(currentLevel: currentLevel)
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
                 } else if gameViewModel.hasLost {
                     LostMenuView(currentLevel: currentLevel, tapToStart: $tapToStart)
-                    .transition(.asymmetric(insertion: .scale, removal: .identity))
+                        .transition(.asymmetric(insertion: .scale, removal: .identity))
                 } else if gameViewModel.hasWon {
                     ChengYuMeaningView(chengYu: currentLevel.chengYu)
                         .transition(.asymmetric(insertion: .scale, removal: .identity))
+                        .onAppear {
+                            audioManager.levelWinSound()
+                        }
                 }
                 
-                // Non si aggiorna la view
                 TopBarView(level: currentLevel)
-//                    .environmentObject(gameViewModel)
                     .onReceive(timer) { _ in
                         if currentLevel.timeLeft > 0 && tapToStart && !gameViewModel.isAnimationPaused {
                             currentLevel.timeLeft -= 1
                         }
                     }
-                }
+            }
             .navigationBarBackButtonHidden()
-           
-        
             .onAppear {
+                audioManager.gameMusicPlayer?.stop()
                 currentLevel.chengYu.arrayCharacters.forEach { character in
                     gameViewModel.leftToBeGuessed.append(character.hanzi)
                 }
@@ -271,62 +270,42 @@ struct GameView: View {
             .onTapGesture {
                 if !gameViewModel.hasWon {
                     withAnimation {
-                    tapToStart = true
+                        tapToStart = true
                     }
                 } else if gameViewModel.hasWon {
                     withAnimation {
                     
                     // GO TO NEXT LEVEL
                         if let tmpLevel = gameViewModel.nextLevel(level: currentLevel){
-//                            currentLevel.id = tmpLevel.id
                             currentLevel.chengYu = tmpLevel.chengYu
                             currentLevel.isUnlocked = tmpLevel.isUnlocked
-                            currentLevel.isCompleted = false
+                            currentLevel.isCompleted = true
                             currentLevel.timeLeft = tmpLevel.timeLeft
-//                            currentLevel.levelNumber = tmpLevel.levelNumber
-                            
                             tmpLevel.chengYu.arrayCharacters.forEach { character in
                                 gameViewModel.leftToBeGuessed.append(character.hanzi)
                             }
-                            
                         }
                     }
                 }
-               
+                
             }
-      
+            
             .onChange(of: currentLevel.timeLeft) { _ in
                 if currentLevel.timeLeft == 0 {
                     gameViewModel.isGameStarted = true
-                    gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY, level: currentLevel.levelNumber)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
-                            
-                            gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
-                            
-                            gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
-                            
-                            gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
-                        }
+                    gameViewModel.generateColumns(lanternsPerColumn: 100, yPosition: geo.frame(in: .global).maxY, level: currentLevel.levelNumber)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
+                        
+                        gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
+                        
+                        gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
+                        
+                        gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
+                    }
                 }
             }
-            
-//            .onChange(of: gameViewModel.isAnimationPaused) { newValue in
-//                if newValue == false {
-//                    gameViewModel.generateColumns(lanternsPerColumn: 20, yPosition: geo.frame(in: .global).maxY)
-//                        DispatchQueue.main.asyncAfter(deadline: .now()) {
-//                            gameViewModel.chineseLanternColumns.columnA.yPosition = geo.frame(in: .global).minY - 200
-//                            
-//                            gameViewModel.chineseLanternColumns.columnB.yPosition = geo.frame(in: .global).minY - 200
-//                            
-//                            gameViewModel.chineseLanternColumns.columnC.yPosition = geo.frame(in: .global).minY - 200
-//                            
-//                            gameViewModel.chineseLanternColumns.columnD.yPosition = geo.frame(in: .global).minY - 200
-//                        }
-//                }
-//            }
         }
-        
     }
 }
 

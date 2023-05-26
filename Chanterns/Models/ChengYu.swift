@@ -17,7 +17,6 @@ struct ChineseCharacter: Identifiable {
 }
 
 struct ChengYu: Identifiable {
-    // array of 4 characters
     var id = UUID()
     var arrayCharacters: [ChineseCharacter]
     var complete: String

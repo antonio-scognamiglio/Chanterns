@@ -35,7 +35,6 @@ struct LevelsView: View {
                                     .font(.system(size: 96))
                                     .foregroundColor(.scrollPaper)
                                     .padding(.leading, 50)
-                                
                             }
                             Spacer()
                         }
@@ -45,7 +44,7 @@ struct LevelsView: View {
                     
                     LazyVGrid(columns: columns, spacing: 100) {
                         ForEach(gameViewModel.levels) { level in
-
+                            
                             if level.isUnlocked {
                                 NavigationLink(destination: GameView(currentLevel: level)){
                                     ZStack {
@@ -56,9 +55,9 @@ struct LevelsView: View {
                                             .fill(Color.yellowScroll)
                                     }
                                     .overlay {
-                                            Text(level.levelNumber.rawValue)
-                                                .font(.system(size: 72))
-                                                .foregroundColor(.black)
+                                        Text(level.levelNumber.rawValue)
+                                            .font(.system(size: 72))
+                                            .foregroundColor(.black)
                                     }
                                     .frame(minHeight: 160)
                                     .padding(.horizontal, 50)
@@ -71,14 +70,13 @@ struct LevelsView: View {
                                         .stroke(lineWidth: 5)
                                         .fill(Color.yellowScroll)
                                 }
-                                        .overlay {
-                                            Text("🔒")
-                                                .font(.system(size: 72))
-                                            
-                                        }
-                                        .frame(minHeight: 160)
-                                        .padding(.horizontal, 50)
-                                
+                                .overlay {
+                                    Text("🔒")
+                                        .font(.system(size: 72))
+                                    
+                                }
+                                .frame(minHeight: 160)
+                                .padding(.horizontal, 50)
                             }
                         }
                     }
@@ -95,14 +93,12 @@ struct LevelsView: View {
                     }
                     .frame(height: geo.size.height * 0.12)
                 }
-          
             }
             .navigationBarBackButtonHidden()
             .frame(width: geo.size.width, height: geo.size.height)
             .background {
                 Image("NightSkyLightPortrait")
                     .resizable()
-                    
                     .ignoresSafeArea()
             }
         }

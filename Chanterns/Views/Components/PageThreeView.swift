@@ -12,11 +12,8 @@ struct PageThreeView: View {
     @State var showPreviousButton: Bool
     @State var showSkipButton: Bool
     @State var showStartButton: Bool
-    
     @Binding var showOnboarding: Bool
     @Binding var selection: Int
- 
-
     
     var body: some View {
         GeometryReader { geo in
@@ -24,10 +21,12 @@ struct PageThreeView: View {
                 Color.white
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
                     .cornerRadius(20)
+                
                 VStack(alignment: .leading) {
                     Text("In every level there will be a top bar composed of three elements.")
-                        .font(.system(size: 36))
-                    .padding(.horizontal, 30)
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                        .padding(.horizontal, 30)
+//                        .padding(.top, 50)
                     
                     GeometryReader { innerGeo in
                         VStack {
@@ -35,23 +34,24 @@ struct PageThreeView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .cornerRadius(10)
-                                .frame(width: innerGeo.size.width * 0.9)
+                                .frame(width: innerGeo.size.width * 0.93)
                         }
                         .frame(width: innerGeo.size.width, height: innerGeo.size.height)
                     }
                     
-                    Text("On the left are your chances of making a mistake, every time you tap on the wrong lantern you will lose a chance.")
-                        .font(.system(size: 36))
-                        .padding(.horizontal, 30)
-                        .padding(.bottom)
-                    Text("In the center is the time you have to memorize the scroll before it disappears.")
-                        .font(.system(size: 36))
-                        .padding(.horizontal, 30)
-                        .padding(.bottom)
-                    Text("Finally on the right is a button to pause the game.")
-                        .font(.system(size: 36))
-                        .padding(.horizontal, 30)
-//                    Spacer()
+                        Text("On the left you can find your lives, every time you tap on the wrong lantern you will lose a chance.")
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                            .padding(.horizontal, 30)
+                            .padding(.bottom)
+                        Text("In the center there is the time you have to memorize the scroll before it disappears.")
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                            .padding(.horizontal, 30)
+                            .padding(.bottom)
+                        Text("Finally on the right there is a button to pause the game.")
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                            .padding(.horizontal, 30)
+                    
+                    .padding(.bottom, 50)
                     
                     HStack {
                         if showSkipButton {
@@ -67,7 +67,6 @@ struct PageThreeView: View {
                                     .foregroundColor(Color(uiColor: .systemGroupedBackground))
                                     .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
                                     .padding(.horizontal, 7)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -87,7 +86,6 @@ struct PageThreeView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.horizontal, 10)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -106,7 +104,6 @@ struct PageThreeView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.trailing, 50)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -125,13 +122,12 @@ struct PageThreeView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.trailing, 50)
-//                                    .padding(.top)
                             })
                         }
-
                     }
+                    Spacer()
                 }
-                .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.70, alignment: .top)
+                .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.70, alignment: .top)
             }
             .padding(.bottom, 50)
             .frame(width: geo.size.width, height: UIScreen.main.bounds.height)
@@ -142,6 +138,6 @@ struct PageThreeView: View {
 
 struct PageThreeView_Previews: PreviewProvider {
     static var previews: some View {
-        PageThreeView(showNextButton: true, showPreviousButton: true, showSkipButton: true, showStartButton: false, showOnboarding: .constant(false), selection: .constant(2))
+        PageThreeView(showNextButton: false, showPreviousButton: true, showSkipButton: false, showStartButton: true, showOnboarding: .constant(false), selection: .constant(2))
     }
 }

@@ -14,22 +14,15 @@ struct ChineseLanternView: View {
     }
     
     var body: some View {
-//        if chineseLantern.isAnimationEnd || chineseLantern.isTapped {
-//            withAnimation {
-//                EmptyView()
-//            }
-//        } else {
             ZStack {
                 Image(chineseLantern.lanternImage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: dynamicWidth)
-//                    .frame(width: 300, height: 300)
                 Text(chineseLantern.character)
                     .font(.system(size: UIScreen.main.bounds.width > 850 ? 96 : 70))
                     .padding(.bottom, 30)
             }
-//        }
     }
 }
 

@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct GameMenuView: View {
-    @StateObject var gameViewModel = GameViewModel()
+    @EnvironmentObject var gameViewModel: GameViewModel
+    @EnvironmentObject var audioManager: AudioManager
+    
     @State var isShowingOnboarding = true
     var body: some View {
         
@@ -28,47 +31,47 @@ struct GameMenuView: View {
                     Text("你好")
                         .font(.system(size: 64))
                         .padding(.bottom, 50)
-                        
+                    
                 }
-                    NavigationLink(destination: LevelsView()){
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.whiteShade)
-                            .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.height * 0.08)
-                            .overlay {
-                                Text("Play")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 48))
-                            }
-                    }
-                    .padding(.top, 100)
-                    NavigationLink(destination: ChengYuListView()){
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.whiteShade)
-                            .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.height * 0.08)
-                            .overlay {
-                                Text("ChengYu")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 48))
-                            }
-                    }
+                NavigationLink(destination: LevelsView()){
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.whiteShade)
+                        .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.height * 0.08)
+                        .overlay {
+                            Text("Play")
+                                .foregroundColor(.black)
+                                .font(.system(size: 48))
+                        }
+                }
+                .padding(.top, 100)
+                NavigationLink(destination: ChengYuListView()){
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.whiteShade)
+                        .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.height * 0.08)
+                        .overlay {
+                            Text("ChengYu")
+                                .foregroundColor(.black)
+                                .font(.system(size: 48))
+                        }
+                }
                 Spacer()
                 Spacer()
-                }
-                .background {
-                    Image("NightSkyLightPortrait")
-                        .resizable()
-                        .scaledToFill()
-                        .ignoresSafeArea()
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                       
             }
-                .fullScreenCover(isPresented: $isShowingOnboarding) {
-                    OnBoardingView(showOnboarding: $isShowingOnboarding)
-                }
-                
+            .onAppear {
+                audioManager.gameMusic()
+            }
+            .background {
+                Image("NightSkyLightPortrait")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            }
+            .fullScreenCover(isPresented: $isShowingOnboarding) {
+                OnBoardingView(showOnboarding: $isShowingOnboarding)
+            }
         }
         .navigationViewStyle(.stack)
-
     }
 }
 

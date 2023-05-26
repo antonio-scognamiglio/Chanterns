@@ -25,25 +25,25 @@ struct PageOneView: View {
                 Color.white
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
                     .cornerRadius(20)
-                VStack {
+                
+                VStack(alignment: .leading) {
                     topText
-                    .font(.system(size: 36))
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                        .padding(.horizontal, 30)
                     
-                    .padding(.horizontal, 30)
-
                     GeometryReader { innerGeo in
-                            VStack {
-                                ChengYuView(chengYu: .constant(ChengYu.example), showPinyin: true)
-                                    .frame(width: innerGeo.size.width * 0.7)
-                            }
-                            .frame(width: innerGeo.size.width, height: innerGeo.size.height)
+                        VStack {
+                            ChengYuView(chengYu: .constant(ChengYu.example), showPinyin: true)
+                                .frame(width: innerGeo.size.width * 0.7)
                         }
-                                                
+                        .frame(width: innerGeo.size.width, height: innerGeo.size.height)
+                    }
+                    
                     
                     bottomText
-                    .font(.system(size: 36))
-
-                    .padding(.horizontal, 30)
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                        .padding(.bottom, 50)
+                        .padding(.horizontal, 30)
                     
                     HStack {
                         if showSkipButton {
@@ -78,7 +78,6 @@ struct PageOneView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.horizontal, 10)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -97,7 +96,6 @@ struct PageOneView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.trailing, 50)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -118,10 +116,11 @@ struct PageOneView: View {
                                     .padding(.trailing, 50)
                             })
                         }
-
+                        
                     }
+                    Spacer()
                 }
-                .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.70, alignment: .top)
+                .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.70, alignment: .top)
             }
             .padding(.bottom, 50)
             .frame(width: geo.size.width, height: UIScreen.main.bounds.height)

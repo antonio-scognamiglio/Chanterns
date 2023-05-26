@@ -14,7 +14,6 @@ struct PageTwoView: View {
     @State var showPreviousButton: Bool
     @State var showSkipButton: Bool
     @State var showStartButton: Bool
-    
     @Binding var showOnboarding: Bool
     @Binding var selection: Int
     @State var innerPosition: CGPoint?
@@ -26,50 +25,53 @@ struct PageTwoView: View {
                 Color.white
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
                     .cornerRadius(20)
-                VStack {
+                
+                VStack(alignment: .leading) {
                     topText
-                        .font(.system(size: 36))
-
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                        .padding(.horizontal, 30)
+//                        .padding(.top, 50)
+                    
                     GeometryReader { innerGeo in
-                            ZStack {
-                                Image("NightSkyDark")
-                                    .resizable()
-                                    .cornerRadius(10)
-    //                                .scaledToFill()
-                                    .frame(width: geo.size.width * 0.75, height: geo.size.height * 0.25)
-                                
-                                Image("ChineseLantern01")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .overlay {
-                                        Text("好")
-                                            .font(.system(size: 48))
-                                            .padding(.bottom, 20)
-                                    }
-                                    .frame(width: geo.size.width * 0.15)
-                                //                                .padding(.vertical, 30)
-                                    .position(x: innerPosition?.x ?? innerGeo.frame(in: .local).midX + 200, y: innerPosition?.y ?? innerGeo.frame(in: .local).midY)
-                                   
-                            }
-                            .id(forceUpdate)
-                            .onAppear {
-                                forceUpdate = UUID()
-                                innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX + 200, y: innerGeo.frame(in: .local).midY)
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                                    withAnimation(Animation.linear(duration: 5).repeatForever()) {
-                                            innerPosition?.x -= 400
-                                        }
+                        ZStack {
+                            Image("NightSkyDark")
+                                .resizable()
+                                .cornerRadius(10)
+                                .frame(width: geo.size.width * 0.75, height: geo.size.height * 0.26)
+                            
+                            Image("ChineseLantern01")
+                                .resizable()
+                                .scaledToFit()
+                                .overlay {
+                                    Text("好")
+                                        .font(.system(size: 48))
+                                        .padding(.bottom, 20)
                                 }
+                                .frame(width: geo.size.width * 0.15)
+                                .position(x: innerPosition?.x ?? innerGeo.frame(in: .local).midX + 200, y: innerPosition?.y ?? innerGeo.frame(in: .local).midY)
+                            
                         }
-                            .onDisappear {
-                                innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX + 200, y: innerGeo.frame(in: .local).midY)
+                        .id(forceUpdate)
+                        .onAppear {
+                            forceUpdate = UUID()
+                            innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX + 200, y: innerGeo.frame(in: .local).midY)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                                withAnimation(Animation.linear(duration: 5).repeatForever()) {
+                                    innerPosition?.x -= 400
+                                }
                             }
+                        }
+                        .onDisappear {
+                            innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX + 200, y: innerGeo.frame(in: .local).midY)
+                        }
                     }
                     
                     
+                    
                     bottomText
-                        .font(.system(size: 36))
-//                    .padding(.horizontal, 30)
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                        .padding(.bottom, 50)
+                        .padding(.horizontal, 30)
                     
                     HStack {
                         if showSkipButton {
@@ -85,7 +87,6 @@ struct PageTwoView: View {
                                     .foregroundColor(Color(uiColor: .systemGroupedBackground))
                                     .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
                                     .padding(.horizontal, 7)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -105,7 +106,6 @@ struct PageTwoView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.horizontal, 10)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -124,7 +124,6 @@ struct PageTwoView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.trailing, 50)
-//                                    .padding(.top)
                             })
                         }
                         
@@ -143,13 +142,13 @@ struct PageTwoView: View {
                                     .cornerRadius(15)
                                     .shadow(radius: 2)
                                     .padding(.trailing, 50)
-//                                    .padding(.top)
                             })
                         }
-
+                        
                     }
+                    Spacer()
                 }
-                .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.70, alignment: .top)
+                .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.70, alignment: .top)
             }
             .padding(.bottom, 50)
             .frame(width: geo.size.width, height: UIScreen.main.bounds.height)

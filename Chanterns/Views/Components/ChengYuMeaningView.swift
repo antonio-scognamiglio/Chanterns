@@ -15,14 +15,13 @@ struct ChengYuMeaningView: View {
             ZStack {
                 Image("ScrollOpen")
                     .resizable()
-//                    .scaledToFit()
                     .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.35)
                     .shadow(radius: 5)
                     .overlay {
                         VStack{
                             Text(chengYu.complete)
                                 .font(.system(size: 64))
-                                
+                            
                             HStack {
                                 ForEach(chengYu.arrayCharacters){ character in
                                     Text(character.pinyin)
@@ -30,16 +29,15 @@ struct ChengYuMeaningView: View {
                                 }
                             }
                             .padding(.bottom, 1)
-                                
-                                Text(chengYu.meaning)
-                                    .font(.system(size: 34))
-                                    .frame(width: geo.size.width * 0.68, alignment: .leading)
-//                                    .padding(.top, 1)
+                            
+                            Text(chengYu.meaning)
+                                .font(.system(size: 34))
+                                .frame(width: geo.size.width * 0.68, alignment: .leading)
                             Spacer()
-                            }
-                        .frame(height: geo.size.height * 0.24)
                         }
+                        .frame(height: geo.size.height * 0.24)
                     }
+            }
             .frame(width: geo.size.width, height: geo.size.height)
         }
     }

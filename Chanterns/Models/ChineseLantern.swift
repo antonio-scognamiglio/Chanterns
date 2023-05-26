@@ -20,7 +20,7 @@ class ChineseLantern: Identifiable, Equatable, ObservableObject {
     @Published var animationTime: Double
     @Published var isTapped: Bool
     
-    static let example = ChineseLantern(lanternImage: "ChineseLantern02", character: "我", isAnimationEnd: false, animationTime: 3.0, isTapped: false)
+    static let example = ChineseLantern(lanternImage: "Lantern01", character: "我", isAnimationEnd: false, animationTime: 3.0, isTapped: false)
     
     init(lanternImage: String, character: String, isAnimationEnd: Bool, animationTime: Double, isTapped: Bool) {
         self.lanternImage = lanternImage
