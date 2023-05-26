@@ -1,0 +1,164 @@
+//
+//  PageTwoView.swift
+//  Chanterns
+//
+//  Created by Antonio Scognamiglio on 16/04/23.
+//
+
+import SwiftUI
+
+struct PageTwoView: View {
+    @State var topText: Text
+    @State var bottomText: Text
+    @State var showNextButton: Bool
+    @State var showPreviousButton: Bool
+    @State var showSkipButton: Bool
+    @State var showStartButton: Bool
+    @Binding var showOnboarding: Bool
+    @Binding var selection: Int
+    @State var innerPosition: CGPoint?
+    @State var forceUpdate = UUID()
+    
+    var body: some View {
+        GeometryReader { geo in
+            ZStack {
+                Color.white
+                    .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.75)
+                    .cornerRadius(20)
+                
+                VStack(alignment: .leading) {
+                    topText
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                        .padding(.horizontal, 30)
+//                        .padding(.top, 50)
+                    
+                    GeometryReader { innerGeo in
+                        ZStack {
+                            Image("NightSkyDark")
+                                .resizable()
+                                .cornerRadius(10)
+                                .frame(width: geo.size.width * 0.75, height: geo.size.height * 0.26)
+                            
+                            Image("ChineseLantern01")
+                                .resizable()
+                                .scaledToFit()
+                                .overlay {
+                                    Text("好")
+                                        .font(.system(size: 48))
+                                        .padding(.bottom, 20)
+                                }
+                                .frame(width: geo.size.width * 0.15)
+                                .position(x: innerPosition?.x ?? innerGeo.frame(in: .local).midX + 200, y: innerPosition?.y ?? innerGeo.frame(in: .local).midY)
+                            
+                        }
+                        .id(forceUpdate)
+                        .onAppear {
+                            forceUpdate = UUID()
+                            innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX + 200, y: innerGeo.frame(in: .local).midY)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                                withAnimation(Animation.linear(duration: 5).repeatForever()) {
+                                    innerPosition?.x -= 400
+                                }
+                            }
+                        }
+                        .onDisappear {
+                            innerPosition = CGPoint(x: innerGeo.frame(in: .local).midX + 200, y: innerGeo.frame(in: .local).midY)
+                        }
+                    }
+                    
+                    
+                    
+                    bottomText
+                        .font(.system(size: UIScreen.main.bounds.width > 850 ? 40 : 34))
+                        .padding(.bottom, 50)
+                        .padding(.horizontal, 30)
+                    
+                    HStack {
+                        if showSkipButton {
+                            Button(action: {
+                                withAnimation {
+                                    showOnboarding = false
+                                }
+                            }, label: {
+                                Text("Skip")
+                                    .foregroundColor(.gameButtonTop)
+                                    .font(.system(size: 24))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(uiColor: .systemGroupedBackground))
+                                    .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
+                                    .padding(.horizontal, 7)
+                            })
+                        }
+                        
+                        Spacer()
+                        if showPreviousButton{
+                            Button(action: {
+                                withAnimation {
+                                    selection -= 1
+                                }
+                            }, label: {
+                                Text("\(Image(systemName: "chevron.left")) Previous")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(uiColor: .systemGroupedBackground))
+                                    .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
+                                    .background(Color.gameButtonGradient)
+                                    .cornerRadius(15)
+                                    .shadow(radius: 2)
+                                    .padding(.horizontal, 10)
+                            })
+                        }
+                        
+                        if showNextButton {
+                            Button(action: {
+                                withAnimation {
+                                    selection += 1
+                                }
+                            }, label: {
+                                Text("Next \(Image(systemName: "chevron.right"))")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(uiColor: .systemGroupedBackground))
+                                    .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
+                                    .background(Color.gameButtonGradient)
+                                    .cornerRadius(15)
+                                    .shadow(radius: 2)
+                                    .padding(.trailing, 50)
+                            })
+                        }
+                        
+                        if showStartButton {
+                            Button(action: {
+                                withAnimation {
+                                    showOnboarding = false
+                                }
+                            }, label: {
+                                Text("Get Started")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(uiColor: .systemGroupedBackground))
+                                    .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05)
+                                    .background(Color.gameButtonGradient)
+                                    .cornerRadius(15)
+                                    .shadow(radius: 2)
+                                    .padding(.trailing, 50)
+                            })
+                        }
+                        
+                    }
+                    Spacer()
+                }
+                .frame(width: geo.size.width * 0.85, height: geo.size.height * 0.70, alignment: .top)
+            }
+            .padding(.bottom, 50)
+            .frame(width: geo.size.width, height: UIScreen.main.bounds.height)
+            .ignoresSafeArea()
+        }
+    }
+}
+
+struct PageTwoView_Previews: PreviewProvider {
+    static var previews: some View {
+        PageTwoView(topText: Text("The main goal of this game is to discover the meaning of these ChengYu.\nAs you can see on this Chinese lantern, there’s a character."), bottomText: Text("You need to recreate the sequence shown on the scroll by tapping on lanterns. Order matters."), showNextButton: true, showPreviousButton: true, showSkipButton: true, showStartButton: false, showOnboarding: .constant(false), selection: .constant(2))
+    }
+}
