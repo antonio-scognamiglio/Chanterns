@@ -60,6 +60,7 @@
 		7138EB3B2A2153AD0056D74C /* OnBoardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		7138EB3C2A2153AD0056D74C /* GameMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
 		7138EB3D2A2153AD0056D74C /* LevelsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsView.swift; sourceTree = "<group>"; };
+		7138EB4C2A21F9770056D74C /* CREDITS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CREDITS.md; sourceTree = "<group>"; };
 		71925F5D29E7E79B0081A393 /* Animation-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation-Extension.swift"; sourceTree = "<group>"; };
 		71F54D1129DEB53000F2DD9D /* Chanterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chanterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F54D1429DEB53000F2DD9D /* ChanternsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanternsApp.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 				71F54D2C29E0267300F2DD9D /* Views */,
 				71F54D2D29E05C2600F2DD9D /* Utils */,
 				71F54D1829DEB53200F2DD9D /* Assets.xcassets */,
+				7138EB4C2A21F9770056D74C /* CREDITS.md */,
 				71F54D1A29DEB53200F2DD9D /* Preview Content */,
 			);
 			path = Chanterns;
