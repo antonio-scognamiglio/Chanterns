@@ -2,6 +2,7 @@
 [![](https://img.shields.io/badge/iOS-16.0-orange)](#)
 [![](https://img.shields.io/badge/Platforms-iPad-blue)](#)
 [![](https://img.shields.io/badge/Category-Game-brightgreen)](#)
+[![](https://img.shields.io/badge/Technologies-SwiftUI%20%7C%20Animation-yellow)](#)
 
 ---
 It is an iPad game that aims to entertain and help people interested in learning Chinese. The main idea behind this game is `ChengYu`, which are common Chinese idiomatic expressions composed of 4 characters. 
